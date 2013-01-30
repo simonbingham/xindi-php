@@ -1,0 +1,7 @@
+User-Agent: *
+Disallow: /config/
+Disallow: /controllers/
+Disallow: /core/
+Disallow: /errors/
+Disallow: /views/
+Allow: /
