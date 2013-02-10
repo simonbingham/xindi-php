@@ -80,6 +80,7 @@ else
 	</div>
 	
 	<input type="hidden" name="id" id="id" value="<?php echo set_value('id', $id); ?>">
+	<input type="hidden" name="ancestorid" id="ancestorid" value="<?php echo set_value('ancestorid', $ancestorid); ?>">
 	<input type="hidden" name="context" id="context" value="<?php echo $context; ?>">
 </form>
 

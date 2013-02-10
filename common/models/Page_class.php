@@ -23,8 +23,15 @@ class Page_class extends MY_Model
 	 */
 	function delete_page($id) 
 	{
-		parent::delete($this->tbl, $id);
-	}	
+		$this->db->trans_start();
+			$page = $this->get_page_by_id($id)->row();
+			parent::delete($this->tbl, $page->id);
+			$sql = 'UPDATE ' . $this->tbl . ' SET leftvalue = leftvalue - 2 where leftvalue > ' . $this->db->escape($page->leftvalue) . ';';
+			$this->db->query($sql);
+			$sql = 'UPDATE ' . $this->tbl . ' SET rightvalue = rightvalue - 2 where rightvalue > ' . $this->db->escape($page->leftvalue) . ';';
+			$this->db->query($sql);
+		$this->db->trans_complete();
+	}
 
 	/**
 	 * I return an page matching an id
@@ -59,7 +66,7 @@ class Page_class extends MY_Model
 	 */
 	function get_pages() 
 	{
-		return parent::get($this->tbl, 'leftvalue');
+		return parent::get($this->tbl, 'leftvalue', 'asc');
 	}
 	
 	/**
@@ -93,24 +100,35 @@ class Page_class extends MY_Model
 	 * @access	public
 	 * @param	array		page
 	 * @param 	integer		page id (optional)
-	 * @return	integer		page id
+	 * @return	integer		ancestor id (optional)
 	 */
-	function save_page($page, $id=0) 
+	function save_page($page, $id=0, $ancestorid=0) 
 	{
-		// new page so generate slug
-		if(! $id) 
-		{
-			$page['slug'] = parent::generate_slug($this->tbl, $page['title']);
-			// TODO: update left and right values of other pages
-		}
-		// generate meta tags
-		if($page['metagenerated'])
-		{
-			$page['metatitle'] = parent::generate_page_title($page['title']);
-			$page['metadescription'] = parent::generate_meta_description($page['content']);
-			$page['metakeywords'] = parent::generate_meta_keywords($page['content']);
-		}
-		return parent::save($this->tbl, $page, $id);
+		$this->db->trans_start();
+			// generate meta tags
+			if($page['metagenerated'])
+			{
+				$page['metatitle'] = parent::generate_page_title($page['title']);
+				$page['metadescription'] = parent::generate_meta_description($page['content']);
+				$page['metakeywords'] = parent::generate_meta_keywords($page['content']);
+			}
+			// new page
+			if(! $id) 
+			{
+				$ancestorpage = $this->get_page_by_id($ancestorid)->row();
+				$page['ancestorid'] = $ancestorpage->id;
+				$page['depth'] = $ancestorpage->depth + 1;
+				$page['slug'] = parent::generate_slug($this->tbl, $page['title']);
+				$page['leftvalue'] = $ancestorpage->rightvalue;
+				$page['rightvalue'] = $ancestorpage->rightvalue + 1;
+				$sql = 'UPDATE ' . $this->tbl . ' SET leftvalue = leftvalue + 2 where leftvalue > ' . $this->db->escape($ancestorpage->rightvalue - 1) . ';';
+				$this->db->query($sql);
+				$sql = 'UPDATE ' . $this->tbl . ' SET rightvalue = rightvalue + 2 where rightvalue > ' . $this->db->escape($ancestorpage->rightvalue - 1) . ';';
+				$this->db->query($sql);
+			}
+			$page = parent::save($this->tbl, $page, $id);
+		$this->db->trans_complete();
+		return $page;
 	}
 	
 }

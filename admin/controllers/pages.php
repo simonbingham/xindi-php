@@ -16,7 +16,7 @@ class Pages extends MY_Controller
 	}
 
 	/**
-	 * I delete an page
+	 * I delete a page
 	 *
 	 * @param	integer		page id
 	 */
@@ -46,13 +46,15 @@ class Pages extends MY_Controller
 	}
 
 	/**
-	 * I display an page form
+	 * I display a page form
 	 *
 	 * @param	integer		page id (optional)
+	 * @param	integer		ancestor id (optional)
 	 */
-	function maintain($id=0)
+	function maintain($id=0, $ancestorid=0)
 	{
 		$id = intval($id);
+		$ancestorid = intval($ancestorid);
 		// existing page
 		if($id) 
 		{	
@@ -70,7 +72,9 @@ class Pages extends MY_Controller
 		// new page
 		else
 		{
-			$data = $this->Page_class->new_page();
+			$page = $this->Page_class->new_page();
+			$page['ancestorid'] = $ancestorid;
+			$data = $page;
 			$data['context'] = 'create';
 		}
 		$layout_data['content_body'] = $this->load->view('pages/maintain', $data, true);
@@ -78,7 +82,7 @@ class Pages extends MY_Controller
 	}
 
 	/**
-	 * I save an page
+	 * I save a page
 	 */	
 	function save() 
 	{
@@ -98,8 +102,17 @@ class Pages extends MY_Controller
 		else 
 		{
 			$id = intval($this->input->post('id'));
-			$page = parent::populate($this->input->post(), array('title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords'), array('metagenerated'=>FALSE));
-			$id = $this->Page_class->save_page($page, $id);
+			if($id)
+			{
+				$page = parent::populate($this->input->post(), array('title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords'), array('metagenerated'=>FALSE));
+				$id = $this->Page_class->save_page($page, $id);
+			}
+			else
+			{
+				$page = parent::populate($this->input->post(), array('title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords'), array('metagenerated'=>FALSE));
+				$ancestorid = $this->input->post('ancestorid');
+				$id = $this->Page_class->save_page($page, $id, $ancestorid);				
+			}
 			$message = array('type'=>'success', 'text'=>'The page has been saved.');
 			$this->session->set_flashdata($message);
 			if($this->input->post('submit') === 'Save & continue')

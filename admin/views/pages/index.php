@@ -1,7 +1,5 @@
 <h1>Pages</h1>
 
-<p><a href="<?php echo site_url('pages/maintain') ?>" class="btn btn-primary">Add Page <i class="icon-chevron-right icon-white"></i></a></p>
-
 <?php require_once ('views/helpers/messages.php'); ?>
 
 <?php if(count($pages)) { ?>
@@ -11,6 +9,7 @@
 				<th>Title</th>
 				<th>Last Updated</th>
 				<th class="center">&nbsp;</th>
+				<th class="center">&nbsp;</th>
 			</tr>
 		</thead>
 		
@@ -18,13 +17,21 @@
 			<?php foreach($pages as $page) { ?>
 				<tr>
 					<td>
-						<?php $editlnk = array('pages/maintain', $page->id); ?>
-						<a href="<?php echo site_url($editlnk) ?>"><?php echo $page->title ?></a>
+						<?php if($page->depth < 3) { ?>
+							<?php $updatelnk = array('pages/maintain', $page->id); ?>
+							<a href="<?php echo site_url($updatelnk) ?>"><?php echo $page->title ?></a>
+						<?php } ?>
 					</td>
 					<td><?php echo format_date($page->updated) ?></td>
 					<td class="center">
-						<?php $deletelnk = array('pages/delete', $page->id); ?>
-						<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure want to delete this page?')"><i class="icon-remove"></i></a>
+						<?php $createlnk = array('pages','maintain','ancestorid',$page->id); ?>
+						<a href="<?php echo site_url($createlnk) ?>"><i class="icon-plus"></i></a>
+					</td>
+					<td class="center">
+						<?php if($page->id <> 1) { ?>
+							<?php $deletelnk = array('pages/delete', $page->id); ?>
+							<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure want to delete this page?')"><i class="icon-remove"></i></a>
+						<?php } ?>
 					</td>
 				</tr>
 			<?php } ?>

@@ -18,7 +18,7 @@
  *
  */
 
-if (preg_match('/^(SimonBingham)|(Simon-PC)$/', getHostName())) {
+if (preg_match('/^(SimonBingham)|(Simon-Zoo)$/', getHostName())) {
 	define('ENVIRONMENT', 'development');
 	error_reporting(E_ALL);
 } else {	
