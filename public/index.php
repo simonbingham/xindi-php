@@ -18,7 +18,9 @@
  *
  */
 
-if (preg_match('/^(SimonBingham)|(Simon-PC)$/', getHostName())) {
+//var_dump(getHostName());
+$dev_host_names = '(SimonBingham)|(Simon-Zoo)|(Simon-Binghams-iMac.local)';
+if (preg_match('/^'.$dev_host_names.'$/', getHostName())) {
 	define('ENVIRONMENT', 'development');
 	error_reporting(E_ALL);
 } else {	

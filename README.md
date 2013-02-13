@@ -31,7 +31,7 @@ Clone the git repo - `git clone git@github.com:simonbingham/xindi-php.git`.
 
 ## Installation
 
-Instructions coming soon.
+[Installation instructions can be found in the project wiki.] (https://github.com/simonbingham/xindi-php/wiki)
 
 ## License
 
