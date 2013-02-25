@@ -118,7 +118,7 @@ class Page_class extends MY_Model
 				$ancestorpage = $this->get_page_by_id($ancestorid)->row();
 				$page['ancestorid'] = $ancestorpage->id;
 				$page['depth'] = $ancestorpage->depth + 1;
-				$page['slug'] = parent::generate_slug($this->tbl, $page['title']);
+				$page['slug'] = parent::generate_slug($this->tbl, $page['title'], $ancestorpage->slug);
 				$page['leftvalue'] = $ancestorpage->rightvalue;
 				$page['rightvalue'] = $ancestorpage->rightvalue + 1;
 				$sql = 'UPDATE ' . $this->tbl . ' SET leftvalue = leftvalue + 2 where leftvalue > ' . $this->db->escape($ancestorpage->rightvalue - 1) . ';';

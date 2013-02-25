@@ -106,12 +106,19 @@ class MY_Model extends CI_Model
 	 * @access	protected
 	 * @param	string		table name
 	 * @param	string		page title
+	 * @param	string		ancestor slug
 	 * @return	string		generated slug
 	 */
-	protected function generate_slug($tbl, $title)
+	protected function generate_slug($tbl, $title, $ancestor_slug='')
 	{
 		$title = strtolower(trim($title));
-		$slug = preg_replace("/[^a-zA-Z0-9.]/", "-", $title);
+		$ancestor_slug = trim($ancestor_slug);
+		$slug = '';
+		if(strlen($ancestor_slug)) 
+		{
+			$slug .= $ancestor_slug . '/';
+		}
+		$slug .= preg_replace("/[^a-zA-Z0-9.]/", "-", $title);
 		// ensure slug is unique
 		while ($this->is_slug_unique($tbl, $slug) === false)
 		{
