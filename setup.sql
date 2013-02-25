@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `articles`;
 
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(150) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `title` varchar(150) NOT NULL,
   `content` text NOT NULL,
   `metagenerated` tinyint(4) NOT NULL,
@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `pages`;
 
 CREATE TABLE `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(150) NOT NULL,
+  `slug` varchar(255) NOT NULL,
   `leftvalue` int(11) NOT NULL,
   `rightvalue` int(11) NOT NULL,
   `ancestorid` int(11) NOT NULL,
