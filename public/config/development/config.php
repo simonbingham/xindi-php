@@ -356,3 +356,14 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
+
+/*
+ |--------------------------------------------------------------------------
+| Custom Variables
+|--------------------------------------------------------------------------
+|
+| Custom variables are defined here
+|
+*/
+
+$config['enable_profiler'] = TRUE;

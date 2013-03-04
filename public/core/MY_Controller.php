@@ -11,7 +11,7 @@ class MY_Controller extends CI_Controller
 	function __construct() 
 	{
 		parent::__construct();
-		$this->load->add_package_path('../common/');
+		$this->load->add_package_path('common/');
 		$this->load->helper('url');
 		
 		// append debug information to page

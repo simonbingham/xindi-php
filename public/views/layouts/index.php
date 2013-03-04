@@ -24,6 +24,8 @@
 	<body>
 		<div id="container" class="container">
 			<div class="row">
+				<div></div>
+				
 				<div id="content" class="span12" role="main">
 					<h1>Welcome to Xindi PHP</h1>
 					
