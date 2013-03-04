@@ -34,6 +34,66 @@ class Page_class extends MY_Model
 	}
 
 	/**
+	 * I return the site navigation
+	 *
+	 * @return	string  navigation
+	 */
+	function get_navigation($apply_classes=FALSE)
+	{
+		$class = '';
+		$currLevel = -1;
+		$pages = $this->get_pages()->result();
+		$prevLevel = -1;
+		$result = '';
+		foreach($pages as $page) 
+		{
+			$link = '<a href="' . site_url($page->slug) . '">' . $page->title . '</a>';
+			$currLevel = intval($page->depth);
+			if($currLevel == 0)
+			{
+				$currLevel = 1;
+			}
+			if($currLevel > $prevLevel) 
+			{
+				if($apply_classes)
+				{
+					if(! intval($page->depth))
+					{
+						$class = ' nav nav-pills';
+					} 
+					else 
+					{
+						$class = ' dropdown-menu';
+					}
+				}
+				$result .= '<ul class="' . $class . '"><li>' . $link;
+			} 
+			else if ($currLevel < $prevLevel) 
+			{
+				$tmp = $prevLevel;
+				while($tmp > $currLevel) 
+				{
+					$result .= '</li></ul>';
+					$tmp -= 1;
+				}
+				$result .= '</li><li>' . $link;
+			} 
+			else 
+			{
+				$result .= '</li><li>' . $link;
+			}
+			$prevLevel = $currLevel;
+		}
+		$tmp = $currLevel;
+		while($tmp > 0) 
+		{
+			$result .= '</li></ul>';
+			$tmp -= 1;
+		}
+		return $result;
+	}	
+	
+	/**
 	 * I return an page matching an id
 	 *
 	 * @access	public		page id
@@ -47,15 +107,14 @@ class Page_class extends MY_Model
 	/**
 	 * I return a page matching a slug
 	 *
-	 * @access	protected
-	 * @param	string		table name
+	 * @access	public
 	 * @param	slug		page slug
 	 * @return	array		page
 	 */
-	protected function get_by_slug($tbl, $slug) 
+	function get_page_by_slug($slug) 
 	{
 		$this->db->where('slug', $slug);
-		return $this->db->get($tbl);
+		return $this->db->get($this->tbl);
 	}	
 		
 	/**

@@ -7,28 +7,28 @@ class Pages extends MY_Controller {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->database();
-		$this->load->model('Page_class');
 	}	
 	
 	/**
 	 * I display a page
 	 *
-	 * @access	public
-	 * @param	string		slug of page being viewed
+	 * @access   public
+	 * @param    string   slug of page being viewed
 	 */
-	public function view($page = 'index')
+	public function view($slug = '')
 	{
-		$data['pages'] = $this->Page_class->get_pages()->result();
-		/*
-		if (! file_exists(APPPATH.$page.'.php'))
+		$page = $this->Page_class->get_page_by_slug($slug)->row();
+		if(! empty($page))
+		{
+			$data['title'] = $page->title;
+			$data['content'] = $page->title;
+			$layout_data['content_body'] = $this->load->view('pages/index', $data, true);
+			$this->load->view('layouts/index', $layout_data);
+		}
+		else
 		{
 			show_404();
-		}
-		*/
-		$data['title'] = 'Xindi PHP';
-		$layout_data['content_body'] = $this->load->view('pages/index', $data, true);
-		$this->load->view('layouts/index', $layout_data);		
+		}		
 	}
 	
 }
