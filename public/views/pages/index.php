@@ -1,22 +1,11 @@
-<?php var_dump($breadcrumbs); ?>
-
-<?php foreach($breadcrumbs as $breadcrumb) { ?>
-	<li><?php var_dump($breadcrumb->title); ?></li>
+<?php if(count($breadcrumbs->result())) { ?>
+	<ul class="breadcrumb">
+		<?php foreach($breadcrumbs->result() as $breadcrumb) { ?>
+			<li><a href="<?php echo site_url($breadcrumb->slug); ?>"><?php echo $breadcrumb->title; ?></a> <span class="divider">/</span></li>
+		<?php } ?>
+		<li><?php echo $title; ?></li>
+	</ul>
 <?php } ?>
-
-<!-- 
-$query = $this->db->query("YOUR QUERY");
-
-if ($query->num_rows() > 0)
-{
-   foreach ($query->result() as $row)
-   {
-      echo $row->title;
-      echo $row->name;
-      echo $row->body;
-   }
-}
--->
 
 <h1><?php echo $title; ?></h1>
 

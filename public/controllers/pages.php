@@ -13,10 +13,15 @@ class Pages extends MY_Controller {
 	 * I display a page
 	 *
 	 * @access   public
-	 * @param    string   slug of page being viewed
+	 * @param    string   first part of url
+	 * @param    string   second part of url
 	 */
-	public function view($slug = '')
+	public function view($url_part_1 = '', $url_part_2 = '')
 	{
+		$slug = $url_part_1;
+		if(strlen($url_part_2)) {
+			$slug .= '/' . $url_part_2;
+		}
 		$page = $this->Page_class->get_page_by_slug($slug)->row();
 		if(! empty($page))
 		{

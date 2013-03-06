@@ -25,7 +25,7 @@
 		<div class="navbar navbar-fixed-top" role="banner">
 			<div class="navbar-inner">
 				<div class="container">
-					<a class="brand" href="#rc.basehref#" title="Return to home page"><img src="public/assets/img/global/xindi-logo.png" alt="Xindi logo" /></a>
+					<a class="brand" href="<?php echo site_url(); ?>" title="Return to home page"><img src="public/assets/img/global/xindi-logo.png" alt="Xindi logo" /></a>
 
 				    <form action="" method="post" class="navbar-search pull-right" id="search" role="search">
 				    	<input type="text" name="searchterm" id="searchterm" class="search-query" placeholder="Search">

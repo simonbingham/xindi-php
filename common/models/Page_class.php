@@ -128,7 +128,7 @@ class Page_class extends MY_Model
 		$this->db->where('leftvalue <', $page->leftvalue);
 		$this->db->where('rightvalue >', $page->rightvalue);
 		return $this->db->get($this->tbl);
-	}	
+	}
 	
 	/**
 	 * I return an array of pages
