@@ -18,7 +18,7 @@ class Enquiries extends MY_Controller
 	/**
 	 * I delete an enquiry
 	 *
-	 * @param	integer		enquiry id
+	 * @param   integer   enquiry id
 	 */
 	function delete($id=0)
 	{
@@ -38,7 +38,7 @@ class Enquiries extends MY_Controller
 	/**
 	 * I display an enquiry
 	 * 
-	 * @param	integer		enquiry id
+	 * @param   integer   enquiry id
 	 */
 	function enquiry($id=0)
 	{

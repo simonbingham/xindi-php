@@ -26,11 +26,11 @@ class MY_Controller extends CI_Controller
 	/**
 	 * I populate an array with required fields for a record
 	 *
-	 * @access	protected
-	 * @param	array		form data
-	 * @param	array		required fields
-	 * @param	array		default values (optional)
-	 * @return	array		populated array
+	 * @access   protected
+	 * @param    array   form data
+	 * @param    array   required fields
+	 * @param    array   default values (optional)
+	 * @return   array   populated array
 	 */	
 	protected function populate($form_data, $required_fields, $field_defaults=array())
 	{

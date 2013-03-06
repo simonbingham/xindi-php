@@ -17,9 +17,9 @@ class Enquiry_class extends MY_Model
 	/**
 	 * I delete an enquiry matching an id
 	 *
-	 * @access	public
-	 * @param	integer		enquiry id
-	 * @return	void
+	 * @access   public
+	 * @param    integer   enquiry id
+	 * @return   void
 	 */
 	function delete_enquiry($id) 
 	{
@@ -29,8 +29,8 @@ class Enquiry_class extends MY_Model
 	/**
 	 * I return an enquiry matching an id
 	 *
-	 * @access	public
-	 * @return	array		enquiry
+	 * @access   public
+	 * @return   array   enquiry
 	 */
 	function get_enquiry_by_id($id)
 	{
@@ -40,8 +40,8 @@ class Enquiry_class extends MY_Model
 	/**
 	 * I return an array of enquiries
 	 *
-	 * @access	public
-	 * @return	array		enquiries
+	 * @access   public
+	 * @return   array   enquiries
 	 */
 	function get_enquiries() 
 	{
@@ -51,7 +51,7 @@ class Enquiry_class extends MY_Model
 	/**
 	 * I return a count of unread enquiries
 	 *
-	 * @return	integer		unread enquiry count
+	 * @return   integer   unread enquiry count
 	 */	
 	function get_unread_count()
 	{
@@ -62,9 +62,9 @@ class Enquiry_class extends MY_Model
 	/**
 	 * I mark enquiries as read
 	 *
-	 * @access	public
-	 * @param	array		array of enquiry ids
-	 * @return	integer		count of affected rows
+	 * @access   public
+	 * @param    array     array of enquiry ids
+	 * @return   integer   count of affected rows
 	 */
 	function mark_read($id) 
 	{

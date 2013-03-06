@@ -17,10 +17,10 @@ class MY_Model extends CI_Model
 	/**
 	 * I delete a record matching an id
 	 *
-	 * @access	protected
-	 * @param	string		table name
-	 * @param 	integer		record id
-	 * @return	void
+	 * @access   protected
+	 * @param    string    table name
+	 * @param    integer   record id
+	 * @return   void
 	 */
 	protected function delete($tbl, $id) 
 	{
@@ -31,9 +31,9 @@ class MY_Model extends CI_Model
 	/**
 	 * I generate a meta description
 	 *
-	 * @access	protected
-	 * @param	string		string to be converted
-	 * @return	string		meta description
+	 * @access   protected
+	 * @param    string   string to be converted
+	 * @return   string   meta description
 	 */
 	protected function generate_meta_description($str)
 	{
@@ -51,9 +51,9 @@ class MY_Model extends CI_Model
 	/**
 	 * I generate meta keywords
 	 *
-	 * @access	protected
-	 * @param	string		string to be converted
-	 * @return	string		meta keywords
+	 * @access   protected
+	 * @param    string   string to be converted
+	 * @return   string   meta keywords
 	 */
 	protected function generate_meta_keywords($str)
 	{
@@ -83,9 +83,9 @@ class MY_Model extends CI_Model
 	/**
 	 * I generate a page title
 	 *
-	 * @access	protected
-	 * @param	string		string to be converted
-	 * @return	string		page title
+	 * @access   protected
+	 * @param    string   string to be converted
+	 * @return   string   page title
 	 */
 	protected function generate_page_title($str)
 	{
@@ -103,11 +103,11 @@ class MY_Model extends CI_Model
 	/**
 	 * I generate a slug for the record
 	 *
-	 * @access	protected
-	 * @param	string		table name
-	 * @param	string		page title
-	 * @param	string		ancestor slug
-	 * @return	string		generated slug
+	 * @access   protected
+	 * @param    string   table name
+	 * @param    string   page title
+	 * @param    string   ancestor slug
+	 * @return   string   generated slug
 	 */
 	protected function generate_slug($tbl, $title, $ancestor_slug='')
 	{
@@ -130,11 +130,11 @@ class MY_Model extends CI_Model
 	/**
 	 * I return an array of records
 	 *
-	 * @access	protected
-	 * @param	string		table name
-	 * @param	string		name of column to sort by
-	 * @param	string		sort direction (asc or desc)
-	 * @return	array		records
+	 * @access   protected
+	 * @param    string   table name
+	 * @param    string   name of column to sort by
+	 * @param    string   sort direction (asc or desc)
+	 * @return   array    records
 	 */
 	protected function get($tbl, $sortcol, $sortdir) 
 	{
@@ -145,10 +145,10 @@ class MY_Model extends CI_Model
 	/**
 	 * I return a record matching an id
 	 *
-	 * @access	protected
-	 * @param	string		table name
-	 * @param	integer		record id
-	 * @return	array		record
+	 * @access   protected
+	 * @param    string    table name
+	 * @param    integer   record id
+	 * @return   array     record
 	 */
 	protected function get_by_id($tbl, $id) 
 	{
@@ -159,11 +159,11 @@ class MY_Model extends CI_Model
 	/**
 	 * I save a record and return the id
 	 *
-	 * @access	protected
-	 * @param	string		table name
-	 * @param	array		record to save 
-	 * @param	integer		record id (optional)
-	 * @return	integer		record id
+	 * @access   protected
+	 * @param    string    table name
+	 * @param    array     record to save 
+	 * @param    integer   record id (optional)
+	 * @return   integer   record id
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
@@ -188,9 +188,9 @@ class MY_Model extends CI_Model
 	/**
 	 * I convert a string (in 'dd/mm/yyyy' format) to MySQL timestamp
 	 *
-	 * @access	protected
-	 * @param	string		date (in 'dd/mm/yyyy' format)
-	 * @return	date		date as timestamp
+	 * @access   protected
+	 * @param    string   date (in 'dd/mm/yyyy' format)
+	 * @return   date     date as timestamp
 	 */
 	protected function string_to_timestamp($date) 
 	{
@@ -203,10 +203,10 @@ class MY_Model extends CI_Model
 	/**
 	 * I return true if a slug is unique
 	 *
-	 * @access	private
-	 * @param	string		table name
-	 * @param	string		slug
-	 * @return	boolean		true if slug is unique
+	 * @access   private
+	 * @param    string    table name
+	 * @param    string    slug
+	 * @return   boolean   true if slug is unique
 	 */
 	private function is_slug_unique($tbl, $slug)
 	{
@@ -217,9 +217,9 @@ class MY_Model extends CI_Model
 	/**
 	 * I return a string with multiple spaces replaced with single spaces
 	 *
-	 * @access	private
-	 * @param	string		string that may contain multiple spaces
-	 * @return	string		string with multiple spaces removed
+	 * @access   private
+	 * @param    string   string that may contain multiple spaces
+	 * @return   string   string with multiple spaces removed
 	 */	
 	private function replace_multiple_spaces_with_single_space($str)
 	{

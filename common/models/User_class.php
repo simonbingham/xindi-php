@@ -17,9 +17,9 @@ class User_class extends MY_Model
 	/**
 	 * I deletes a user matching an id
 	 *
-	 * @access	public
-	 * @param	integer		user id
-	 * @return	void
+	 * @access   public
+	 * @param    integer   user id
+	 * @return   void
 	 */
 	function delete_user($id) 
 	{
@@ -29,8 +29,8 @@ class User_class extends MY_Model
 	/**
 	 * I return a user matching an id
 	 *
-	 * @access	public
-	 * @return	array		user
+	 * @access   public
+	 * @return   array   user
 	 */
 	function get_user_by_id($id) 
 	{
@@ -40,8 +40,8 @@ class User_class extends MY_Model
 	/**
 	 * I return an array of users
 	 *
-	 * @access	public
-	 * @return	array		users
+	 * @access   public
+	 * @return   array   users
 	 */
 	function get_users() 
 	{
@@ -51,8 +51,8 @@ class User_class extends MY_Model
 	/**
 	 * I return a new user
 	 *
-	 * @access	public
-	 * @return	array		user
+	 * @access   public
+	 * @return   array   user
 	 */
 	function new_user() 
 	{
@@ -68,10 +68,10 @@ class User_class extends MY_Model
 	/**
 	 * I save a user and return the id
 	 *
-	 * @access	public
-	 * @param	array		user
-	 * @param 	integer		user id (optional)
-	 * @return	integer
+	 * @access   public
+	 * @param    array     user
+	 * @param    integer   user id (optional)
+	 * @return   integer
 	 */
 	function save_user($user, $id=0) 
 	{

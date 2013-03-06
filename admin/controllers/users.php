@@ -18,7 +18,7 @@ class Users extends MY_Controller
 	/**
 	 * I delete a user
 	 *
-	 * @param	integer		user id
+	 * @param   integer   user id
 	 */
 	function delete($id=0)
 	{
@@ -48,7 +48,7 @@ class Users extends MY_Controller
 	/**
 	 * I display a user form
 	 *
-	 * @param	integer		user id (optional)
+	 * @param   integer   user id (optional)
 	 */
 	function maintain($id=0) 
 	{
@@ -122,9 +122,9 @@ class Users extends MY_Controller
 	/**
 	 * I return the validation rules
 	 *
-	 * @access	private
-	 * @param	boolean		true if password needs to be validated		
-	 * @return	array		validation rules
+	 * @access   private
+	 * @param    boolean   true if password needs to be validated		
+	 * @return   array     validation rules
 	 */
 	private function get_validation_rules($validate_password) 
 	{
