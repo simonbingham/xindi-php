@@ -1,3 +1,23 @@
-<p><a href="admin" class="btn btn-primary" target="_blank">Access Site Manager <span class="icon-chevron-right icon-white"></span></a></p>
+<?php var_dump($breadcrumbs); ?>
+
+<?php foreach($breadcrumbs as $breadcrumb) { ?>
+	<li><?php var_dump($breadcrumb->title); ?></li>
+<?php } ?>
+
+<!-- 
+$query = $this->db->query("YOUR QUERY");
+
+if ($query->num_rows() > 0)
+{
+   foreach ($query->result() as $row)
+   {
+      echo $row->title;
+      echo $row->name;
+      echo $row->body;
+   }
+}
+-->
+
+<h1><?php echo $title; ?></h1>
 
 <?php echo $content;?>

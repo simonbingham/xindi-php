@@ -116,7 +116,20 @@ class Page_class extends MY_Model
 		$this->db->where('slug', $slug);
 		return $this->db->get($this->tbl);
 	}	
-		
+
+	/**
+	 * I return a page path
+	 *
+	 * @access	public
+	 * @param	array		page
+	 * @return	array		pages
+	 */
+	function get_path($page){
+		$this->db->where('leftvalue <', $page->leftvalue);
+		$this->db->where('rightvalue >', $page->rightvalue);
+		return $this->db->get($this->tbl);
+	}	
+	
 	/**
 	 * I return an array of pages
 	 *

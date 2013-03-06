@@ -20,8 +20,9 @@ class Pages extends MY_Controller {
 		$page = $this->Page_class->get_page_by_slug($slug)->row();
 		if(! empty($page))
 		{
+			$data['breadcrumbs'] = $this->Page_class->get_path($page);
 			$data['title'] = $page->title;
-			$data['content'] = $page->title;
+			$data['content'] = $page->content;
 			$layout_data['content_body'] = $this->load->view('pages/index', $data, true);
 			$this->load->view('layouts/index', $layout_data);
 		}

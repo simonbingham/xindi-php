@@ -43,8 +43,6 @@
 			
 			<div id="content" class="row" role="main">
 				<div class="span12">
-					<h1><?php echo $title; ?></h1>
-					
 					<?php echo $content_body; ?>
 				</div>
 			</div>
