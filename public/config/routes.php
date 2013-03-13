@@ -38,9 +38,18 @@
 |
 */
 
+// site map route
 $route['map'] = 'map';
+
+// article routes
+$route['news'] = 'news';
+$route['news/(:any)'] = 'news/article/$1';
+
+// page routes
 $route['(:any)/(:any)'] = 'pages/view/$1/$2';
 $route['(:any)'] = 'pages/view/$1';
+
+// default route
 $route['default_controller'] = 'pages/view';
 
 /*

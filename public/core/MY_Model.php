@@ -158,6 +158,20 @@ class MY_Model extends CI_Model
 	}
 	
 	/**
+	 * I return a record matching a slug
+	 *
+	 * @access   protected
+	 * @param    string    table name
+	 * @param    string    record slug
+	 * @return   array     record
+	 */
+	protected function get_by_slug($tbl, $slug)
+	{	
+		$this->db->where('slug', $slug);
+		return $this->db->get($tbl);	
+	}
+	
+	/**
 	 * I save a record and return the id
 	 *
 	 * @access   protected

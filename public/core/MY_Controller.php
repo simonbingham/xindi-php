@@ -12,7 +12,7 @@ class MY_Controller extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->add_package_path('common/');
-		$this->load->helper('url');
+		$this->load->helper(array('custom','url'));
 		$this->load->database();
 		$this->load->model('Page_class');
 		$this->navigation = $this->Page_class->get_navigation(TRUE);

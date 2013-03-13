@@ -113,8 +113,7 @@ class Page_class extends MY_Model
 	 */
 	function get_page_by_slug($slug) 
 	{
-		$this->db->where('slug', $slug);
-		return $this->db->get($this->tbl);
+		return parent::get_by_slug($this->tbl, $slug);
 	}	
 
 	/**

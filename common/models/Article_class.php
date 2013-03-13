@@ -36,6 +36,17 @@ class Article_class extends MY_Model
 	{
 		return parent::get_by_id($this->tbl, $id);
 	}
+	
+	/**
+	 * I return an article matching a slug
+	 *
+	 * @access   public   article slug
+	 * @return   array    article
+	 */
+	function get_article_by_slug($slug)
+	{
+		return parent::get_by_slug($this->tbl, $slug);
+	}
 		
 	/**
 	 * I return an array of articles

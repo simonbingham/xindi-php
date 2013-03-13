@@ -5,15 +5,16 @@
  *
  * @access	public
  * @param	string		date to be formatted
+ * @param	string		format
  * @return	string		formatted date
  */
 if(! function_exists('format_date')) 
 {
-    function format_date($date) 
+    function format_date($date, $format ='d/m/Y H:i') 
     {
     	if(is_timestamp($date))
 		{
-	    	return date('d/m/Y H:i', strtotime($date));
+	    	return date($format , strtotime($date));
 		}
 		else
 		{
