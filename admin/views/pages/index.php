@@ -29,14 +29,14 @@ echo render_message($userdata, $message);
 						<?php // limit page depth to two tiers ?>
 						<?php if($page->depth < 2) { ?>
 							<?php $createlnk = array('pages','maintain','ancestorid',$page->id); ?>
-							<a href="<?php echo site_url($createlnk) ?>"><i class="icon-plus"></i></a>
+							<a href="<?php echo site_url($createlnk) ?>" title="Add child page"><i class="icon-plus"></i></a>
 						<?php } ?>
 					</td>
 					<td class="center">
 						<?php // the home page and pages with children cannot be deleted ?>
 						<?php if($page->depth <> 0 && $page->rightvalue - $page->leftvalue == 1) { ?>
 							<?php $deletelnk = array('pages/delete', $page->id); ?>
-							<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure want to delete this page?')"><i class="icon-remove"></i></a>
+							<a href="<?php echo site_url($deletelnk) ?>" title="Delete page" onclick="return confirm('Are you sure want to delete this page?')"><i class="icon-remove"></i></a>
 						<?php } ?>
 					</td>
 				</tr>
