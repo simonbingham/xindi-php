@@ -13,7 +13,13 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<form method="post" action="<?php echo site_url('articles/save') ?>" id="article-form">
+<p class="pull-right">
+	<a href="<?php echo site_url('articles/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Article List</a>
+	<?php $deletelnk = array('articles/delete', $id); ?>
+	<a href="<?php echo site_url($deletelnk) ?>" title="Delete article" onclick="return confirm('Are you sure you want to delete this article?')" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
+</p>
+
+<form method="post" action="<?php echo site_url('articles/save') ?>" id="article-form" class="clear">
 	<fieldset>
 		<legend>Article Details</legend>	
 
@@ -33,6 +39,7 @@ echo render_message($userdata, $message);
 			</div>
 		</div>
 		
+		<?php // TODO: fix datepicker bug ?>
 		<div class="control-group">
 			<label class="control-label" for="published">Published *</label>
 			<div class="controls">

@@ -71,13 +71,17 @@ class Enquiries extends MY_Controller
 	{
 		$id = $this->input->post('id');
 		$affectedrows = $this->Enquiry_class->mark_read($id);
-		if($affectedrows)
+		if($affectedrows == 1)
+		{
+			$message = array('type'=>'success', 'text'=>'The enquiry has been marked as read.');
+		}
+		else if($affectedrows > 1)
 		{
 			$message = array('type'=>'success', 'text'=>'The enquiries have been marked as read.');
 		}
 		else
 		{
-			$message = array('type'=>'error', 'text'=>'Please select at least one enquiry.');
+			$message = array('type'=>'error', 'text'=>'Please select at least one <em>unread</em> enquiry.');
 		}
 		$this->session->set_flashdata($message);
 		redirect('enquiries/index/','refresh');

@@ -57,8 +57,3 @@ $route['map'] = 'map';
 
 // default route
 $route['default_controller'] = 'pages/view';
-
-/*
-$route['default_controller'] = "welcome";
-$route['404_override'] = '';
-*/

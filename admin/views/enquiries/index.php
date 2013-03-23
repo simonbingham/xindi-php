@@ -12,11 +12,11 @@ echo render_message($userdata, $message);
 			<thead>
 				<tr>
 					<?php if($unread_count) { ?>
-						<?php // TODO: implement ability to select/deselect all ?>
-						<th>&nbsp;</th>
+						<th class="center"><input type="checkbox" name="toggle_all"></th>
 						<th>&nbsp;</th>
 					<?php } ?>
 					<th>Name</th>
+					<th>Email</th>
 					<th>Received</th>
 					<th class="center">View</th>
 					<th class="center">Delete</th>
@@ -35,6 +35,7 @@ echo render_message($userdata, $message);
 							</td>
 						<?php } ?>
 						<td><?php echo $enquiry->name ?></td>
+						<td><a href="mailto:<?php echo $enquiry->email; ?>"><?php echo $enquiry->email ?></a></td>
 						<td><?php echo format_date($enquiry->created) ?></td>
 						<td class="center">
 							<?php $enquirylnk = array('enquiries/enquiry', $enquiry->id); ?>
@@ -43,7 +44,7 @@ echo render_message($userdata, $message);
 						<?php // TODO: implement delete functionality using checkboxes ?>
 						<td class="center">
 							<?php $deletelnk = array('enquiries/delete', $enquiry->id); ?>
-							<a href="<?php echo site_url($deletelnk) ?>" title="Delete enquiry" onclick="return confirm('Are you sure want to delete this article?')"><i class="icon-remove"></i></a>
+							<a href="<?php echo site_url($deletelnk) ?>" title="Delete enquiry" onclick="return confirm('Are you sure you want to delete this enquiry?')"><i class="icon-trash"></i></a>
 						</td>
 					</tr>
 				<?php } ?>
@@ -51,21 +52,15 @@ echo render_message($userdata, $message);
 		</table>
 		
 		<?php if($unread_count) { ?>
-			<input type="submit" name="submit" value="Mark As Read" class="btn btn-primary" disabled="disabled">
+			<input type="submit" name="submit" value="Mark As Read" class="btn btn-primary">
 		<?php } ?>
 	</form>
 	
 	<script>
 	jQuery(function($) {
-		$('#enquiry-list .btn').attr('disabled','disabled');
-		$('input:checkbox').click(function() {
-			var buttonschecked = $('input:checkbox:checked');
-			if (buttonschecked.length) {
-				$('#enquiry-list .btn').removeAttr('disabled');
-			} else {
-				$('#enquiry-list .btn').attr('disabled', 'disabled');
-			}
-		});
+		$(':checkbox[name=toggle_all]').click(function () {
+			$(':checkbox[name=id[]]').prop('checked', this.checked);
+		});		
 	});
 	</script>	
 	

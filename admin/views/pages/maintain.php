@@ -13,7 +13,16 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<form method="post" action="<?php echo site_url('pages/save') ?>" id="page-form">
+<p class="pull-right">
+	<a href="<?php echo site_url('pages/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Page List</a>
+	<?php // the home page and pages with children cannot be deleted ?>
+	<?php if($depth <> 0 && $rightvalue - $leftvalue == 1) { ?>
+		<?php $deletelnk = array('pages/delete', $id); ?>
+		<a href="<?php echo site_url($deletelnk) ?>" title="Delete page" onclick="return confirm('Are you sure you want to delete this page?')" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
+	<?php } ?>
+</p>
+
+<form method="post" action="<?php echo site_url('pages/save') ?>" id="page-form" class="clear">
 	<fieldset>
 		<legend>Page Details</legend>	
 

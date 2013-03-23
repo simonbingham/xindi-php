@@ -11,7 +11,13 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<form method="post" action="<?php echo site_url('users/save') ?>" id="user-form">
+<p class="pull-right">
+	<a href="<?php echo site_url('users/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to User List</a>
+	<?php $deletelnk = array('users/delete', $id); ?>
+	<a href="<?php echo site_url($deletelnk) ?>" title="Delete user" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
+</p>
+
+<form method="post" action="<?php echo site_url('users/save') ?>" id="user-form" class="clear">
 	<fieldset>
 		<legend>User Details</legend>	
 

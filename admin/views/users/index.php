@@ -30,7 +30,7 @@ echo render_message($userdata, $message);
 					<td><?php echo $user->updated ?></td>
 					<td class="center">
 						<?php $deletelnk = array('users/delete', $user->id); ?>
-						<a href="<?php echo site_url($deletelnk) ?>" title="Delete user" onclick="return confirm('Are you sure want to delete this user?')"><i class="icon-remove"></i></a>
+						<a href="<?php echo site_url($deletelnk) ?>" title="Delete user" onclick="return confirm('Are you sure you want to delete this user?')"><i class="icon-trash"></i></a>
 					</td>
 				</tr>
 			<?php } ?>
