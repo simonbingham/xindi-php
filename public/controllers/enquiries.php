@@ -47,8 +47,8 @@ class Enquiries extends MY_Controller
 			
 			$this->load->library('email');
 			$this->email->from($data['email'], $data['name']);
-			$this->email->to('smnbin@gmail.com');
-			$this->email->subject('Enquiry Form Submission');
+			$this->email->to($this->config->item('enquiry_to'));
+			$this->email->subject($this->config->item('enquiry_subject'));
 			$this->email->message($data['message']);
 			$this->email->send();
 			/*

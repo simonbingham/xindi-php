@@ -52,7 +52,7 @@ class Article_class extends MY_Model
 	 * I return an array of articles
 	 *
 	 * @access   public
-	 * @return   array   articles
+	 * @return   array     articles
 	 */
 	function get_articles() 
 	{

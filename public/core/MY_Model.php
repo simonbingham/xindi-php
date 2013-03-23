@@ -1,5 +1,4 @@
 <?php
-// TODO: duplicate of MY_Model in admin directory - need to remove
 class MY_Model extends CI_Model 
 {
 	

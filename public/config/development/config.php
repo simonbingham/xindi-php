@@ -366,4 +366,14 @@ $config['proxy_ips'] = '';
 |
 */
 
+// append debug information to page
 $config['enable_profiler'] = TRUE;
+
+// enquiry form settings
+$config['enquiry_to'] = '';
+$config['enquiry_subject'] = '';
+
+// rss feed settings
+$config['feed_title'] = '';
+$config['feed_link'] = '';
+$config['feed_description'] = '';

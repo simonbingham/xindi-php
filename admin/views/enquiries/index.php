@@ -12,6 +12,7 @@ echo render_message($userdata, $message);
 			<thead>
 				<tr>
 					<?php if($unread_count) { ?>
+						<?php // TODO: implement ability to select/deselect all ?>
 						<th>&nbsp;</th>
 						<th>&nbsp;</th>
 					<?php } ?>
@@ -26,7 +27,7 @@ echo render_message($userdata, $message);
 				<?php foreach($enquiries as $enquiry) { ?>
 					<tr>
 						<?php if($unread_count) { ?>
-							<td><input type="checkbox" name="id[]" value="<?php echo $enquiry->id ?>"></td>
+							<td class="center"><input type="checkbox" name="id[]" value="<?php echo $enquiry->id ?>"></td>
 							<td>
 								<?php if(! $enquiry->isread) { ?>
 										<span class="label label-info">new</span>

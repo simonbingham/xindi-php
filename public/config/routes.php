@@ -40,6 +40,7 @@
 
 // article routes
 $route['news'] = 'articles';
+$route['news/feed'] = 'articles/feed';
 $route['news/(:any)'] = 'articles/article/$1';
 
 // enquiry routes
