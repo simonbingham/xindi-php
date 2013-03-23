@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class News extends MY_Controller
+class Articles extends MY_Controller
 {
 
 	// ------------------------ PUBLIC METHODS ------------------------ //
@@ -21,7 +21,7 @@ class News extends MY_Controller
 	function index()
 	{
 		$data['articles'] = $this->Article_class->get_articles()->result();
-		$layout_data['content_body'] = $this->load->view('news/index', $data, true);
+		$layout_data['content_body'] = $this->load->view('articles/index', $data, true);
 		$this->load->view('layouts/index', $layout_data);
 	}
 
@@ -36,7 +36,7 @@ class News extends MY_Controller
 		if(!empty($article)) 
 		{	
 			$data['article'] = $article;
-			$layout_data['content_body'] = $this->load->view('news/article', $data, true);
+			$layout_data['content_body'] = $this->load->view('articles/article', $data, true);
 			$this->load->view('layouts/index', $layout_data);			
 		} 
 		else

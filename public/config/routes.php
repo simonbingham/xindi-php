@@ -42,8 +42,8 @@
 $route['map'] = 'map';
 
 // article routes
-$route['news'] = 'news';
-$route['news/(:any)'] = 'news/article/$1';
+$route['news'] = 'articles';
+$route['news/(:any)'] = 'articles/article/$1';
 
 // page routes
 $route['(:any)/(:any)'] = 'pages/view/$1/$2';
