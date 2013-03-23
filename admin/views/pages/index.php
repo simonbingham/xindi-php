@@ -1,6 +1,10 @@
 <h1>Pages</h1>
 
-<?php require_once ('views/helpers/messages.php'); ?>
+<?php 
+$userdata = $this->session->all_userdata();
+$message = isset($message) ? $message : '';
+echo render_message($userdata, $message);
+?>
 
 <?php if(count($pages)) { ?>
 	<table class="table table-striped table-bordered table-condensed">

@@ -74,4 +74,33 @@ class Enquiry_class extends MY_Model
 		return $this->db->affected_rows();
 	}
 	
+	/**
+	 * I return a new enquiry
+	 *
+	 * @access   public
+	 * @return   array   enquiry
+	 */
+	function new_enquiry()
+	{
+		$enquiry = array(
+			'name' => '',
+			'email' => '',
+			'message' => ''
+		);
+		return $enquiry;
+	}
+
+	/**
+	 * I save an enquiry
+	 *
+	 * @access   public
+	 * @param    array     enquiry
+	 * @return   void
+	 */
+	function save_enquiry($enquiry)
+	{
+		$enquiry['read'] = FALSE;
+		parent::save($this->tbl, $enquiry);
+	}	
+	
 }

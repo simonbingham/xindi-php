@@ -6,7 +6,9 @@ if(! $id)
 	echo "<h1>Edit User</h1>";
 }
 
-require_once ('views/helpers/messages.php');
+$userdata = $this->session->all_userdata();
+$message = isset($message) ? $message : '';
+echo render_message($userdata, $message);
 ?>
 
 <form method="post" action="<?php echo site_url('users/save') ?>" id="user-form">

@@ -2,7 +2,11 @@
 
 <p><a href="<?php echo site_url('articles/maintain') ?>" class="btn btn-primary">Add Article <i class="icon-chevron-right icon-white"></i></a></p>
 
-<?php require_once ('views/helpers/messages.php'); ?>
+<?php 
+$userdata = $this->session->all_userdata();
+$message = isset($message) ? $message : '';
+echo render_message($userdata, $message);
+?>
 
 <?php if(count($articles)) { ?>
 	<table class="table table-striped table-bordered table-condensed">

@@ -7,9 +7,11 @@ else
 {
 	echo '<h1>Edit Article</h1>';
 }
+ 
+$userdata = $this->session->all_userdata();
+$message = isset($message) ? $message : '';
+echo render_message($userdata, $message);
 ?>
-
-<?php require_once ('views/helpers/messages.php'); ?>
 
 <form method="post" action="<?php echo site_url('articles/save') ?>" id="article-form">
 	<fieldset>

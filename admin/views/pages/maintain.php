@@ -7,9 +7,11 @@ else
 {
 	echo '<h1>Edit Page</h1>';
 }
-?>
 
-<?php require_once ('views/helpers/messages.php'); ?>
+$userdata = $this->session->all_userdata();
+$message = isset($message) ? $message : '';
+echo render_message($userdata, $message);
+?>
 
 <form method="post" action="<?php echo site_url('pages/save') ?>" id="page-form">
 	<fieldset>

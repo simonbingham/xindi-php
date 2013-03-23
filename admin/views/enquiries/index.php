@@ -1,6 +1,10 @@
 <h1>Enquiries</h1>
 
-<?php require_once ('views/helpers/messages.php'); ?>
+<?php 
+$userdata = $this->session->all_userdata();
+$message = isset($message) ? $message : '';
+echo render_message($userdata, $message);
+?>
 
 <?php if(count($enquiries)) { ?>
 	<form action="<?php echo site_url('enquiries/mark_read') ?>" method="post" id="enquiry-list">
