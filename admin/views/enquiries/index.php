@@ -28,7 +28,7 @@ echo render_message($userdata, $message);
 						<?php if($unread_count) { ?>
 							<td><input type="checkbox" name="id[]" value="<?php echo $enquiry->id ?>"></td>
 							<td>
-								<?php if(! $enquiry->read) { ?>
+								<?php if(! $enquiry->isread) { ?>
 										<span class="label label-info">new</span>
 								<?php } ?>
 							</td>

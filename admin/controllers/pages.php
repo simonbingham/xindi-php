@@ -11,7 +11,6 @@ class Pages extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->database();
 		$this->load->model('Page_class');
 	}
 

@@ -39,7 +39,7 @@
 							<li><a href="<?php echo site_url('main/index') ?>">Dashboard</a></li>
 							<li><a href="<?php echo site_url('pages/index') ?>">Pages</a></li>
 							<li><a href="<?php echo site_url('articles/index') ?>">News</a></li>
-							<li><a href="<?php echo site_url('enquiries/index') ?>">Enquiries <span class="badge badge-info">0</span></a></li>
+							<li><a href="<?php echo site_url('enquiries/index') ?>">Enquiries <span class="badge badge-info"><?php echo $this->unread_enquiry_count; ?></span></a></li>
 							<li><a href="<?php echo site_url('users/index') ?>">Users</a></li>
 							<li><a href="<?php echo site_url('auth/logout') ?>">Logout</a></li>
 						</ul>

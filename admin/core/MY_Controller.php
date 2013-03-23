@@ -12,9 +12,14 @@ class MY_Controller extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->add_package_path('../common/');
+		$this->load->database();
 		$this->load->helper(array('custom', 'url'));
 		$this->load->library(array('session','form_validation'));
 		$this->form_validation->set_error_delimiters('<span class="error">','</span>');
+		
+		// load enquiry count on every page request
+		$this->load->model('Enquiry_class');
+		$this->unread_enquiry_count = $this->Enquiry_class->get_unread_count();		
 		
 		// append debug information to page
 		$enable_profiler = $this->config->item('enable_profiler');
