@@ -135,6 +135,7 @@ class MY_Model extends CI_Model
 	 * @param    string   name of column to sort by
 	 * @param    string   sort direction (asc or desc)
 	 * @return   array    records
+	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function get($tbl, $sortcol, $sortdir) 
 	{
@@ -164,6 +165,7 @@ class MY_Model extends CI_Model
 	 * @param    array     record to save 
 	 * @param    integer   record id (optional)
 	 * @return   integer   record id
+	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
@@ -191,6 +193,7 @@ class MY_Model extends CI_Model
 	 * @access   protected
 	 * @param    string   date (in 'dd/mm/yyyy' format)
 	 * @return   date     date as timestamp
+	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function string_to_timestamp($date) 
 	{

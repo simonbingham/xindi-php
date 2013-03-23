@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MY_Controller extends CI_Controller 
+class MY_Controller extends CI_Controller
 {
 	
 	// ------------------------ PUBLIC METHODS ------------------------ //
@@ -31,7 +31,8 @@ class MY_Controller extends CI_Controller
 	 * @param    array   required fields
 	 * @param    array   default values (optional)
 	 * @return   array   populated array
-	 */	
+	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
+	 */
 	protected function populate($form_data, $required_fields, $field_defaults=array())
 	{
 		$result = array();
