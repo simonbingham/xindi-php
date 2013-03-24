@@ -38,4 +38,4 @@
 |
 */
 
-$route['default_controller'] = "main";
+$route['default_controller'] = "security/index";

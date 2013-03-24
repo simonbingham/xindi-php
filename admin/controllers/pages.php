@@ -11,6 +11,15 @@ class Pages extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
+		
+		// if the user is not logged in redirect them to the login form
+		if(! $this->session->userdata('is_logged_in'))
+		{
+			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to maintain your site.');
+			$this->session->set_flashdata($message);
+			redirect('security/index/','refresh');
+		}		
+		
 		$this->load->model('Page_class');
 	}
 

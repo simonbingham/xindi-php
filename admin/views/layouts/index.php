@@ -32,18 +32,25 @@
 						<span class="icon-bar"></span>
 					</a>
 					
-					<a class="brand" href="<?php echo site_url('main/index') ?>" title="Return to home page"><img src="assets/img/xindi-logo.png" alt="Xindi logo" /></a>
+					<a class="brand" href="<?php echo site_url() ?>" title="Return to home page"><img src="assets/img/xindi-logo.png" alt="Xindi logo" /></a>
 					
-					<div class="nav-collapse">
-						<ul class="nav pull-right" role="navigation">
-							<li><a href="<?php echo site_url('main/index') ?>">Dashboard</a></li>
-							<li><a href="<?php echo site_url('pages/index') ?>">Pages</a></li>
-							<li><a href="<?php echo site_url('articles/index') ?>">News</a></li>
-							<li><a href="<?php echo site_url('enquiries/index') ?>">Enquiries <span class="badge badge-info"><abbr title="Unread enquiries"><?php echo $this->unread_enquiry_count; ?></abbr></span></a></li>
-							<li><a href="<?php echo site_url('users/index') ?>">Users</a></li>
-							<li><a href="<?php echo site_url('auth/logout') ?>">Logout</a></li>
-						</ul>
-					</div>
+					<?php 
+					if($this->session->userdata('is_logged_in')) 
+					{
+					?>
+						<div class="nav-collapse">
+							<ul class="nav pull-right" role="navigation">
+								<li><a href="<?php echo site_url('main/index') ?>">Dashboard</a></li>
+								<li><a href="<?php echo site_url('pages/index') ?>">Pages</a></li>
+								<li><a href="<?php echo site_url('articles/index') ?>">News</a></li>
+								<li><a href="<?php echo site_url('enquiries/index') ?>">Enquiries<?php if ($this->unread_enquiry_count) { ?><span class="badge badge-info"><abbr title="Unread enquiries"><?php echo $this->unread_enquiry_count; ?></abbr></span><?php } ?></a></li>
+								<li><a href="<?php echo site_url('users/index') ?>">Users</a></li>
+								<li><a href="<?php echo site_url('security/dologout') ?>">Logout</a></li>
+							</ul>
+						</div>
+					<?php 
+					}
+					?>
 				</div>
 			</div>
 		</div>		
@@ -51,7 +58,7 @@
 		<div id="container" class="container">
 			<div class="row">
 				<div id="content" class="span12" role="main">
-					<h2 class="pull-right"><small class="pull-right">current user name</small></h2>
+					<h2 class="pull-right"><small class="pull-right"><?php echo $this->session->userdata('name'); ?></small></h2>
 
 					<?php echo $content_body; ?>
 		
@@ -108,14 +115,11 @@
 				media_external_list_url : "lists/media_list.js",
 				*/
 
-				<?php // TODO: secure TinyMCE ?>
 				// Replace values for the template plugin
-				/*
 				template_replace_values : {
-					username : "Some User",
-					staffid : "991234"
+					username : "<?php echo $this->session->userdata('name'); ?>",
+					staffid : "<?php echo $this->session->userdata('id'); ?>"
 				}
-				*/
 			});
 		});
 		</script>

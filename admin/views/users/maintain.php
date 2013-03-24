@@ -13,8 +13,15 @@ echo render_message($userdata, $message);
 
 <div class="btn-group pull-right" data-toggle="buttons-checkbox">
 	<a href="<?php echo site_url('users/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Users</a>
-	<?php $deletelnk = array('users/delete', $id); ?>
-	<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+	<?php 
+	if ($this->session->userdata('id') != $id) 
+	{
+	?>	
+		<?php $deletelnk = array('users/delete', $id); ?>
+		<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+	<?php 
+	}
+	?>
 </div>
 
 <form method="post" action="<?php echo site_url('users/save') ?>" id="user-form" class="clear">
@@ -55,6 +62,8 @@ echo render_message($userdata, $message);
 	<input type="hidden" name="id" id="id" value="<?php echo set_value('id', $id); ?>">
 	<input type="hidden" name="context" id="context" value="<?php echo $context; ?>">
 </form>
+
+<p><span class="label label-info">Note</span> You are not permitted to delete your own user account.</p>
 
 <script src="assets/js/jquery.validate.js"></script>
 <script>

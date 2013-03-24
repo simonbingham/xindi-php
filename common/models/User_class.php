@@ -27,10 +27,24 @@ class User_class extends MY_Model
 	}	
 
 	/**
+	 * I return a user matching a username and password
+	 *
+	 * @access   public
+	 * @param    string   email address
+	 * @param    string   password
+	 * @return   array    user
+	 */
+	function get_user_by_credentials($email, $password)
+	{
+		return $this->db->get_where($this->tbl, array('email'=>$email, 'password'=>$password), 1);
+	}	
+	
+	/**
 	 * I return a user matching an id
 	 *
 	 * @access   public
-	 * @return   array   user
+	 * @param    integer   user id
+	 * @return   array     user
 	 */
 	function get_user_by_id($id) 
 	{

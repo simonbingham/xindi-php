@@ -110,7 +110,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '',
   `email` varchar(100) NOT NULL DEFAULT '',
-  `username` varchar(50) NOT NULL DEFAULT '',
   `password` varchar(100) NOT NULL DEFAULT '',
   `created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -120,10 +119,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table xindi-php.users: ~3 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `created`, `updated`) VALUES
-	(30, 'September Zimmerman', 'cytise@gmail.com', 'nikew', '4a4d993ed7bd7d467b27af52d2aaa800', '2012-12-13 13:43:35', '2012-12-13 13:44:05'),
-	(31, 'Rhona Carrillo', 'xezaj@live.com', 'xorog', '5324e078ff39acf1bfb709a1675c1a86', '2012-12-13 13:48:56', '2012-12-13 13:48:56'),
-	(32, 'Kylan Lloyd', 'birarisire@live.com', 'kyjuf', '5324e078ff39acf1bfb709a1675c1a86', '2012-12-21 16:41:58', '2012-12-21 16:55:39');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `created`, `updated`) VALUES
+	(30, 'September Zimmerman', 'cytise@gmail.com', '4a4d993ed7bd7d467b27af52d2aaa800', '2012-12-13 13:43:35', '2012-12-13 13:44:05'),
+	(31, 'Rhona Carrillo', 'xezaj@live.com', '5324e078ff39acf1bfb709a1675c1a86', '2012-12-13 13:48:56', '2012-12-13 13:48:56'),
+	(32, 'Kylan Lloyd', 'birarisire@live.com', '5324e078ff39acf1bfb709a1675c1a86', '2012-12-21 16:41:58', '2012-12-21 16:55:39');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -29,13 +29,22 @@ echo render_message($userdata, $message);
 					<td><?php echo $user->email ?></td>
 					<td><?php echo $user->updated ?></td>
 					<td class="center">
-						<?php $deletelnk = array('users/delete', $user->id); ?>
-						<a href="<?php echo site_url($deletelnk) ?>" title="Delete user" onclick="return confirm('Are you sure you want to delete this user?')"><i class="icon-trash"></i></a>
+						<?php 
+						if ($this->session->userdata('id') != $user->id) 
+						{
+						?>
+							<?php $deletelnk = array('users/delete', $user->id); ?>
+							<a href="<?php echo site_url($deletelnk) ?>" title="Delete user" onclick="return confirm('Are you sure you want to delete this user?')"><i class="icon-trash"></i></a>
+						<?php 
+						}
+						?>
 					</td>
 				</tr>
 			<?php } ?>
 		</tbody>
 	</table>
+	
+	<p><span class="label label-info">Note</span> You are not permitted to delete your own user account.</p>
 <?php } else { ?>
 	<p>There are no users at this time.</p>
 <?php } ?>
