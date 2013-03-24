@@ -8,6 +8,7 @@
 		<item>
 			<title><?php echo $article->title; ?></title>
 			<link><?php echo site_url('news/' . $article->slug); ?></link>
+			<description><?php echo word_limiter(strip_tags($article->content),50); ?></description>
 			<pubdate><?php echo date('D, d M Y H:i:s O', strtotime($article->published)); ?></pubdate>
 		</item>
 	<?php endforeach; ?>

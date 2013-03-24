@@ -377,3 +377,6 @@ $config['enquiry_subject'] = '';
 $config['feed_title'] = '';
 $config['feed_link'] = '';
 $config['feed_description'] = '';
+
+// search result settings
+$config['search_result_exclusions'] = array('news','contact'); // slugs of pages to exclude from search results

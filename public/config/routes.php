@@ -55,5 +55,8 @@ $route['(:any)'] = 'pages/view/$1';
 // site map route
 $route['map'] = 'map';
 
+// search results route
+$route['search'] = 'search';
+
 // default route
 $route['default_controller'] = 'pages/view';

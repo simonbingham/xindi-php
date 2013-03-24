@@ -40,7 +40,7 @@ echo render_message($userdata, $message);
 				<textarea class="input-xlarge tinymce" name="content" id="page-content"><?php echo set_value('content', $content); ?></textarea>
 				<?php echo form_error('content'); ?>
 			</div>
-		</div>		
+		</div>	
 	</fieldset>
 	
 	<fieldset>
