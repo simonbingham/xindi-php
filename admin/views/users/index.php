@@ -15,7 +15,7 @@ echo render_message($userdata, $message);
 				<th>Name</th>
 				<th>Email</th>
 				<th>Last Updated</th>
-				<th class="center">&nbsp;</th>
+				<th class="center">Delete</th>
 			</tr>
 		</thead>
 		

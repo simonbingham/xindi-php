@@ -59,7 +59,10 @@ if(! function_exists('render_message'))
 		
 		if(!empty($message) && array_key_exists('type', $message) && array_key_exists('text', $message))
 		{
-			$result = '<p class="text-'.$message['type'].'">'.$message['text'].'</p>';
+			$result = '<div class="alert alert-'.$message['type'].' fade in">';
+			$result .= '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+			$result .= $message['text'];
+			$result .= '</div>';
 		} 
 		
 		return $result;

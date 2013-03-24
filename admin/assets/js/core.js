@@ -5,5 +5,7 @@ jQuery(function($) {
 		$("html,body").animate({scrollTop:0}, "slow");
 		e.preventDefault();	
 	});
+	
+	$(".alert").alert();
 
 });

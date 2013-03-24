@@ -11,11 +11,11 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<p class="pull-right">
-	<a href="<?php echo site_url('users/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to User List</a>
+<div class="btn-group pull-right" data-toggle="buttons-checkbox">
+	<a href="<?php echo site_url('users/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Users</a>
 	<?php $deletelnk = array('users/delete', $id); ?>
-	<a href="<?php echo site_url($deletelnk) ?>" title="Delete user" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
-</p>
+	<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+</div>
 
 <form method="post" action="<?php echo site_url('users/save') ?>" id="user-form" class="clear">
 	<fieldset>
@@ -24,7 +24,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="name">Name *</label>
 			<div class="controls">
-				<input class="input-xlarge" type="text" name="name" id="name" value="<?php echo set_value('name', $name); ?>" maxlength="50">
+				<input class="input-xlarge" type="text" name="name" id="name" value="<?php echo set_value('name', $name); ?>" maxlength="50" placeholder="Name">
 				<?php echo form_error('name'); ?>
 			</div>
 		</div>
@@ -32,7 +32,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="email">Email Address *</label>
 			<div class="controls">
-				<input class="input-xlarge" type="text" name="email" id="email" value="<?php echo set_value('email', $email); ?>" maxlength="50">
+				<input class="input-xlarge" type="text" name="email" id="email" value="<?php echo set_value('email', $email); ?>" maxlength="50" placeholder="Email Address">
 				<?php echo form_error('email'); ?>
 			</div>
 		</div>						
@@ -40,7 +40,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="password">Password <?php echo !$id ? '*' : ''; ?></label>
 			<div class="controls">
-				<input class="input-xlarge" type="password" name="password" id="password" value="" maxlength="50">
+				<input class="input-xlarge" type="password" name="password" id="password" value="" maxlength="50" placeholder="Password">
 				<?php echo form_error('password'); ?>
 			</div>
 		</div>			

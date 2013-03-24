@@ -15,7 +15,7 @@ echo render_message($userdata, $message);
 				<th>Title</th>
 				<th>Published</th>
 				<th>Last Updated</th>
-				<th class="center">&nbsp;</th>
+				<th class="center">Delete</th>
 			</tr>
 		</thead>
 		
@@ -26,7 +26,7 @@ echo render_message($userdata, $message);
 						<?php $editlnk = array('articles/maintain', $article->id); ?>
 						<a href="<?php echo site_url($editlnk) ?>"><?php echo $article->title ?></a>
 					</td>
-					<td><?php echo format_date($article->published) ?></td>
+					<td><?php echo format_date($article->published, 'd/m/Y') ?></td>
 					<td><?php echo format_date($article->updated) ?></td>
 					<td class="center">
 						<?php $deletelnk = array('articles/delete', $article->id); ?>

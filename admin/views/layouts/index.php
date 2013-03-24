@@ -51,7 +51,7 @@
 		<div id="container" class="container">
 			<div class="row">
 				<div id="content" class="span12" role="main">
-					<h2 class="pull-right"><cfif StructKeyExists( rc, "CurrentUser" )><small class="pull-right">current user name</small></cfif></h2>
+					<h2 class="pull-right"><small class="pull-right">current user name</small></h2>
 
 					<?php echo $content_body; ?>
 		
@@ -73,7 +73,7 @@
 			</div>
 		</div>
 		
-		<!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/tiny_mce/jquery.tinymce.js"></script>
 		<script src="assets/js/core.js"></script>
 		<script>

@@ -13,14 +13,14 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<p class="pull-right">
-	<a href="<?php echo site_url('pages/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Page List</a>
+<div class="btn-group pull-right" data-toggle="buttons-checkbox">
+	<a href="<?php echo site_url('pages/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Pages</a>
 	<?php // the home page and pages with children cannot be deleted ?>
 	<?php if($depth <> 0 && $rightvalue - $leftvalue == 1) { ?>
 		<?php $deletelnk = array('pages/delete', $id); ?>
-		<a href="<?php echo site_url($deletelnk) ?>" title="Delete page" onclick="return confirm('Are you sure you want to delete this page?')" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
+		<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this page?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
 	<?php } ?>
-</p>
+</div>
 
 <form method="post" action="<?php echo site_url('pages/save') ?>" id="page-form" class="clear">
 	<fieldset>
@@ -29,13 +29,13 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="title">Title *</label>
 			<div class="controls">
-				<input class="input-xlarge" type="text" name="title" id="title" value="<?php echo set_value('title', $title); ?>" maxlength="150">
+				<input class="input-xlarge" type="text" name="title" id="title" value="<?php echo set_value('title', $title); ?>" maxlength="150" placeholder="Title">
 				<?php echo form_error('title'); ?>
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<label class="control-label" for="content">Content *</label>
+			<label class="control-label" for="page-content">Content *</label>
 			<div class="controls">
 				<textarea class="input-xlarge tinymce" name="content" id="page-content"><?php echo set_value('content', $content); ?></textarea>
 				<?php echo form_error('content'); ?>
@@ -61,7 +61,7 @@ echo render_message($userdata, $message);
 			<div class="control-group">
 				<label class="control-label" for="metatitle">Title</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metatitle" id="metatitle" value="<?php echo set_value('metatitle', $metatitle); ?>" maxlength="69">
+					<input class="input-xlarge" type="text" name="metatitle" id="metatitle" value="<?php echo set_value('metatitle', $metatitle); ?>" maxlength="69" placeholder="Title">
 					<?php echo form_error('metatitle'); ?>
 				</div>
 			</div>
@@ -69,7 +69,7 @@ echo render_message($userdata, $message);
 			<div class="control-group">
 				<label class="control-label" for="metadescription">Description</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metadescription" id="metadescription" value="<?php echo set_value('metadescription', $metadescription); ?>" maxlength="169">
+					<input class="input-xlarge" type="text" name="metadescription" id="metadescription" value="<?php echo set_value('metadescription', $metadescription); ?>" maxlength="169" placeholder="Description">
 					<?php echo form_error('metadescription'); ?>
 				</div>
 			</div>
@@ -77,7 +77,7 @@ echo render_message($userdata, $message);
 			<div class="control-group">
 				<label class="control-label" for="metakeywords">Keywords</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metakeywords" id="metakeywords" value="<?php echo set_value('metakeywords', $metakeywords); ?>" maxlength="169">
+					<input class="input-xlarge" type="text" name="metakeywords" id="metakeywords" value="<?php echo set_value('metakeywords', $metakeywords); ?>" maxlength="169" placeholder="Keywords">
 					<?php echo form_error('metakeywords'); ?>
 				</div>
 			</div>

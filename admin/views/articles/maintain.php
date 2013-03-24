@@ -13,11 +13,11 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<p class="pull-right">
-	<a href="<?php echo site_url('articles/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Article List</a>
+<div class="btn-group pull-right" data-toggle="buttons-checkbox">
+	<a href="<?php echo site_url('articles/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Articles</a>
 	<?php $deletelnk = array('articles/delete', $id); ?>
-	<a href="<?php echo site_url($deletelnk) ?>" title="Delete article" onclick="return confirm('Are you sure you want to delete this article?')" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
-</p>
+	<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this article?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+</div>
 
 <form method="post" action="<?php echo site_url('articles/save') ?>" id="article-form" class="clear">
 	<fieldset>
@@ -26,7 +26,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="title">Title *</label>
 			<div class="controls">
-				<input class="input-xlarge" type="text" name="title" id="title" value="<?php echo set_value('title', $title); ?>" maxlength="150">
+				<input class="input-xlarge" type="text" name="title" id="title" value="<?php echo set_value('title', $title); ?>" maxlength="150" placeholder="Title">
 				<?php echo form_error('title'); ?>
 			</div>
 		</div>
@@ -34,23 +34,22 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="author">Author</label>
 			<div class="controls">
-				<input class="input-xlarge" type="text" name="author" id="author" value="<?php echo set_value('author', $author); ?>" maxlength="100">
+				<input class="input-xlarge" type="text" name="author" id="author" value="<?php echo set_value('author', $author); ?>" maxlength="100" placeholder="Author">
 				<?php echo form_error('author'); ?>
 			</div>
 		</div>
 		
-		<?php // TODO: fix datepicker bug ?>
 		<div class="control-group">
 			<label class="control-label" for="published">Published *</label>
 			<div class="controls">
-				<input class="input-xlarge datepicker" type="text" name="published" id="published" value="<?php echo format_date(set_value('published', $published)); ?>" maxlength="10">
+				<input class="input-xlarge datepicker" type="text" name="published" id="published" value="<?php echo format_date(set_value('published', $published), 'd/m/Y'); ?>" maxlength="10" placeholder="Published">
 				<?php echo form_error('published'); ?>
 				<noscript><p class="help-block">Enter in 'dd/mm/yyyy' format.</p></noscript>
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<label class="control-label" for="content">Content *</label>
+			<label class="control-label" for="article-content">Content *</label>
 			<div class="controls">
 				<textarea class="input-xlarge tinymce" name="content" id="article-content"><?php echo set_value('content', $content); ?></textarea>
 				<?php echo form_error('content'); ?>
@@ -76,7 +75,7 @@ echo render_message($userdata, $message);
 			<div class="control-group">
 				<label class="control-label" for="metatitle">Title</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metatitle" id="metatitle" value="<?php echo set_value('metatitle', $metatitle); ?>" maxlength="69">
+					<input class="input-xlarge" type="text" name="metatitle" id="metatitle" value="<?php echo set_value('metatitle', $metatitle); ?>" maxlength="69" placeholder="Title">
 					<?php echo form_error('metatitle'); ?>
 				</div>
 			</div>
@@ -84,7 +83,7 @@ echo render_message($userdata, $message);
 			<div class="control-group">
 				<label class="control-label" for="metadescription">Description</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metadescription" id="metadescription" value="<?php echo set_value('metadescription', $metadescription); ?>" maxlength="169">
+					<input class="input-xlarge" type="text" name="metadescription" id="metadescription" value="<?php echo set_value('metadescription', $metadescription); ?>" maxlength="169" placeholder="Description">
 					<?php echo form_error('metadescription'); ?>
 				</div>
 			</div>
@@ -92,7 +91,7 @@ echo render_message($userdata, $message);
 			<div class="control-group">
 				<label class="control-label" for="metakeywords">Keywords</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metakeywords" id="metakeywords" value="<?php echo set_value('metakeywords', $metakeywords); ?>" maxlength="169">
+					<input class="input-xlarge" type="text" name="metakeywords" id="metakeywords" value="<?php echo set_value('metakeywords', $metakeywords); ?>" maxlength="169" placeholder="Keywords">
 					<?php echo form_error('metakeywords'); ?>
 				</div>
 			</div>

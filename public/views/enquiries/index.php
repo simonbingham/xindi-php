@@ -11,7 +11,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="name">Name *</label>
 			<div class="controls">
-				<input class="input-xlarge" type="text" name="name" id="name" value="<?php echo set_value('name', $name); ?>" maxlength="150">
+				<input class="input-xlarge" type="text" name="name" id="name" value="<?php echo set_value('name', $name); ?>" maxlength="150" placeholder="Name">
 				<?php echo form_error('name'); ?>
 			</div>
 		</div>
@@ -19,7 +19,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="email">Email Address *</label>
 			<div class="controls">
-				<input class="input-xlarge" type="text" name="email" id="email" value="<?php echo set_value('email', $email); ?>" maxlength="150">
+				<input class="input-xlarge" type="text" name="email" id="email" value="<?php echo set_value('email', $email); ?>" maxlength="150" placeholder="Email Address">
 				<?php echo form_error('email'); ?>
 			</div>
 		</div>
@@ -27,7 +27,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="message">Message *</label>
 			<div class="controls">
-				<textarea class="input-xlarge" name="message" id="message"><?php echo set_value('message', $message); ?></textarea>
+				<textarea class="input-xlarge" name="message" id="message" placeholder="Message"><?php echo set_value('message', $message); ?></textarea>
 				<?php echo form_error('message'); ?>
 			</div>
 		</div>		

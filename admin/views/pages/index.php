@@ -12,37 +12,42 @@ echo render_message($userdata, $message);
 			<tr>
 				<th>Title</th>
 				<th>Last Updated</th>
-				<th class="center">&nbsp;</th>
-				<th class="center">&nbsp;</th>
+				<th class="center"><abbr title="Add a page below this page in the site hierarchy">Add</abbr></th>
+				<th class="center">Edit</th>
+				<th class="center">Delete</th>
 			</tr>
 		</thead>
 		
 		<tbody>
 			<?php foreach($pages as $page) { ?>
 				<tr>
-					<td style="padding-left:<?php echo $page->depth * 15 + 5; ?>px">
-						<?php $updatelnk = array('pages/maintain', $page->id); ?>
-						<a href="<?php echo site_url($updatelnk) ?>"><?php echo $page->title ?> </a>
-					</td>
+					<td style="padding-left:<?php echo $page->depth * 15 + 5; ?>px"><?php echo $page->title ?></td>
 					<td><?php echo format_date($page->updated) ?></td>
 					<td class="center">
-						<?php // limit page depth to two tiers ?>
+						<?php // restrict page depth to three levels ?>
 						<?php if($page->depth < 2) { ?>
 							<?php $createlnk = array('pages','maintain','ancestorid',$page->id); ?>
-							<a href="<?php echo site_url($createlnk) ?>" title="Add child page"><i class="icon-plus"></i></a>
+							<a href="<?php echo site_url($createlnk) ?>" title="Add page"><i class="icon-plus"></i></a>
 						<?php } ?>
 					</td>
 					<td class="center">
-						<?php // the home page and pages with children cannot be deleted ?>
+						<?php $updatelnk = array('pages/maintain', $page->id); ?>
+						<a href="<?php echo site_url($updatelnk) ?>" title="Edit"><i class="icon-pencil"></i></a>
+					</td>					
+					<td class="center">
+						<?php // the home page and pages with associated child pages cannot be deleted ?>
 						<?php if($page->depth <> 0 && $page->rightvalue - $page->leftvalue == 1) { ?>
 							<?php $deletelnk = array('pages/delete', $page->id); ?>
-							<a href="<?php echo site_url($deletelnk) ?>" title="Delete page" onclick="return confirm('Are you sure you want to delete this page?')"><i class="icon-trash"></i></a>
+							<a href="<?php echo site_url($deletelnk) ?>" title="Delete" onclick="return confirm('Are you sure you want to delete this page?')"><i class="icon-trash"></i></a>
 						<?php } ?>
 					</td>
 				</tr>
 			<?php } ?>
 		</tbody>
 	</table>
+	
+	<p><span class="label label-info">Note</span> A maximum of three levels of pages can be added.</p>
+	<p><span class="label label-info">Note</span> The home page and pages with associated child pages cannot be deleted.</p>
 <?php } else { ?>
 	<p>There are no pages at this time.</p>
 <?php } ?>
