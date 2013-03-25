@@ -16,13 +16,12 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I return an array of records
-	 *
-	 * @access   protected
-	 * @param    string   table name
-	 * @param    string   name of column to sort by
-	 * @param    string   sort direction (asc or desc)
-	 * @return   array    records
-	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
+	 * @access protected
+	 * @param string $tbl
+	 * @param string $sortcol
+	 * @param string $sortdir
+	 * @return array
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 */
 	protected function get($tbl, $sortcol, $sortdir)
 	{
@@ -32,11 +31,10 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I return a record matching a slug
-	 *
-	 * @access   protected
-	 * @param    string    table name
-	 * @param    string    record slug
-	 * @return   array     record
+	 * @access protected
+	 * @param string $tbl
+	 * @param string $slug
+	 * @return array
 	 */
 	protected function get_by_slug($tbl, $slug)
 	{	
@@ -46,13 +44,12 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I save a record and return the id
-	 *
-	 * @access   protected
-	 * @param    string    table name
-	 * @param    array     record to save 
-	 * @param    integer   record id (optional)
-	 * @return   integer   record id
-	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
+	 * @access protected
+	 * @param string $tbl
+	 * @param array $data 
+	 * @param integer $id
+	 * @return integer
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
@@ -76,11 +73,10 @@ class MY_Model extends CI_Model
 
 	/**
 	 * I convert a string (in 'dd/mm/yyyy' format) to MySQL timestamp
-	 *
-	 * @access   protected
-	 * @param    string   date (in 'dd/mm/yyyy' format)
-	 * @return   date     date as timestamp
-	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
+	 * @access protected
+	 * @param string $date (in 'dd/mm/yyyy' format)
+	 * @return date
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 */
 	protected function string_to_timestamp($date) 
 	{

@@ -24,8 +24,7 @@ class Articles extends MY_Controller
 
 	/**
 	 * I delete an article
-	 *
-	 * @param   integer   article id
+	 * @param integer $id
 	 */
 	function delete($id=0)
 	{
@@ -54,8 +53,7 @@ class Articles extends MY_Controller
 
 	/**
 	 * I display an article form
-	 *
-	 * @param   integer   article id (optional)
+	 * @param integer $id
 	 */
 	function maintain($id=0)
 	{
@@ -122,10 +120,9 @@ class Articles extends MY_Controller
 	
 	/**
 	 * I validate a date
-	 *
-	 * @access   private
-	 * @param    string    date to validate (in 'dd/mm/yyyy' format)
-	 * @return   boolean   true if date is valid
+	 * @access private
+	 * @param string $str the date in 'dd/mm/yyyy' format
+	 * @return boolean true if date is valid
 	 */
 	function valid_date($str) 
 	{
@@ -146,10 +143,9 @@ class Articles extends MY_Controller
 	
 	/**
 	 * I return the validation rules
-	 *
-	 * @access   private
-	 * @param    string   context (either 'create' or 'update')
-	 * @return   array    validation rules
+	 * @access private
+	 * @param string $context the context (either 'create' or 'update')
+	 * @return array
 	 */
 	private function get_validation_rules($context='create') 
 	{

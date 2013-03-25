@@ -30,13 +30,12 @@ class MY_Controller extends CI_Controller
 	
 	/**
 	 * I populate an array with required fields for a record
-	 *
-	 * @access   protected
-	 * @param    array   form data
-	 * @param    array   required fields
-	 * @param    array   default values (optional)
-	 * @return   array   populated array
-	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
+	 * @access protected
+	 * @param array $form_data
+	 * @param array $required_fields
+	 * @param array $field_defaults
+	 * @return array
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function populate($form_data, $required_fields, $field_defaults=array())
 	{

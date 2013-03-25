@@ -16,10 +16,9 @@ class Article_class extends MY_Model
 
 	/**
 	 * I delete an article matching an id
-	 *
-	 * @access   public
-	 * @param    integer   article id
-	 * @return   void
+	 * @access public
+	 * @param integer $id
+	 * @return void
 	 */
 	function delete_article($id) 
 	{
@@ -28,9 +27,9 @@ class Article_class extends MY_Model
 
 	/**
 	 * I return an article matching an id
-	 *
-	 * @access   public   article id
-	 * @return   array    article
+	 * @access public
+	 * @param integer $id
+	 * @return array
 	 */
 	function get_article_by_id($id)
 	{
@@ -39,9 +38,9 @@ class Article_class extends MY_Model
 	
 	/**
 	 * I return an article matching a slug
-	 *
-	 * @access   public   article slug
-	 * @return   array    article
+	 * @access public
+	 * @param string $slug
+	 * @return array
 	 */
 	function get_article_by_slug($slug)
 	{
@@ -50,9 +49,8 @@ class Article_class extends MY_Model
 		
 	/**
 	 * I return an array of articles
-	 *
-	 * @access   public
-	 * @return   array     articles
+	 * @access public
+	 * @return array
 	 */
 	function get_articles() 
 	{
@@ -61,9 +59,8 @@ class Article_class extends MY_Model
 	
 	/**
 	 * I return a new article
-	 *
-	 * @access   public
-	 * @return   array   article
+	 * @access public
+	 * @return array
 	 */
 	function new_article() 
 	{
@@ -83,11 +80,10 @@ class Article_class extends MY_Model
 	
 	/**
 	 * I save a article and return the id
-	 *
-	 * @access   public
-	 * @param    array     article
-	 * @param    integer   article id (optional)
-	 * @return   integer   article id
+	 * @access public
+	 * @param array $article
+	 * @param integer $id
+	 * @return integer
 	 */
 	function save_article($article, $id=0) 
 	{

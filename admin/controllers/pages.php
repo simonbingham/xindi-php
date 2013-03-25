@@ -25,8 +25,7 @@ class Pages extends MY_Controller
 
 	/**
 	 * I delete a page
-	 *
-	 * @param   integer   page id
+	 * @param integer $id
 	 */
 	function delete($id=0)
 	{
@@ -55,9 +54,8 @@ class Pages extends MY_Controller
 
 	/**
 	 * I display a page form
-	 *
-	 * @param   integer   page id (optional)
-	 * @param   integer   ancestor id (optional)
+	 * @param integer $id
+	 * @param integer $ancestorid
 	 */
 	function maintain($id=0, $ancestorid=0)
 	{
@@ -138,9 +136,8 @@ class Pages extends MY_Controller
 	
 	/**
 	 * I return the validation rules
-	 *
-	 * @access   private
-	 * @return   array   validation rules
+	 * @access private
+	 * @return array validation rules
 	 */
 	private function get_validation_rules() 
 	{

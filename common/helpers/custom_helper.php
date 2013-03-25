@@ -2,11 +2,10 @@
 
 /**
  * I format a MySQL timestamp
- *
- * @access	public
- * @param	string   date to be formatted
- * @param	string   format
- * @return	string   formatted date
+ * @access public
+ * @param string $dat3
+ * @param string $format
+ * @return string
  */
 if(! function_exists('format_date')) 
 {
@@ -25,10 +24,9 @@ if(! function_exists('format_date'))
 
 /**
  * I validate a timestamp
- *
- * @access	public
- * @param	string    date to be validated
- * @return	boolean   true if timestamp
+ * @access public
+ * @param string $str
+ * @return boolean
  */
 if(! function_exists('is_timestamp'))
 {
@@ -40,11 +38,10 @@ if(! function_exists('is_timestamp'))
 
 /**
  * I render a message
- *
- * @access	public
- * @param	array    user session
- * @param	array    message
- * @return	string   the message
+ * @access public
+ * @param array $userdata
+ * @param array $message
+ * @return string
  */
 if(! function_exists('render_message'))
 {

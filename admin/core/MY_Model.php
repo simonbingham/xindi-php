@@ -17,11 +17,10 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I delete a record matching an id
-	 *
-	 * @access   protected
-	 * @param    string    table name
-	 * @param    integer   record id
-	 * @return   void
+	 * @access protected
+	 * @param string $tbl
+	 * @param integer $id
+	 * @return void
 	 */
 	protected function delete($tbl, $id) 
 	{
@@ -31,10 +30,9 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I generate a meta description
-	 *
-	 * @access   protected
-	 * @param    string   string to be converted
-	 * @return   string   meta description
+	 * @access protected
+	 * @param string $str
+	 * @return string
 	 */
 	protected function generate_meta_description($str)
 	{
@@ -51,15 +49,14 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I generate meta keywords
-	 *
-	 * @access   protected
-	 * @param    string   string to be converted
-	 * @return   string   meta keywords
+	 * @access protected
+	 * @param string $str
+	 * @return string
 	 */
 	protected function generate_meta_keywords($str)
 	{
 		return 
-			// return first 200 characters
+			// return first 169 characters
 			substr(
 				// remove duplicate words
 				implode(',', array_unique(explode(',',
@@ -83,10 +80,9 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I generate a page title
-	 *
-	 * @access   protected
-	 * @param    string   string to be converted
-	 * @return   string   page title
+	 * @access protected
+	 * @param string $str
+	 * @return string
 	 */
 	protected function generate_page_title($str)
 	{
@@ -103,12 +99,11 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I generate a slug for the record
-	 *
-	 * @access   protected
-	 * @param    string   table name
-	 * @param    string   page title
-	 * @param    string   ancestor slug
-	 * @return   string   generated slug
+	 * @access protected
+	 * @param string $tbl
+	 * @param string $title
+	 * @param string $ancestor_slug
+	 * @return string
 	 */
 	protected function generate_slug($tbl, $title, $ancestor_slug='')
 	{
@@ -130,13 +125,12 @@ class MY_Model extends CI_Model
 		
 	/**
 	 * I return an array of records
-	 *
-	 * @access   protected
-	 * @param    string   table name
-	 * @param    string   name of column to sort by
-	 * @param    string   sort direction (asc or desc)
-	 * @return   array    records
-	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
+	 * @access protected
+	 * @param string $tbl
+	 * @param string $sortcol
+	 * @param string $sortdir
+	 * @return array
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function get($tbl, $sortcol, $sortdir) 
 	{
@@ -146,11 +140,10 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I return a record matching an id
-	 *
-	 * @access   protected
-	 * @param    string    table name
-	 * @param    integer   record id
-	 * @return   array     record
+	 * @access protected
+	 * @param string $tbl
+	 * @param integer $id
+	 * @return array
 	 */
 	protected function get_by_id($tbl, $id) 
 	{
@@ -160,13 +153,12 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I save a record and return the id
-	 *
-	 * @access   protected
-	 * @param    string    table name
-	 * @param    array     record to save 
-	 * @param    integer   record id (optional)
-	 * @return   integer   record id
-	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
+	 * @access protected
+	 * @param string $tbl
+	 * @param array $data
+	 * @param integer $id
+	 * @return integer
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
@@ -190,11 +182,10 @@ class MY_Model extends CI_Model
 
 	/**
 	 * I convert a string (in 'dd/mm/yyyy' format) to MySQL timestamp
-	 *
-	 * @access   protected
-	 * @param    string   date (in 'dd/mm/yyyy' format)
-	 * @return   date     date as timestamp
-	 * @todo     lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
+	 * @access protected
+	 * @param string $date the date in 'dd/mm/yyyy' format
+	 * @return date
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function string_to_timestamp($date) 
 	{
@@ -206,11 +197,10 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I return true if a slug is unique
-	 *
-	 * @access   private
-	 * @param    string    table name
-	 * @param    string    slug
-	 * @return   boolean   true if slug is unique
+	 * @access private
+	 * @param string $tbl
+	 * @param string $slug
+	 * @return boolean
 	 */
 	private function is_slug_unique($tbl, $slug)
 	{
@@ -221,9 +211,9 @@ class MY_Model extends CI_Model
 	/**
 	 * I return a string with multiple spaces replaced with single spaces
 	 *
-	 * @access   private
-	 * @param    string   string that may contain multiple spaces
-	 * @return   string   string with multiple spaces removed
+	 * @access private
+	 * @param string $str string that may contain multiple spaces
+	 * @return
 	 */	
 	private function replace_multiple_spaces_with_single_space($str)
 	{

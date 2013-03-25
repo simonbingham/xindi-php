@@ -16,10 +16,9 @@ class Page_class extends MY_Model
 
 	/**
 	 * I delete a page matching an id
-	 *
-	 * @access   public
-	 * @param    integer   page id
-	 * @return   void
+	 * @access public
+	 * @param integer $id
+	 * @return void
 	 */
 	function delete_page($id) 
 	{
@@ -35,8 +34,8 @@ class Page_class extends MY_Model
 
 	/**
 	 * I return the site navigation
-	 *
-	 * @return   string   navigation
+	 * @param boolean $apply_classes
+	 * @return string
 	 */
 	function get_navigation($apply_classes=FALSE)
 	{
@@ -95,9 +94,9 @@ class Page_class extends MY_Model
 	
 	/**
 	 * I return an page matching an id
-	 *
-	 * @access   public   page id
-	 * @return   array    page
+	 * @access public
+	 * @param integer $id
+	 * @return array
 	 */
 	function get_page_by_id($id)
 	{
@@ -106,10 +105,9 @@ class Page_class extends MY_Model
 	
 	/**
 	 * I return a page matching a slug
-	 *
-	 * @access   public
-	 * @param    slug    page slug
-	 * @return   array   page
+	 * @access public
+	 * @param string $slug
+	 * @return array
 	 */
 	function get_page_by_slug($slug) 
 	{
@@ -118,10 +116,9 @@ class Page_class extends MY_Model
 
 	/**
 	 * I return a page path
-	 *
-	 * @access   public
-	 * @param    array   page
-	 * @return   array   pages
+	 * @access public
+	 * @param array $page
+	 * @return array
 	 */
 	function get_path($page){
 		$this->db->where('leftvalue <', $page->leftvalue);
@@ -131,9 +128,8 @@ class Page_class extends MY_Model
 	
 	/**
 	 * I return an array of pages
-	 *
-	 * @access   public
-	 * @return   array   pages
+	 * @access public
+	 * @return array
 	 */
 	function get_pages() 
 	{
@@ -142,9 +138,8 @@ class Page_class extends MY_Model
 	
 	/**
 	 * I return a new page
-	 *
-	 * @access   public
-	 * @return   array   page
+	 * @access public
+	 * @return array
 	 */
 	function new_page() 
 	{
@@ -167,11 +162,10 @@ class Page_class extends MY_Model
 	
 	/**
 	 * I save a page and return the id
-	 *
-	 * @access   public
-	 * @param    array     page
-	 * @param    integer   page id (optional)
-	 * @return   integer   ancestor id (optional)
+	 * @access public
+	 * @param array $page
+	 * @param integer $id
+	 * @return integer $ancestorid
 	 */
 	function save_page($page, $id=0, $ancestorid=0) 
 	{
