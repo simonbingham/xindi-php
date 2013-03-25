@@ -3,6 +3,8 @@ class Search extends MY_Controller {
 
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct()
 	{
@@ -13,8 +15,8 @@ class Search extends MY_Controller {
 	
 	/**
 	 * I display the search results page
-	 *
-	 * @access   public
+	 * @access public
+	 * @return void
 	 */
 	public function index()
 	{

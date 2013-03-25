@@ -7,6 +7,8 @@ class Articles extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct()
 	{
@@ -24,9 +26,11 @@ class Articles extends MY_Controller
 
 	/**
 	 * I delete an article
+	 * @access public
 	 * @param integer $id
+	 * @return void
 	 */
-	function delete($id=0)
+	function delete($id)
 	{
 		$id = intval($id);
 		if(! $id)
@@ -43,6 +47,8 @@ class Articles extends MY_Controller
 
 	/**
 	 * I display a list of articles
+	 * @access public
+	 * @return void
 	 */	
 	function index()
 	{
@@ -53,7 +59,9 @@ class Articles extends MY_Controller
 
 	/**
 	 * I display an article form
-	 * @param integer $id
+	 * @access public
+	 * @param integer $id (optional)
+	 * @return void
 	 */
 	function maintain($id=0)
 	{
@@ -84,6 +92,8 @@ class Articles extends MY_Controller
 
 	/**
 	 * I save an article
+	 * @access public
+	 * @return void
 	 */	
 	function save() 
 	{
@@ -120,9 +130,9 @@ class Articles extends MY_Controller
 	
 	/**
 	 * I validate a date
-	 * @access private
+	 * @access public
 	 * @param string $str the date in 'dd/mm/yyyy' format
-	 * @return boolean true if date is valid
+	 * @return boolean
 	 */
 	function valid_date($str) 
 	{
@@ -144,7 +154,7 @@ class Articles extends MY_Controller
 	/**
 	 * I return the validation rules
 	 * @access private
-	 * @param string $context the context (either 'create' or 'update')
+	 * @param string $context the context ('create' or 'update')
 	 * @return array
 	 */
 	private function get_validation_rules($context='create') 

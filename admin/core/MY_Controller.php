@@ -7,6 +7,8 @@ class MY_Controller extends CI_Controller
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -30,12 +32,12 @@ class MY_Controller extends CI_Controller
 	
 	/**
 	 * I populate an array with required fields for a record
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param array $form_data
 	 * @param array $required_fields
-	 * @param array $field_defaults
+	 * @param array $field_defaults (optional)
 	 * @return array
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function populate($form_data, $required_fields, $field_defaults=array())
 	{

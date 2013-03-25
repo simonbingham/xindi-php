@@ -7,6 +7,8 @@ class Enquiries extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct()
 	{
@@ -17,6 +19,8 @@ class Enquiries extends MY_Controller
 
 	/**
 	 * I display an enquiry form
+	 * @access public
+	 * @return void
 	 */
 	function index()
 	{
@@ -27,6 +31,8 @@ class Enquiries extends MY_Controller
 
 	/**
 	 * I send an enquiry
+	 * @access public
+	 * @return void
 	 */	
 	function send() 
 	{
@@ -62,6 +68,8 @@ class Enquiries extends MY_Controller
 	
 	/**
 	 * I display a confirmation message
+	 * @access public
+	 * @return void
 	 */
 	function thanks()
 	{
@@ -73,9 +81,8 @@ class Enquiries extends MY_Controller
 	
 	/**
 	 * I return the validation rules
-	 *
-	 * @access   private
-	 * @return   array    validation rules
+	 * @access private
+	 * @return array
 	 */
 	private function get_validation_rules() 
 	{

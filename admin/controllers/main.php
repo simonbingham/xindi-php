@@ -7,6 +7,8 @@ class Main extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct()
 	{
@@ -22,7 +24,9 @@ class Main extends MY_Controller
 	}
 
 	/**
-	 * I display the welcome page
+	 * I display the dashboard
+	 * @access public
+	 * @return void
 	 */	
 	function index()
 	{

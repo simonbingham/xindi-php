@@ -8,6 +8,8 @@ class Article_class extends MY_Model
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -82,7 +84,7 @@ class Article_class extends MY_Model
 	 * I save a article and return the id
 	 * @access public
 	 * @param array $article
-	 * @param integer $id
+	 * @param integer $id (optional)
 	 * @return integer
 	 */
 	function save_article($article, $id=0) 

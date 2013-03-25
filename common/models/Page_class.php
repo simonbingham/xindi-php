@@ -8,6 +8,8 @@ class Page_class extends MY_Model
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -34,7 +36,8 @@ class Page_class extends MY_Model
 
 	/**
 	 * I return the site navigation
-	 * @param boolean $apply_classes
+	 * @access public
+	 * @param boolean $apply_classes (optional)
 	 * @return string
 	 */
 	function get_navigation($apply_classes=FALSE)
@@ -164,10 +167,10 @@ class Page_class extends MY_Model
 	 * I save a page and return the id
 	 * @access public
 	 * @param array $page
-	 * @param integer $id
-	 * @return integer $ancestorid
+	 * @param integer $id (optional)
+	 * @return integer $ancestor_id (optional)
 	 */
-	function save_page($page, $id=0, $ancestorid=0) 
+	function save_page($page, $id=0, $ancestor_id=0) 
 	{
 		$this->db->trans_start();
 			// generate meta tags
@@ -180,15 +183,15 @@ class Page_class extends MY_Model
 			// new page
 			if(! $id) 
 			{
-				$ancestorpage = $this->get_page_by_id($ancestorid)->row();
-				$page['ancestorid'] = $ancestorpage->id;
-				$page['depth'] = $ancestorpage->depth + 1;
-				$page['slug'] = parent::generate_slug($this->tbl, $page['title'], $ancestorpage->slug);
-				$page['leftvalue'] = $ancestorpage->rightvalue;
-				$page['rightvalue'] = $ancestorpage->rightvalue + 1;
-				$sql = 'UPDATE ' . $this->tbl . ' SET leftvalue = leftvalue + 2 where leftvalue > ' . $this->db->escape($ancestorpage->rightvalue - 1) . ';';
+				$ancestor_page = $this->get_page_by_id($ancestor_id)->row();
+				$page['ancestorid'] = $ancestor_page->id;
+				$page['depth'] = $ancestor_page->depth + 1;
+				$page['slug'] = parent::generate_slug($this->tbl, $page['title'], $ancestor_page->slug);
+				$page['leftvalue'] = $ancestor_page->rightvalue;
+				$page['rightvalue'] = $ancestor_page->rightvalue + 1;
+				$sql = 'UPDATE ' . $this->tbl . ' SET leftvalue = leftvalue + 2 where leftvalue > ' . $this->db->escape($ancestor_page->rightvalue - 1) . ';';
 				$this->db->query($sql);
-				$sql = 'UPDATE ' . $this->tbl . ' SET rightvalue = rightvalue + 2 where rightvalue > ' . $this->db->escape($ancestorpage->rightvalue - 1) . ';';
+				$sql = 'UPDATE ' . $this->tbl . ' SET rightvalue = rightvalue + 2 where rightvalue > ' . $this->db->escape($ancestor_page->rightvalue - 1) . ';';
 				$this->db->query($sql);
 			}
 			$page = parent::save($this->tbl, $page, $id);

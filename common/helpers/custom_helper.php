@@ -3,13 +3,13 @@
 /**
  * I format a MySQL timestamp
  * @access public
- * @param string $dat3
- * @param string $format
+ * @param string $date
+ * @param string $format (optional)
  * @return string
  */
 if(! function_exists('format_date')) 
 {
-    function format_date($date, $format ='d/m/Y H:i') 
+    function format_date($date, $format='d/m/Y H:i') 
     {
     	if(is_timestamp($date))
 		{
@@ -39,19 +39,19 @@ if(! function_exists('is_timestamp'))
 /**
  * I render a message
  * @access public
- * @param array $userdata
- * @param array $message
+ * @param array $user_data (optional)
+ * @param array $message (optional)
  * @return string
  */
 if(! function_exists('render_message'))
 {
-	function render_message($userdata=array(), $message=array())
+	function render_message($user_data=array(), $message=array())
 	{
 		$result = '';
 
-		if(array_key_exists('flash:old:type', $userdata) && array_key_exists('flash:old:text', $userdata))
+		if(array_key_exists('flash:old:type', $user_data) && array_key_exists('flash:old:text', $user_data))
 		{
-			$message = array('type'=>$userdata['flash:old:type'], 'text'=>$userdata['flash:old:text']);
+			$message = array('type'=>$user_data['flash:old:type'], 'text'=>$user_data['flash:old:text']);
 		}
 		
 		if(!empty($message) && array_key_exists('type', $message) && array_key_exists('text', $message))

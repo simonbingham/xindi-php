@@ -3,6 +3,8 @@ class Pages extends MY_Controller {
 
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct()
 	{
@@ -11,12 +13,12 @@ class Pages extends MY_Controller {
 	
 	/**
 	 * I display a page
-	 *
-	 * @access   public
-	 * @param    string   first part of url
-	 * @param    string   second part of url
+	 * @access public
+	 * @param string the first part of the url (optional)
+	 * @param string the second part of the url (optional)
+	 * @return void
 	 */
-	public function view($url_part_1 = '', $url_part_2 = '')
+	public function view($url_part_1='', $url_part_2='')
 	{
 		$slug = $url_part_1;
 		if(strlen($url_part_2)) {

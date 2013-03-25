@@ -7,6 +7,8 @@ class Pages extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct()
 	{
@@ -25,9 +27,11 @@ class Pages extends MY_Controller
 
 	/**
 	 * I delete a page
+	 * @access public
 	 * @param integer $id
+	 * @return void
 	 */
-	function delete($id=0)
+	function delete($id)
 	{
 		$id = intval($id);
 		if(! $id)
@@ -44,6 +48,8 @@ class Pages extends MY_Controller
 
 	/**
 	 * I display a list of pages
+	 * @access public
+	 * @return void
 	 */	
 	function index()
 	{
@@ -54,13 +60,15 @@ class Pages extends MY_Controller
 
 	/**
 	 * I display a page form
-	 * @param integer $id
-	 * @param integer $ancestorid
+	 * @access public
+	 * @param integer $id (optional)
+	 * @param integer $ancestor_id (optional)
+	 * @return void
 	 */
-	function maintain($id=0, $ancestorid=0)
+	function maintain($id=0, $ancestor_id=0)
 	{
 		$id = intval($id);
-		$ancestorid = intval($ancestorid);
+		$ancestor_id = intval($ancestor_id);
 		// existing page
 		if($id) 
 		{	
@@ -79,7 +87,7 @@ class Pages extends MY_Controller
 		else
 		{
 			$page = $this->Page_class->new_page();
-			$page['ancestorid'] = $ancestorid;
+			$page['ancestorid'] = $ancestor_id;
 			$data = $page;
 			$data['context'] = 'create';
 		}
@@ -89,6 +97,8 @@ class Pages extends MY_Controller
 
 	/**
 	 * I save a page
+	 * @access public
+	 * @return void
 	 */	
 	function save() 
 	{
@@ -137,7 +147,7 @@ class Pages extends MY_Controller
 	/**
 	 * I return the validation rules
 	 * @access private
-	 * @return array validation rules
+	 * @return array
 	 */
 	private function get_validation_rules() 
 	{

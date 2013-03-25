@@ -8,6 +8,8 @@ class Enquiry_class extends MY_Model
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -48,6 +50,7 @@ class Enquiry_class extends MY_Model
 	
 	/**
 	 * I return a count of unread enquiries
+	 * @access public
 	 * @return integer
 	 */	
 	function get_unread_count()

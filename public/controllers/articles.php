@@ -7,6 +7,8 @@ class Articles extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct()
 	{
@@ -17,6 +19,8 @@ class Articles extends MY_Controller
 
 	/**
 	 * I display a list of articles
+	 * @access public
+	 * @return void
 	 */	
 	function index()
 	{
@@ -27,8 +31,9 @@ class Articles extends MY_Controller
 
 	/**
 	 * I display an article
-	 *
-	 * @param   string   article slug
+	 * @access public
+	 * @param string $slug
+	 * @return void
 	 */
 	function article($slug)
 	{
@@ -47,6 +52,8 @@ class Articles extends MY_Controller
 	
 	/**
 	 * I generate an article RSS feed
+	 * @access public
+	 * @return void
 	 */	
 	function feed()
 	{

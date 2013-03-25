@@ -6,6 +6,8 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -125,16 +127,16 @@ class MY_Model extends CI_Model
 		
 	/**
 	 * I return an array of records
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param string $tbl
-	 * @param string $sortcol
-	 * @param string $sortdir
+	 * @param string $sort_col
+	 * @param string $sort_dir
 	 * @return array
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
-	protected function get($tbl, $sortcol, $sortdir) 
+	protected function get($tbl, $sort_col, $sort_dir) 
 	{
-		$this->db->order_by($sortcol,$sortdir);
+		$this->db->order_by($sort_col,$sort_dir);
 		return $this->db->get($tbl);
 	}
 	
@@ -153,12 +155,12 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I save a record and return the id
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param string $tbl
 	 * @param array $data
-	 * @param integer $id
+	 * @param integer $id (optional)
 	 * @return integer
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
@@ -181,11 +183,11 @@ class MY_Model extends CI_Model
 	}
 
 	/**
-	 * I convert a string (in 'dd/mm/yyyy' format) to MySQL timestamp
+	 * I convert a string to a MySQL timestamp
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param string $date the date in 'dd/mm/yyyy' format
 	 * @return date
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 */
 	protected function string_to_timestamp($date) 
 	{
@@ -212,7 +214,7 @@ class MY_Model extends CI_Model
 	 * I return a string with multiple spaces replaced with single spaces
 	 *
 	 * @access private
-	 * @param string $str string that may contain multiple spaces
+	 * @param string $str
 	 * @return
 	 */	
 	private function replace_multiple_spaces_with_single_space($str)

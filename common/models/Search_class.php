@@ -9,6 +9,8 @@ class Search_class extends MY_Model
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -17,11 +19,11 @@ class Search_class extends MY_Model
 
 	/**
 	 * I return records matching a search term
+	 * @todo improve by looping through words in search term to find matching results and by applying weighting to the results
 	 * @access public
 	 * @param string $search_term
 	 * @param array $search_result_exclusions the slugs of pages to exclude from search results
 	 * @return array
-	 * @todo improve by looping through words in search term to find matching results and by applying weighting to the results
 	 */
 	function get_search_results($search_term, $search_result_exclusions) 
 	{

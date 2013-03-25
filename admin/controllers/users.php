@@ -7,6 +7,8 @@ class Users extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct() 
 	{
@@ -25,9 +27,11 @@ class Users extends MY_Controller
 
 	/**
 	 * I delete a user
+	 * @access public
 	 * @param integer $id
+	 * @return void
 	 */
-	function delete($id=0)
+	function delete($id)
 	{
 		$id = intval($id);
 		if(! $id)
@@ -44,6 +48,8 @@ class Users extends MY_Controller
 
 	/**
 	 * I display a list of users
+	 * @access public
+	 * @return void
 	 */	
 	function index() 
 	{
@@ -54,7 +60,9 @@ class Users extends MY_Controller
 
 	/**
 	 * I display a user form
-	 * @param integer $id
+	 * @access public
+	 * @param integer $id (optional)
+	 * @return void
 	 */
 	function maintain($id=0) 
 	{
@@ -85,6 +93,8 @@ class Users extends MY_Controller
 
 	/**
 	 * I save a user
+	 * @access public
+	 * @return void
 	 */	
 	function save() 
 	{

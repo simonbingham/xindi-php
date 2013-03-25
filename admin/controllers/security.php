@@ -7,6 +7,8 @@ class Security extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct() 
 	{
@@ -17,6 +19,8 @@ class Security extends MY_Controller
 
 	/**
 	 * I display a login form
+	 * @access public
+	 * @return void
 	 */	
 	function index() 
 	{
@@ -30,6 +34,8 @@ class Security extends MY_Controller
 
 	/**
 	 * I process a user login
+	 * @access public
+	 * @return void
 	 */	
 	function dologin()
 	{
@@ -55,6 +61,7 @@ class Security extends MY_Controller
 
 	/**
 	 * I process a user logout
+	 * @access public
 	 */
 	function dologout()
 	{

@@ -8,6 +8,8 @@ class User_class extends MY_Model
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -78,7 +80,7 @@ class User_class extends MY_Model
 	 * I save a user and return the id
 	 * @access public
 	 * @param array $user
-	 * @param integer $id
+	 * @param integer $id (optional)
 	 * @return integer
 	 */
 	function save_user($user, $id=0) 

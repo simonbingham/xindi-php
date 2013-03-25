@@ -7,6 +7,8 @@ class Enquiries extends MY_Controller
 	
 	/**
 	 * I instantiate this class
+	 * @access public
+	 * @return void
 	 */
 	function __construct()
 	{
@@ -23,9 +25,11 @@ class Enquiries extends MY_Controller
 
 	/**
 	 * I delete an enquiry
+	 * @access public
 	 * @param integer $id
+	 * @return void
 	 */
-	function delete($id=0)
+	function delete($id)
 	{
 		$id = intval($id);
 		if(! $id)
@@ -42,7 +46,9 @@ class Enquiries extends MY_Controller
 
 	/**
 	 * I display an enquiry
-	 * @param integer $id
+	 * @access public
+	 * @param integer $id (optional)
+	 * @return void
 	 */
 	function enquiry($id=0)
 	{
@@ -61,6 +67,8 @@ class Enquiries extends MY_Controller
 		
 	/**
 	 * I display a list of enquiries
+	 * @access public
+	 * @return void
 	 */	
 	function index()
 	{
@@ -72,6 +80,8 @@ class Enquiries extends MY_Controller
 
 	/**
 	 * I mark enquiries as read
+	 * @access public
+	 * @return void
 	 */
 	function mark_read()
 	{

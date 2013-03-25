@@ -6,6 +6,8 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I initiate this class
+	 * @access public
+	 * @return void
 	 */	
 	function __construct() 
 	{
@@ -16,16 +18,16 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I return an array of records
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 * @access protected
 	 * @param string $tbl
-	 * @param string $sortcol
-	 * @param string $sortdir
+	 * @param string $sort_col
+	 * @param string $sort_dir
 	 * @return array
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 */
-	protected function get($tbl, $sortcol, $sortdir)
+	protected function get($tbl, $sort_col, $sort_dir)
 	{
-		$this->db->order_by($sortcol,$sortdir);
+		$this->db->order_by($sort_col, $sort_dir);
 		return $this->db->get($tbl);
 	}	
 	
@@ -44,12 +46,12 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I save a record and return the id
+	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 * @access protected
 	 * @param string $tbl
 	 * @param array $data 
 	 * @param integer $id
 	 * @return integer
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
@@ -72,11 +74,11 @@ class MY_Model extends CI_Model
 	}
 
 	/**
-	 * I convert a string (in 'dd/mm/yyyy' format) to MySQL timestamp
-	 * @access protected
-	 * @param string $date (in 'dd/mm/yyyy' format)
-	 * @return date
+	 * I convert a string to MySQL timestamp
 	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
+	 * @access protected
+	 * @param string $date the date in 'dd/mm/yyyy' format
+	 * @return date
 	 */
 	protected function string_to_timestamp($date) 
 	{
