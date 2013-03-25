@@ -3,6 +3,8 @@
 class Users extends MY_Controller 
 {
 
+	private $tbl = 'users';
+	
 	// ------------------------ PUBLIC METHODS ------------------------ //
 	
 	/**
@@ -13,15 +15,7 @@ class Users extends MY_Controller
 	function __construct() 
 	{
 		parent::__construct();
-		
-		// if the user is not logged in redirect them to the login form
-		if(! $this->session->userdata('is_logged_in'))
-		{
-			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to maintain your site.');
-			$this->session->set_flashdata($message);
-			redirect('security/index/','refresh');
-		}		
-		
+		parent::redirect_to_login_form_if_not_logged_in();
 		$this->load->model('User_class');
 	}
 
@@ -34,7 +28,7 @@ class Users extends MY_Controller
 	function delete($id)
 	{
 		$id = intval($id);
-		if(! $id)
+		if (! $id)
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, the user could not be found.');
 			$this->session->set_flashdata($message);			
@@ -44,6 +38,34 @@ class Users extends MY_Controller
 		$message = array('type'=>'success', 'text'=>'The user has been deleted.');
 		$this->session->set_flashdata($message);
 		redirect('users/index/','refresh');
+	}
+	
+	/**
+	 * I check whether an email address is already assigned to a user account
+	 * @access public
+	 * @return boolean
+	 */	
+	function email_check()
+	{
+		$id = $this->input->post('id');
+		$id = $this->db->escape_str($id);
+		$email = $this->input->post('email');
+		$email = $this->db->escape_str($email);
+		$email_check = $this->db->query('
+			SELECT id
+			FROM ' . $this->tbl . '
+			WHERE email = \'' . $email . '\'
+				AND id <> \'' . $id . '\'
+		')->result();		
+		if ($email_check)
+		{
+			$this->form_validation->set_message('email_check', 'A user account already exists with the email address &quot;' . $email . '&quot;');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
 	}	
 
 	/**
@@ -68,10 +90,10 @@ class Users extends MY_Controller
 	{
 		$id = intval($id);
 		// existing user
-		if($id) 
+		if ($id) 
 		{	
 			$user = $this->User_class->get_user_by_id($id)->row();
-			if(is_null($user)) 
+			if (is_null($user)) 
 			{
 				$message = array('type'=>'error', 'text'=>'Sorry, the user could not be found.');
 				$this->session->set_flashdata($message);
@@ -101,7 +123,7 @@ class Users extends MY_Controller
 		$context = $this->input->post('context');
 		$validate_password = FALSE;
 		// if user is being created, or updated and a password is specified, validate the password
-		if($context === 'create' || ($context === 'update' && strlen(trim($this->input->post('password')))))
+		if ($context === 'create' || ($context === 'update' && strlen(trim($this->input->post('password')))))
 		{
 			$validate_password = TRUE;
 		}
@@ -122,7 +144,7 @@ class Users extends MY_Controller
 			$id = $this->User_class->save_user($user, $id);
 			$message = array('type'=>'success', 'text'=>'The user has been saved.');
 			$this->session->set_flashdata($message);
-			if($this->input->post('submit') === 'Save & continue')
+			if ($this->input->post('submit') === 'Save & continue')
 			{
 				redirect('users/maintain/'.$id, 'refresh');
 			}
@@ -149,11 +171,10 @@ class Users extends MY_Controller
 				'label' => 'name',
 				'rules' => 'trim|required|max_length[50]|xss_clean'
 			),
-			// TODO: check email address is unique
 			array(
 				'field' => 'email',
 				'label' => 'email',
-				'rules' => 'trim|required|max_length[100]|valid_email|xss_clean'
+				'rules' => 'trim|required|max_length[100]|valid_email|xss_clean|callback_email_check'
 			)
 		);
 		if($validate_password) 

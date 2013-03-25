@@ -1,3 +1,8 @@
+<ul class="breadcrumb">
+	<li><a href="<?php echo site_url(); ?>">Home</a> <span class="divider">/</span></li>
+	<li>Contact</li>
+</ul>
+
 <h1>Contact</h1>
 
 <?php 

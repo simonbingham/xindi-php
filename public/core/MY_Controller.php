@@ -31,7 +31,6 @@ class MY_Controller extends CI_Controller
 	
 	/**
 	 * I populate an array with required fields for a record
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the admin application (not nice!)
 	 * @access protected
 	 * @param array $form_data
 	 * @param array $required_fields
@@ -44,7 +43,7 @@ class MY_Controller extends CI_Controller
 		// populate result array with required fields
 		foreach ($form_data as $key => $value)
 		{
-			if(in_array($key, $required_fields))
+			if (in_array($key, $required_fields))
 			{
 				$result[$key] = $value;
 			}
@@ -52,7 +51,7 @@ class MY_Controller extends CI_Controller
 		// populate result array with default values for missing fields
 		foreach ($field_defaults as $key => $value)
 		{
-			if(! array_key_exists($key, $result))
+			if (! array_key_exists($key, $result))
 			{
 				$result[$key] = $value;
 			}

@@ -34,7 +34,7 @@ echo render_message($userdata, $message);
 						{
 						?>
 							<?php $deletelnk = array('users/delete', $user->id); ?>
-							<a href="<?php echo site_url($deletelnk) ?>" title="Delete user" onclick="return confirm('Are you sure you want to delete this user?')"><i class="icon-trash"></i></a>
+							<a href="<?php echo site_url($deletelnk) ?>" title="Delete" onclick="return confirm('Are you sure you want to delete this user?')"><i class="icon-trash"></i></a>
 						<?php 
 						}
 						?>

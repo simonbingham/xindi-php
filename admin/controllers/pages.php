@@ -13,15 +13,7 @@ class Pages extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		
-		// if the user is not logged in redirect them to the login form
-		if(! $this->session->userdata('is_logged_in'))
-		{
-			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to maintain your site.');
-			$this->session->set_flashdata($message);
-			redirect('security/index/','refresh');
-		}		
-		
+		parent::redirect_to_login_form_if_not_logged_in();
 		$this->load->model('Page_class');
 	}
 
@@ -34,7 +26,7 @@ class Pages extends MY_Controller
 	function delete($id)
 	{
 		$id = intval($id);
-		if(! $id)
+		if (! $id)
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, the page could not be found.');
 			$this->session->set_flashdata($message);
@@ -70,10 +62,10 @@ class Pages extends MY_Controller
 		$id = intval($id);
 		$ancestor_id = intval($ancestor_id);
 		// existing page
-		if($id) 
+		if ($id) 
 		{	
 			$page = $this->Page_class->get_page_by_id($id)->row();
-			if(is_null($page)) 
+			if (is_null($page)) 
 			{
 				$message = array('type'=>'error', 'text'=>'Sorry, the page could not be found.');
 				$this->session->set_flashdata($message);
@@ -118,7 +110,7 @@ class Pages extends MY_Controller
 		else 
 		{
 			$id = intval($this->input->post('id'));
-			if($id)
+			if ($id)
 			{
 				$page = parent::populate($this->input->post(), array('title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords'), array('metagenerated'=>FALSE));
 				$id = $this->Page_class->save_page($page, $id);
@@ -131,7 +123,7 @@ class Pages extends MY_Controller
 			}
 			$message = array('type'=>'success', 'text'=>'The page has been saved.');
 			$this->session->set_flashdata($message);
-			if($this->input->post('submit') === 'Save & continue')
+			if ($this->input->post('submit') === 'Save & continue')
 			{
 				redirect('pages/maintain/'.$id, 'refresh');
 			}

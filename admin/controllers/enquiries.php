@@ -13,14 +13,7 @@ class Enquiries extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		
-		// if the user is not logged in redirect them to the login form
-		if(! $this->session->userdata('is_logged_in'))
-		{
-			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to maintain your site.');
-			$this->session->set_flashdata($message);
-			redirect('security/index/','refresh');
-		}		
+		parent::redirect_to_login_form_if_not_logged_in();		
 	}
 
 	/**
@@ -32,7 +25,7 @@ class Enquiries extends MY_Controller
 	function delete($id)
 	{
 		$id = intval($id);
-		if(! $id)
+		if (! $id)
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, the enquiry could not be found.');
 			$this->session->set_flashdata($message);
@@ -53,7 +46,7 @@ class Enquiries extends MY_Controller
 	function enquiry($id=0)
 	{
 		$id = intval($id);
-		if(! $id)
+		if (! $id)
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, the enquiry could not be found.');
 			$this->session->set_flashdata($message);
@@ -87,11 +80,11 @@ class Enquiries extends MY_Controller
 	{
 		$id = $this->input->post('id');
 		$affectedrows = $this->Enquiry_class->mark_read($id);
-		if($affectedrows == 1)
+		if ($affectedrows == 1)
 		{
 			$message = array('type'=>'success', 'text'=>'The enquiry has been marked as read.');
 		}
-		else if($affectedrows > 1)
+		else if ($affectedrows > 1)
 		{
 			$message = array('type'=>'success', 'text'=>'The enquiries have been marked as read.');
 		}

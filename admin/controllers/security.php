@@ -43,7 +43,7 @@ class Security extends MY_Controller
 		$password = $this->input->post('password');
 		$password = do_hash($password, 'md5');
 		$user = $this->User_class->get_user_by_credentials($email, $password)->row();
-		if(empty($user))
+		if (empty($user))
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, no user accounts were found matching the email address and password you entered.');
 			$this->session->set_flashdata($message);

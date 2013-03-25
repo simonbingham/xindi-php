@@ -32,7 +32,6 @@ class MY_Controller extends CI_Controller
 	
 	/**
 	 * I populate an array with required fields for a record
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param array $form_data
 	 * @param array $required_fields
@@ -53,12 +52,27 @@ class MY_Controller extends CI_Controller
 		// populate result array with default values for missing fields
 		foreach ($field_defaults as $key => $value)
 		{
-			if(! array_key_exists($key, $result))
+			if (! array_key_exists($key, $result))
 			{
 				$result[$key] = $value;
 			}
 		}
 		return $result;
+	}
+	
+	/**
+	 * I redirect the user to the login form if they are not logged in
+	 * @access protected
+	 * @return void
+	 */	
+	protected function redirect_to_login_form_if_not_logged_in()
+	{	
+		if (! $this->session->userdata('is_logged_in'))
+		{
+			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to maintain your site.');
+			$this->session->set_flashdata($message);
+			redirect('security/index/','refresh');
+		}
 	}
 
 }

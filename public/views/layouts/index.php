@@ -3,11 +3,14 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<?php if(isset($meta_description) && strlen($meta_description)) { ?><meta name="description" content="<?php echo $meta_description; ?>"><?php } ?>
+		<?php if(isset($meta_keywords) && strlen($meta_keywords)) { ?><meta name="keywords" content="<?php echo $meta_keywords; ?>"><?php } ?>
+		<?php if(isset($meta_author) && strlen($meta_author)) { ?><meta name="author" content="<?php echo $meta_author; ?>"><?php } ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
 		<base href="<?php echo base_url(); ?>">
 
-		<title>Xindi PHP</title>
+		<?php if(isset($meta_title) && strlen($meta_title)) { ?><title><?php echo $meta_title; ?></title><?php } ?>
 
 		<link href="public/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="public/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">

@@ -13,14 +13,7 @@ class Articles extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		
-		if(! $this->session->userdata('is_logged_in'))
-		{
-			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to maintain your site.');
-			$this->session->set_flashdata($message);
-			redirect('security/index/','refresh');			
-		}
-		
+		parent::redirect_to_login_form_if_not_logged_in();
 		$this->load->model('Article_class');
 	}
 
@@ -33,7 +26,7 @@ class Articles extends MY_Controller
 	function delete($id)
 	{
 		$id = intval($id);
-		if(! $id)
+		if (! $id)
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, the article could not be found.');
 			$this->session->set_flashdata($message);
@@ -67,10 +60,10 @@ class Articles extends MY_Controller
 	{
 		$id = intval($id);
 		// existing article
-		if($id) 
+		if ($id) 
 		{	
 			$article = $this->Article_class->get_article_by_id($id)->row();
-			if(is_null($article)) 
+			if (is_null($article)) 
 			{
 				$message = array('type'=>'error', 'text'=>'Sorry, the article could not be found.');
 				$this->session->set_flashdata($message);
@@ -117,7 +110,7 @@ class Articles extends MY_Controller
 			$id = $this->Article_class->save_article($article, $id);
 			$message = array('type'=>'success', 'text'=>'The article has been saved.');
 			$this->session->set_flashdata($message);
-			if($this->input->post('submit') === 'Save & continue')
+			if ($this->input->post('submit') === 'Save & continue')
 			{
 				redirect('articles/maintain/'.$id, 'refresh');
 			}
@@ -138,7 +131,7 @@ class Articles extends MY_Controller
 	{
 		$str = str_replace('/', '-', trim($str));
 		$time = strtotime($str);
-		if(date('d-m-Y', $time) === $str) 
+		if (date('d-m-Y', $time) === $str) 
 		{
 			return true;
 		}

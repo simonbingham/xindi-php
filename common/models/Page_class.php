@@ -51,15 +51,15 @@ class Page_class extends MY_Model
 		{
 			$link = '<a href="' . site_url($page->slug) . '">' . $page->title . '</a>';
 			$currLevel = intval($page->depth);
-			if($currLevel == 0)
+			if ($currLevel == 0)
 			{
 				$currLevel = 1;
 			}
-			if($currLevel > $prevLevel) 
+			if ($currLevel > $prevLevel) 
 			{
-				if($apply_classes)
+				if ($apply_classes)
 				{
-					if(! intval($page->depth))
+					if (! intval($page->depth))
 					{
 						$class = ' nav nav-pills';
 					} 
@@ -73,7 +73,7 @@ class Page_class extends MY_Model
 			else if ($currLevel < $prevLevel) 
 			{
 				$tmp = $prevLevel;
-				while($tmp > $currLevel) 
+				while ($tmp > $currLevel) 
 				{
 					$result .= '</li></ul>';
 					$tmp -= 1;
@@ -87,7 +87,7 @@ class Page_class extends MY_Model
 			$prevLevel = $currLevel;
 		}
 		$tmp = $currLevel;
-		while($tmp > 0) 
+		while ($tmp > 0) 
 		{
 			$result .= '</li></ul>';
 			$tmp -= 1;
@@ -174,14 +174,14 @@ class Page_class extends MY_Model
 	{
 		$this->db->trans_start();
 			// generate meta tags
-			if($page['metagenerated'])
+			if ($page['metagenerated'])
 			{
 				$page['metatitle'] = parent::generate_page_title($page['title']);
 				$page['metadescription'] = parent::generate_meta_description($page['content']);
 				$page['metakeywords'] = parent::generate_meta_keywords($page['content']);
 			}
 			// new page
-			if(! $id) 
+			if (! $id) 
 			{
 				$ancestor_page = $this->get_page_by_id($ancestor_id)->row();
 				$page['ancestorid'] = $ancestor_page->id;

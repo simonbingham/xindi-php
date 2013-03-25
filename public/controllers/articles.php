@@ -25,6 +25,9 @@ class Articles extends MY_Controller
 	function index()
 	{
 		$data['articles'] = $this->Article_class->get_articles()->result();
+		$data['meta_title'] = '';
+		$data['meta_description'] = '';
+		$data['meta_keywords'] = '';		
 		$layout_data['content_body'] = $this->load->view('articles/index', $data, true);
 		$this->load->view('layouts/index', $layout_data);
 	}
@@ -38,9 +41,13 @@ class Articles extends MY_Controller
 	function article($slug)
 	{
 		$article = $this->Article_class->get_article_by_slug($slug)->row();
-		if(!empty($article)) 
+		if (! empty($article)) 
 		{	
 			$data['article'] = $article;
+			$data['meta_title'] = $article->metatitle;
+			$data['meta_description'] = $article->metadescription;
+			$data['meta_keywords'] = $article->metakeywords;
+			$data['meta_author'] = $article->author;
 			$layout_data['content_body'] = $this->load->view('articles/article', $data, true);
 			$this->load->view('layouts/index', $layout_data);			
 		} 
@@ -58,7 +65,7 @@ class Articles extends MY_Controller
 	function feed()
 	{
 		$this->output->enable_profiler(FALSE); // suppress appending of debug information to page 
-		$data['articles'] = $this->Article_class->get_articles()->result(); // TODO: limit number of articles returned
+		$data['articles'] = $this->Article_class->get_articles(10)->result();
 		$data['feed_title'] = $this->config->item('feed_title');
 		$data['feed_link'] = $this->config->item('feed_link');
 		$data['feed_description'] = $this->config->item('feed_description');

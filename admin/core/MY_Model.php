@@ -112,7 +112,7 @@ class MY_Model extends CI_Model
 		$title = strtolower(trim($title));
 		$ancestor_slug = trim($ancestor_slug);
 		$slug = '';
-		if(strlen($ancestor_slug)) 
+		if (strlen($ancestor_slug)) 
 		{
 			$slug .= $ancestor_slug . '/';
 		}
@@ -127,7 +127,6 @@ class MY_Model extends CI_Model
 		
 	/**
 	 * I return an array of records
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param string $tbl
 	 * @param string $sort_col
@@ -155,7 +154,6 @@ class MY_Model extends CI_Model
 	
 	/**
 	 * I save a record and return the id
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param string $tbl
 	 * @param array $data
@@ -167,7 +165,7 @@ class MY_Model extends CI_Model
 		$current_date = date("Y-m-d H:i:s");
 		$data['updated'] = $current_date;
 		// new record 
-		if(! $id) 
+		if (! $id) 
 		{
 			$data['created'] = $current_date;
 			$this->db->insert($tbl, $data);
@@ -184,7 +182,6 @@ class MY_Model extends CI_Model
 
 	/**
 	 * I convert a string to a MySQL timestamp
-	 * @todo lack of support for multiple inheritance in PHP 4 means this method is duplicated in the public application (not nice!)
 	 * @access protected
 	 * @param string $date the date in 'dd/mm/yyyy' format
 	 * @return date

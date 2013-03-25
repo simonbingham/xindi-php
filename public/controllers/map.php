@@ -19,9 +19,12 @@ class Map extends MY_Controller {
 	public function index()
 	{
 		$map = $this->Page_class->get_navigation();
-		if(! empty($map))
+		if (! empty($map))
 		{
 			$data['content'] = $map;
+			$data['meta_title'] = '';
+			$data['meta_description'] = '';
+			$data['meta_keywords'] = '';			
 			$layout_data['content_body'] = $this->load->view('map/index', $data, true);
 			$this->load->view('layouts/index', $layout_data);
 		}

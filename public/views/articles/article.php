@@ -1,4 +1,8 @@
-<?php // TODO: implement breadcrumbs ?>
+<ul class="breadcrumb">
+	<li><a href="<?php echo site_url(); ?>">Home</a> <span class="divider">/</span></li>
+	<li><a href="<?php echo site_url('news'); ?>">News</a> <span class="divider">/</span></li>
+	<li><?php echo $article->title; ?></li>
+</ul>
 
 <h1>
 	<?php echo $article->title; ?>

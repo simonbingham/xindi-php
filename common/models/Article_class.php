@@ -52,11 +52,12 @@ class Article_class extends MY_Model
 	/**
 	 * I return an array of articles
 	 * @access public
+	 * @param integer $limit (optional)
 	 * @return array
 	 */
-	function get_articles() 
+	function get_articles($limit=NULL) 
 	{
-		return parent::get($this->tbl, 'published', 'desc');
+		return parent::get($this->tbl, 'published', 'desc', $limit);
 	}
 	
 	/**
@@ -91,12 +92,12 @@ class Article_class extends MY_Model
 	{
 		$article['published'] = parent::string_to_timestamp($article['published']);
 		// new article so generate slug
-		if(! $id) 
+		if (! $id) 
 		{
 			$article['slug'] = parent::generate_slug($this->tbl, $article['title']);
 		}
 		// generate meta tags
-		if($article['metagenerated'])
+		if ($article['metagenerated'])
 		{
 			$article['metatitle'] = parent::generate_page_title($article['title']);
 			$article['metadescription'] = parent::generate_meta_description($article['content']);

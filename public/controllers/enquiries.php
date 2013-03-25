@@ -25,6 +25,9 @@ class Enquiries extends MY_Controller
 	function index()
 	{
 		$data = $this->Enquiry_class->new_enquiry();
+		$data['meta_title'] = '';
+		$data['meta_description'] = '';
+		$data['meta_keywords'] = '';		
 		$layout_data['content_body'] = $this->load->view('enquiries/index', $data, true);
 		$this->load->view('layouts/index', $layout_data);
 	}
@@ -44,6 +47,9 @@ class Enquiries extends MY_Controller
 		{
 			// flash data can only be used with redirects so we can't use it here
 			$data['message'] = array('type'=>'error', 'text'=>'Please amend the highlighted fields.');
+			$data['meta_title'] = '';
+			$data['meta_description'] = '';
+			$data['meta_keywords'] = '';			
 			$layout_data['content_body'] = $this->load->view('enquiries/index', $data, true);
 			$this->load->view('layouts/index', $layout_data);			
 		}
@@ -73,7 +79,10 @@ class Enquiries extends MY_Controller
 	 */
 	function thanks()
 	{
-		$layout_data['content_body'] = $this->load->view('enquiries/thanks', array(), true);
+		$data['meta_title'] = '';
+		$data['meta_description'] = '';
+		$data['meta_keywords'] = '';		
+		$layout_data['content_body'] = $this->load->view('enquiries/thanks', $data, true);
 		$this->load->view('layouts/index', $layout_data);
 	}	
 	

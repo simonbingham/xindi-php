@@ -15,6 +15,7 @@ echo render_message($userdata, $message);
 				<th>Title</th>
 				<th>Published</th>
 				<th>Last Updated</th>
+				<th class="center">Edit</th>
 				<th class="center">Delete</th>
 			</tr>
 		</thead>
@@ -22,15 +23,16 @@ echo render_message($userdata, $message);
 		<tbody>
 			<?php foreach($articles as $article) { ?>
 				<tr>
-					<td>
-						<?php $editlnk = array('articles/maintain', $article->id); ?>
-						<a href="<?php echo site_url($editlnk) ?>"><?php echo $article->title ?></a>
-					</td>
+					<td><?php echo $article->title ?></td>
 					<td><?php echo format_date($article->published, 'd/m/Y') ?></td>
 					<td><?php echo format_date($article->updated) ?></td>
 					<td class="center">
+						<?php $editlnk = array('articles/maintain', $article->id); ?>
+						<a href="<?php echo site_url($editlnk) ?>" title="Edit"><i class="icon-pencil"></i></a>
+					</td>					
+					<td class="center">
 						<?php $deletelnk = array('articles/delete', $article->id); ?>
-						<a href="<?php echo site_url($deletelnk) ?>" title="Delete article" onclick="return confirm('Are you sure you want to delete this article?')"><i class="icon-trash"></i></a>
+						<a href="<?php echo site_url($deletelnk) ?>" title="Delete" onclick="return confirm('Are you sure you want to delete this article?')"><i class="icon-trash"></i></a>
 					</td>
 				</tr>
 			<?php } ?>
