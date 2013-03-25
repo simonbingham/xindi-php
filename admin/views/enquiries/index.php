@@ -41,7 +41,6 @@ echo render_message($userdata, $message);
 							<?php $enquirylnk = array('enquiries/enquiry', $enquiry->id); ?>
 							<a href="<?php echo site_url($enquirylnk) ?>" title="View"><i class="icon-eye-open"></i></a>
 						</td>
-						<?php // TODO: implement delete functionality using checkboxes ?>
 						<td class="center">
 							<?php $deletelnk = array('enquiries/delete', $enquiry->id); ?>
 							<a href="<?php echo site_url($deletelnk) ?>" title="Delete" onclick="return confirm('Are you sure you want to delete this enquiry?')"><i class="icon-trash"></i></a>
