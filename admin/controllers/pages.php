@@ -79,7 +79,7 @@ class Pages extends MY_Controller
 		else
 		{
 			$page = $this->Page_class->new_page();
-			$page['ancestorid'] = $ancestor_id;
+			$page['ancestor_id'] = $ancestor_id;
 			$data = $page;
 			$data['context'] = 'create';
 		}
@@ -100,7 +100,7 @@ class Pages extends MY_Controller
 		// validation failure
 		if ($this->form_validation->run() === FALSE) 
 		{
-			$data = parent::populate($this->input->post(), array('id', 'title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords', 'context'), array('metagenerated'=>FALSE));
+			$data = parent::populate($this->input->post(), array('id', 'title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords', 'context'), array('meta_generated'=>FALSE));
 			// flash data can only be used with redirects so we can't use it here
 			$data['message'] = array('type'=>'error', 'text'=>'Please amend the highlighted fields.');
 			$layout_data['content_body'] = $this->load->view('pages/maintain', $data, true);
@@ -112,14 +112,14 @@ class Pages extends MY_Controller
 			$id = intval($this->input->post('id'));
 			if ($id)
 			{
-				$page = parent::populate($this->input->post(), array('title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords'), array('metagenerated'=>FALSE));
+				$page = parent::populate($this->input->post(), array('title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords'), array('meta_generated'=>FALSE));
 				$id = $this->Page_class->save_page($page, $id);
 			}
 			else
 			{
-				$page = parent::populate($this->input->post(), array('title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords'), array('metagenerated'=>FALSE));
-				$ancestorid = $this->input->post('ancestorid');
-				$id = $this->Page_class->save_page($page, $id, $ancestorid);				
+				$page = parent::populate($this->input->post(), array('title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords'), array('meta_generated'=>FALSE));
+				$ancestor_id = $this->input->post('ancestor_id');
+				$id = $this->Page_class->save_page($page, $id, $ancestor_id);				
 			}
 			$message = array('type'=>'success', 'text'=>'The page has been saved.');
 			$this->session->set_flashdata($message);
@@ -155,18 +155,18 @@ class Pages extends MY_Controller
 				'rules' => 'trim|required|xss_clean'
 			),
 			array(
-				'field' => 'metatitle',
-				'label' => 'metatitle',
+				'field' => 'meta_title',
+				'label' => 'meta_title',
 				'rules' => 'trim|max_length[69]|xss_clean'
 			),
 			array(
-				'field' => 'metadescription',
-				'label' => 'metadescription',
+				'field' => 'meta_description',
+				'label' => 'meta_description',
 				'rules' => 'trim|max_length[169]|xss_clean'
 			),
 			array(
-				'field' => 'metakeywords',
-				'label' => 'metakeywords',
+				'field' => 'meta_keywords',
+				'label' => 'meta_keywords',
 				'rules' => 'trim|max_length[169]|xss_clean'
 			)
 		);

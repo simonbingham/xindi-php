@@ -44,9 +44,9 @@ class Articles extends MY_Controller
 		if (! empty($article)) 
 		{	
 			$data['article'] = $article;
-			$data['meta_title'] = $article->metatitle;
-			$data['meta_description'] = $article->metadescription;
-			$data['meta_keywords'] = $article->metakeywords;
+			$data['meta_title'] = $article->meta_title;
+			$data['meta_description'] = $article->meta_description;
+			$data['meta_keywords'] = $article->meta_keywords;
 			$data['meta_author'] = $article->author;
 			$layout_data['content_body'] = $this->load->view('articles/article', $data, true);
 			$this->load->view('layouts/index', $layout_data);			

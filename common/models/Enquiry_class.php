@@ -55,20 +55,20 @@ class Enquiry_class extends MY_Model
 	 */	
 	function get_unread_count()
 	{
-		$qry = $this->db->get_where($this->tbl, array('isread'=>FALSE));
+		$qry = $this->db->get_where($this->tbl, array('is_read'=>FALSE));
 		return $qry->num_rows(); 
  	}
 	
 	/**
-	 * I mark enquiries as read
+	 * I mark an enquiry as read
 	 * @access public
 	 * @param integer $id
 	 * @return integer
 	 */
 	function mark_read($id) 
 	{
-		$data = array('isread' => TRUE);
-		$this->db->where_in('id', $id);
+		$data = array('is_read' => TRUE);
+		$this->db->where('id', $id);
 		$this->db->update($this->tbl, $data);
 		return $this->db->affected_rows();
 	}
@@ -96,7 +96,7 @@ class Enquiry_class extends MY_Model
 	 */
 	function save_enquiry($enquiry)
 	{
-		$enquiry['isread'] = FALSE;
+		$enquiry['is_read'] = FALSE;
 		parent::save($this->tbl, $enquiry);
 	}	
 	

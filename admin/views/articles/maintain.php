@@ -15,8 +15,15 @@ echo render_message($userdata, $message);
 
 <div class="btn-group pull-right" data-toggle="buttons-checkbox">
 	<a href="<?php echo site_url('articles/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Articles</a>
-	<?php $deletelnk = array('articles/delete', $id); ?>
-	<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this article?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+	<?php 
+	if ($id) 
+	{
+	?>	
+		<?php $deletelnk = array('articles/delete', $id); ?>
+		<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this article?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+	<?php 
+	}
+	?>
 </div>
 
 <form method="post" action="<?php echo site_url('articles/save') ?>" id="article-form" class="clear">
@@ -61,38 +68,37 @@ echo render_message($userdata, $message);
 		<legend>Meta Tags</legend>		
 
 		<div class="control-group">
-			<label>&nbsp;</label>
 			<div class="controls">
 				<label class="checkbox">
-					<input type="checkbox" name="metagenerated" id="metagenerated" value="TRUE" <?php if($metagenerated){ echo 'checked="checked"'; }?>>
+					<input type="checkbox" name="meta_generated" id="meta_generated" value="TRUE" <?php if($meta_generated){ echo 'checked="checked"'; }?>>
 					Generate automatically
-					<?php echo form_error('metagenerated'); ?>
+					<?php echo form_error('meta_generated'); ?>
 				</label>
 			</div>
 		</div>		
 
 		<div class="metatags">
 			<div class="control-group">
-				<label class="control-label" for="metatitle">Title</label>
+				<label class="control-label" for="meta_title">Title</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metatitle" id="metatitle" value="<?php echo set_value('metatitle', $metatitle); ?>" maxlength="69" placeholder="Title">
-					<?php echo form_error('metatitle'); ?>
+					<input class="input-xlarge" type="text" name="meta_title" id="meta_title" value="<?php echo set_value('meta_title', $meta_title); ?>" maxlength="69" placeholder="Title">
+					<?php echo form_error('meta_title'); ?>
 				</div>
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="metadescription">Description</label>
+				<label class="control-label" for="meta_description">Description</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metadescription" id="metadescription" value="<?php echo set_value('metadescription', $metadescription); ?>" maxlength="169" placeholder="Description">
-					<?php echo form_error('metadescription'); ?>
+					<input class="input-xlarge" type="text" name="meta_description" id="meta_description" value="<?php echo set_value('meta_description', $meta_description); ?>" maxlength="169" placeholder="Description">
+					<?php echo form_error('meta_description'); ?>
 				</div>
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="metakeywords">Keywords</label>
+				<label class="control-label" for="meta_keywords">Keywords</label>
 				<div class="controls">
-					<input class="input-xlarge" type="text" name="metakeywords" id="metakeywords" value="<?php echo set_value('metakeywords', $metakeywords); ?>" maxlength="169" placeholder="Keywords">
-					<?php echo form_error('metakeywords'); ?>
+					<input class="input-xlarge" type="text" name="meta_keywords" id="meta_keywords" value="<?php echo set_value('meta_keywords', $meta_keywords); ?>" maxlength="169" placeholder="Keywords">
+					<?php echo form_error('meta_keywords'); ?>
 				</div>
 			</div>
 		</div>
@@ -121,18 +127,18 @@ jQuery(function($) {
 			, author:{maxlength:100}
 			, published:{required:true, maxlength:12}
 			, content:{required:true}
-			, metatitle:{maxlength:69}
-			, metadescription:{maxlength:169}
-			, metakeywords:{maxlength:169}
+			, meta_title:{maxlength:69}
+			, meta_description:{maxlength:169}
+			, meta_keywords:{maxlength:169}
 		},
 		messages:{
 			title:{required:"The title field is required", maxlength:"The title field must not exceed 150 characters"}
 			, author:{maxlength:"The title field must not exceed 100 characters"}
 			, published:{required:"The published field is required", maxlength:"The title field must not exceed 10 characters"}
 			, content:{required:"The content field is required"}
-			, metatitle:{maxlength:"The meta title field must not exceed 69 characters"}
-			, metadescription:{maxlength:"The meta description field must not exceed 169 characters"}
-			, metakeywords:{maxlength:"The meta keywords field must not exceed 169 characters"}
+			, meta_title:{maxlength:"The meta title field must not exceed 69 characters"}
+			, meta_description:{maxlength:"The meta description field must not exceed 169 characters"}
+			, meta_keywords:{maxlength:"The meta keywords field must not exceed 169 characters"}
 		}
 	});
 });

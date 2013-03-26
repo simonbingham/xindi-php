@@ -65,7 +65,6 @@ class Enquiries extends MY_Controller
 	 */	
 	function index()
 	{
-		$data['unread_count'] = $this->Enquiry_class->get_unread_count();
 		$data['enquiries'] = $this->Enquiry_class->get_enquiries()->result();
 		$layout_data['content_body'] = $this->load->view('enquiries/index', $data, true);
 		$this->load->view('layouts/index', $layout_data);

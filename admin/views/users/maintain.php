@@ -14,7 +14,7 @@ echo render_message($userdata, $message);
 <div class="btn-group pull-right" data-toggle="buttons-checkbox">
 	<a href="<?php echo site_url('users/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Users</a>
 	<?php 
-	if ($this->session->userdata('id') != $id) 
+	if ($this->session->userdata('id') != $id && $id) 
 	{
 	?>	
 		<?php $deletelnk = array('users/delete', $id); ?>
@@ -63,8 +63,15 @@ echo render_message($userdata, $message);
 	<input type="hidden" name="context" id="context" value="<?php echo $context; ?>">
 </form>
 
-<p><span class="label label-info">Note</span> You are not permitted to delete your own user account.</p>
-
+<?php 
+if ($id) 
+{
+?>
+	<p><span class="label label-info">Note</span> You are not permitted to delete your own user account.</p>
+<?php 
+}
+?>
+	
 <script src="assets/js/jquery.validate.js"></script>
 <script>
 jQuery(function($) {

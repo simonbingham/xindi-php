@@ -96,7 +96,7 @@ class Articles extends MY_Controller
 		// validation failure
 		if ($this->form_validation->run() === FALSE) 
 		{
-			$data = parent::populate($this->input->post(), array('id', 'title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords', 'author', 'published', 'context'), array('metagenerated'=>FALSE));
+			$data = parent::populate($this->input->post(), array('id', 'title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords', 'author', 'published', 'context'), array('meta_generated'=>FALSE));
 			// flash data can only be used with redirects so we can't use it here
 			$data['message'] = array('type'=>'error', 'text'=>'Please amend the highlighted fields.');
 			$layout_data['content_body'] = $this->load->view('articles/maintain', $data, true);
@@ -106,7 +106,7 @@ class Articles extends MY_Controller
 		else 
 		{
 			$id = intval($this->input->post('id'));
-			$article = parent::populate($this->input->post(), array('title', 'content', 'metagenerated', 'metatitle', 'metadescription', 'metakeywords', 'author', 'published'), array('metagenerated'=>FALSE));
+			$article = parent::populate($this->input->post(), array('title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords', 'author', 'published'), array('meta_generated'=>FALSE));
 			$id = $this->Article_class->save_article($article, $id);
 			$message = array('type'=>'success', 'text'=>'The article has been saved.');
 			$this->session->set_flashdata($message);
@@ -164,18 +164,18 @@ class Articles extends MY_Controller
 				'rules' => 'trim|required|xss_clean'
 			),
 			array(
-				'field' => 'metatitle',
-				'label' => 'metatitle',
+				'field' => 'meta_title',
+				'label' => 'meta_title',
 				'rules' => 'trim|max_length[69]|xss_clean'
 			),
 			array(
-				'field' => 'metadescription',
-				'label' => 'metadescription',
+				'field' => 'meta_description',
+				'label' => 'meta_description',
 				'rules' => 'trim|max_length[169]|xss_clean'
 			),
 			array(
-				'field' => 'metakeywords',
-				'label' => 'metakeywords',
+				'field' => 'meta_keywords',
+				'label' => 'meta_keywords',
 				'rules' => 'trim|max_length[169]|xss_clean'
 			),
 			array(

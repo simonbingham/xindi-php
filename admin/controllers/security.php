@@ -65,11 +65,11 @@ class Security extends MY_Controller
 	 */
 	function dologout()
 	{
-		$array_items = array('is_logged_in'=>'', 'name'=>'', 'email'=>'');
-		$this->session->unset_userdata($array_items);
-		$message = array('type'=>'success', 'text'=>'You have been logged out.');
-		$this->session->set_flashdata($message);
-		redirect('security/index/','refresh');
+		$this->session->sess_destroy();
+		// flash data can only be used with redirects so we can't use it here
+		$data['message'] = array('type'=>'success', 'text'=>'You have been logged out.');
+		$layout_data['content_body'] = $this->load->view('security/index', $data, true);
+		$this->load->view('layouts/index', $layout_data);
 	}	
 
 }

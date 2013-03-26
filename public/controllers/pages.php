@@ -30,9 +30,9 @@ class Pages extends MY_Controller {
 			$data['breadcrumbs'] = $this->Page_class->get_path($page);
 			$data['title'] = $page->title;
 			$data['content'] = $page->content;
-			$data['meta_title'] = $page->metatitle;
-			$data['meta_description'] = $page->metadescription;
-			$data['meta_keywords'] = $page->metakeywords;			
+			$data['meta_title'] = $page->meta_title;
+			$data['meta_description'] = $page->meta_description;
+			$data['meta_keywords'] = $page->meta_keywords;			
 			$layout_data['content_body'] = $this->load->view('pages/index', $data, true);
 			$this->load->view('layouts/index', $layout_data);
 		}

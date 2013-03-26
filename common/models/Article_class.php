@@ -71,10 +71,10 @@ class Article_class extends MY_Model
 			'id' => '',
 			'title' => '',
 			'content' => '',
-			'metagenerated' => FALSE,
-			'metatitle' => '',
-			'metadescription' => '',
-			'metakeywords' => '',
+			'meta_generated' => FALSE,
+			'meta_title' => '',
+			'meta_description' => '',
+			'meta_keywords' => '',
 			'author' => '',
 			'published' => ''
 		);
@@ -97,11 +97,11 @@ class Article_class extends MY_Model
 			$article['slug'] = parent::generate_slug($this->tbl, $article['title']);
 		}
 		// generate meta tags
-		if ($article['metagenerated'])
+		if ($article['meta_generated'])
 		{
-			$article['metatitle'] = parent::generate_page_title($article['title']);
-			$article['metadescription'] = parent::generate_meta_description($article['content']);
-			$article['metakeywords'] = parent::generate_meta_keywords($article['content']);
+			$article['meta_title'] = parent::generate_page_title($article['title']);
+			$article['meta_description'] = parent::generate_meta_description($article['content']);
+			$article['meta_keywords'] = parent::generate_meta_keywords($article['content']);
 		}
 		return parent::save($this->tbl, $article, $id);
 	}
