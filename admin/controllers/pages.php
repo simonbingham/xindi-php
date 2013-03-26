@@ -100,7 +100,7 @@ class Pages extends MY_Controller
 		// validation failure
 		if ($this->form_validation->run() === FALSE) 
 		{
-			$data = parent::populate($this->input->post(), array('id', 'title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords', 'context'), array('meta_generated'=>FALSE));
+			$data = parent::populate($this->input->post(), array('id', 'title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords', 'context'), array('ancestor_id'=>0, 'depth'=>0, 'left_value'=>0, 'right_value'=>0, 'meta_generated'=>FALSE));
 			// flash data can only be used with redirects so we can't use it here
 			$data['message'] = array('type'=>'error', 'text'=>'Please amend the highlighted fields.');
 			$layout_data['content_body'] = $this->load->view('pages/maintain', $data, true);

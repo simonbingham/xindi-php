@@ -25,7 +25,6 @@ td.chevron-right{ background:url("../img/ico-chevron-right.gif") no-repeat; }
 .inline li{ display:inline-block; margin-right:10px; }
 .navbar-inner{ background:#01324A; background-image: -moz-linear-gradient(center top , #01324a, #012638); }
 .navbar .nav > li > a, .navbar .nav > li > a:hover, .navbar .nav > li > a:visited { color:#fff; }
-.defaultSkin table.mceLayout{ width:100%; }
 	
 @media ( max-width:979px ) {
 	#container{ padding-top:0; }
