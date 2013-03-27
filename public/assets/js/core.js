@@ -13,6 +13,6 @@ jQuery(function($){
 	}).attr({role:'menu'}).siblings().filter('a').attr({'data-toggle':'dropdown',role:'button',class:'dropdown-toggle'}).append(' <b class="caret"></b>').parent().addClass('dropdown');
 
 	if (document.createElement("input").webkitSpeech !== undefined) {
-		$('#searchterm').attr('x-webkit-speech','x-webkit-speech');
-	} 
+		$('#search_term').attr('x-webkit-speech','x-webkit-speech');
+	}
 })

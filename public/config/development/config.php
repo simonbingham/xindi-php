@@ -380,3 +380,6 @@ $config['feed_description'] = '';
 
 // search result settings
 $config['search_result_exclusions'] = array('news','contact'); // slugs of pages to exclude from search results
+
+// Google Analytics tracking id
+$config['google_analytics_tracking_id'] = '';

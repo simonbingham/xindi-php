@@ -8,9 +8,9 @@
 		<?php if(isset($meta_author) && strlen($meta_author)) { ?><meta name="author" content="<?php echo $meta_author; ?>"><?php } ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<base href="<?php echo base_url(); ?>">
-
 		<?php if(isset($meta_title) && strlen($meta_title)) { ?><title><?php echo $meta_title; ?></title><?php } ?>
+
+		<base href="<?php echo base_url(); ?>">
 
 		<link href="public/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="public/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -20,10 +20,25 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		
+		<?php if(strlen($this->config->item('google_analytics_tracking_id'))) { ?>
+			<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', '<?php echo $this->config->item('google_analytics_tracking_id'); ?>']);
+			_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+			</script>
+			<script src="public/assets/js/outbound-link-tracking.js"></script>
+		<?php } ?>
+
 		<link rel="shortcut icon" href="favicon.ico">
 		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114-precomposed.png">
 		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">		
 	</head>
 	
 	<body>
