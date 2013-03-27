@@ -23,6 +23,10 @@
 	</head>
 	
 	<body>
+		<?php if(ENVIRONMENT == 'development') { ?>
+			<span class="dev-mode label label-warning">Development Mode</span>
+		<?php } ?>	
+	
 		<div class="navbar navbar-fixed-top" role="banner">
 			<div class="navbar-inner">
 				<div class="container">

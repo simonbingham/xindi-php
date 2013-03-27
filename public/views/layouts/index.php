@@ -20,7 +20,7 @@
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		
-		<?php if(strlen($this->config->item('google_analytics_tracking_id'))) { ?>
+		<?php if(strlen($this->config->item('google_analytics_tracking_id')) && ENVIRONMENT == 'production') { ?>
 			<script type="text/javascript">
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', '<?php echo $this->config->item('google_analytics_tracking_id'); ?>']);
@@ -42,6 +42,10 @@
 	</head>
 	
 	<body>
+		<?php if(ENVIRONMENT == 'development') { ?>
+			<span class="dev-mode label label-warning">Development Mode</span>
+		<?php } ?>
+		
 		<div class="navbar navbar-fixed-top" role="banner">
 			<div class="navbar-inner">
 				<div class="container">
