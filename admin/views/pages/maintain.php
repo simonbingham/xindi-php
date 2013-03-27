@@ -14,11 +14,11 @@ echo render_message($userdata, $message);
 ?>
 
 <div class="btn-group pull-right" data-toggle="buttons-checkbox">
-	<a href="<?php echo site_url('pages/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Pages</a>
+	<a href="<?php echo site_url('pages/index') ?>" class="btn"><i class="icon-arrow-left"></i> Back to Pages</a>
 	<?php // the home page and pages with children cannot be deleted ?>
 	<?php if($depth <> 0 && $right_value - $left_value == 1) { ?>
 		<?php $deletelnk = array('pages/delete', $id); ?>
-		<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this page?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+		<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this page?')" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
 	<?php } ?>
 </div>
 

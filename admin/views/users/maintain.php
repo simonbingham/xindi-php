@@ -12,13 +12,13 @@ echo render_message($userdata, $message);
 ?>
 
 <div class="btn-group pull-right" data-toggle="buttons-checkbox">
-	<a href="<?php echo site_url('users/index') ?>" class="btn btn-mini"><i class="icon-arrow-left"></i> Back to Users</a>
+	<a href="<?php echo site_url('users/index') ?>" class="btn"><i class="icon-arrow-left"></i> Back to Users</a>
 	<?php 
 	if ($this->session->userdata('id') != $id && $id) 
 	{
 	?>	
 		<?php $deletelnk = array('users/delete', $id); ?>
-		<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-mini"><i class="icon-trash"></i> Delete</a>
+		<a href="<?php echo site_url($deletelnk) ?>" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-danger"><i class="icon-trash icon-white"></i> Delete</a>
 	<?php 
 	}
 	?>

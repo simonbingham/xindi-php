@@ -367,7 +367,7 @@ $config['proxy_ips'] = '';
 */
 
 // Xindi version number
-$config['version'] = 'XXXX.XX.XX';
+$config['version'] = '1.0.0';
 
 // append debug information to page
 $config['enable_profiler'] = ENVIRONMENT !== 'production';
