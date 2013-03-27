@@ -42,3 +42,17 @@ However, the frameworks listed above have their own licenses which you should re
 ## Contributors
 
 Xindi is authored by [Simon Bingham] (https://twitter.com/#!/simonbingham), but anyone and everyone is welcome to contribute.
+
+## Problems
+
+If you experience any problems with Xindi please:
+
+* [visit our Google Group for help and advice] (https://groups.google.com/forum/?hl=en&fromgroups#!forum/xindi-cms-php)
+* [submit a ticket to our issue tracker] (https://github.com/simonbingham/xindi-php/issues)
+* fix the error yourself and send us a pull request
+
+## Social Media
+
+You'll find us on [Twitter] (https://twitter.com/#!/getxindi), [Facebook] (http://www.facebook.com/getxindi) and [Google+] (https://plus.google.com/112798469896267857099).
+
+Finally, you can find a collection of [blog posts about Xindi on Simon Bingham's website] (http://www.simonbingham.me.uk/index.cfm/main/default/uuid/xindi-19).
