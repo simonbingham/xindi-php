@@ -382,4 +382,6 @@ $config['feed_description'] = '';
 $config['search_result_exclusions'] = array('news','contact'); // slugs of pages to exclude from search results
 
 // Google Analytics tracking id
+// you may wish to use a different tracking id for your development environment so
+// you can be sure the correct data is being tracked before deploying your site
 $config['google_analytics_tracking_id'] = '';
