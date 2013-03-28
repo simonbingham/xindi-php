@@ -18,7 +18,7 @@ Xindi uses the frameworks listed below.
 
 * [Twitter Bootstrap] (http://twitter.github.com/bootstrap/)
 * [jQuery (and jQuery UI)] (http://jquery.com/)
-* [CKeditor] (http://ckeditor.com/)
+* [TinyMCE] (http://www.tinymce.com/)
 
 ## Minimum Requirements
 
