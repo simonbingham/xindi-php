@@ -110,7 +110,7 @@
 				theme_advanced_resizing : true,
 				
 				// Example content CSS (should be your site CSS)
-				content_css : "<?php echo base_url(); ?>assets/css/core.css",
+				content_css : "<?php echo base_url(); ?>assets/css/editor.css",
 
 				<?php // TODO: populate TinyMCE dropdown lists ?>
 				// Drop lists for link/image/media/template dialogs
