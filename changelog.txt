@@ -1,1 +1,2 @@
-- Added editor stylesheet and placeholder images.
+- Added editor stylesheet.
+- Added placeholder images to sample site.
