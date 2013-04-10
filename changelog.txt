@@ -1,2 +1,3 @@
 - Added editor stylesheet.
 - Added placeholder images to sample site.
+- Updated Xindi logo.
