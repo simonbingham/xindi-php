@@ -18,7 +18,7 @@
 		
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo site_url('news/feed') ?>">
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		
 		<?php if(strlen($this->config->item('google_analytics_tracking_id')) && ENVIRONMENT == 'production') { ?>
 			<script type="text/javascript">
@@ -36,9 +36,12 @@
 		<?php } ?>
 
 		<link rel="shortcut icon" href="favicon.ico">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">		
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">			
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">		
 	</head>
 	
 	<body>
