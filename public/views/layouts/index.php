@@ -79,7 +79,6 @@
 			</footer>			
 		</div>
 		
-		<script src="public/assets/js/bootstrap-dropdown.js"></script>
 		<script src="public/assets/js/core.js"></script>
 	</body>
 </html>
