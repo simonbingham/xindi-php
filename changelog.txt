@@ -1,3 +1,4 @@
 - Added editor stylesheet.
 - Added placeholder images to sample site.
 - Updated Xindi logo.
+- Fixed bug preventing navigation links with sub pages from working.
