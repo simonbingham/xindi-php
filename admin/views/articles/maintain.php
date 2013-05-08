@@ -77,7 +77,7 @@ echo render_message($userdata, $message);
 			</div>
 		</div>		
 
-		<div class="metatags">
+		<div id="meta_tags" <?php if($meta_generated) { echo 'style="display:none;"'; } ?>>
 			<div class="control-group">
 				<label class="control-label" for="meta_title">Title</label>
 				<div class="controls">

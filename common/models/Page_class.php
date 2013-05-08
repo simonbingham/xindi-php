@@ -172,6 +172,7 @@ class Page_class extends MY_Model
 	 */
 	function save_page($page, $id=0, $ancestor_id=0) 
 	{
+		$page['meta_generated'] = ($page['meta_generated'] === 'TRUE'); // ensure meta_generated is a boolean
 		$this->db->trans_start();
 			// generate meta tags
 			if ($page['meta_generated'])

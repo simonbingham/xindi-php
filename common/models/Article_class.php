@@ -90,6 +90,7 @@ class Article_class extends MY_Model
 	 */
 	function save_article($article, $id=0) 
 	{
+		$article['meta_generated'] = ($article['meta_generated'] === 'TRUE'); // ensure meta_generated is a boolean
 		$article['published'] = parent::string_to_timestamp($article['published']);
 		// new article so generate slug
 		if (! $id) 
