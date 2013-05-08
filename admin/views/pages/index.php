@@ -12,6 +12,7 @@ echo render_message($userdata, $message);
 			<tr>
 				<th>Title</th>
 				<th>Last Updated</th>
+				<th class="center">View</th>
 				<th class="center"><abbr title="Add a page below this page in the site hierarchy">Add</abbr></th>
 				<th class="center">Edit</th>
 				<th class="center">Delete</th>
@@ -23,6 +24,7 @@ echo render_message($userdata, $message);
 				<tr>
 					<td style="padding-left:<?php echo $page->depth * 15 + 5; ?>px"><?php echo $page->title ?></td>
 					<td><?php echo format_date($page->updated) ?></td>
+					<td class="center"><a href="<?php echo str_replace('/admin/', '/', site_url($page->slug)); ?>" title="View page [opens in new tab]" target="_blank"><i class="icon-eye-open"></i></a></td>					
 					<td class="center">
 						<?php // restrict page depth to three levels ?>
 						<?php if($page->depth < 2) { ?>

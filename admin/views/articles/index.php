@@ -15,6 +15,7 @@ echo render_message($userdata, $message);
 				<th>Title</th>
 				<th>Published</th>
 				<th>Last Updated</th>
+				<th class="center">View</th>
 				<th class="center">Edit</th>
 				<th class="center">Delete</th>
 			</tr>
@@ -26,6 +27,8 @@ echo render_message($userdata, $message);
 					<td><?php echo $article->title ?></td>
 					<td><?php echo format_date($article->published, 'd/m/Y') ?></td>
 					<td><?php echo format_date($article->updated) ?></td>
+					<?php // TODO: amend value of '/news/' if news page route changes ?>
+					<td class="center"><a href="<?php echo str_replace('/admin/', '/', site_url('/news/' . $article->slug)); ?>" title="View article [opens in new tab]" target="_blank"><i class="icon-eye-open"></i></a></td>
 					<td class="center">
 						<?php $editlnk = array('articles/maintain', $article->id); ?>
 						<a href="<?php echo site_url($editlnk) ?>" title="Edit"><i class="icon-pencil"></i></a>
