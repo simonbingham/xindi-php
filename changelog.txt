@@ -3,3 +3,4 @@
 - Updated Xindi logo.
 - Fixed bug preventing navigation links with sub pages from working.
 - Hide meta tag form fields when generate meta tags automatically is selected.
+- Add view page links to admin.
