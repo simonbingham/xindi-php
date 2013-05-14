@@ -1,6 +1,9 @@
-- Added editor stylesheet.
+Version 2013.5.14
+
+- Added text editor stylesheet.
 - Added placeholder images to sample site.
 - Updated Xindi logo.
-- Fixed bug preventing navigation links with sub pages from working.
+- Fixed bug that was preventing navigation links with sub level pages working.
 - Hide meta tag form fields when generate meta tags automatically is selected.
-- Add view page links to admin.
+- Add preview page links to admin.
+- Changed version number format to 'YYYY.MM.DD'.
