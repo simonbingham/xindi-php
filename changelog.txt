@@ -1,6 +1,7 @@
 Version XXXX.XX.XX
 
 - Removed links to favicons located in root directory.
+- Removed Eclipse files from repository.
 
 Version 2013.5.14
 
