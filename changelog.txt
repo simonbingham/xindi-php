@@ -2,6 +2,7 @@ Version XXXX.XX.XX
 
 - Removed links to favicons located in root directory.
 - Removed Eclipse files from repository.
+- Implemented query caching.
 
 Version 2013.5.14
 

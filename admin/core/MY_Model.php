@@ -13,6 +13,7 @@ class MY_Model extends CI_Model
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->helper('file');
 	}
 
 	// ------------------------ PROTECTED METHODS ------------------------ //
@@ -28,6 +29,7 @@ class MY_Model extends CI_Model
 	{
 		$this->db->where('id', $id);
 		$this->db->delete($tbl);
+		$this->clear_cache();
 	}
 	
 	/**
@@ -169,15 +171,16 @@ class MY_Model extends CI_Model
 		{
 			$data['created'] = $current_date;
 			$this->db->insert($tbl, $data);
-			return $this->db->insert_id();			
+			$id = $this->db->insert_id();			
 		}
 		// existing record 
 		else 
 		{
 			$this->db->where('id', $id);
 			$this->db->update($tbl, $data);
-			return $id;
 		}
+		$this->clear_cache();
+		return $id;
 	}
 
 	/**
@@ -193,6 +196,17 @@ class MY_Model extends CI_Model
 	}
 	
 	// ------------------------ PRIVATE METHODS ------------------------ //
+
+	/**
+	 * I clear the cache
+	 *
+	 * @access private
+	 * @return boolean
+	 */	
+	private function clear_cache()
+	{
+		return delete_files('../cache/', TRUE);
+	}	
 	
 	/**
 	 * I return true if a slug is unique
