@@ -1,3 +1,7 @@
+Version XXXX.XX.XX
+
+- Removed links to favicons located in root directory.
+
 Version 2013.5.14
 
 - Added text editor stylesheet.
