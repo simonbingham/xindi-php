@@ -61,7 +61,7 @@ class Enquiries extends MY_Controller
 			$this->email->from($data['email'], $data['name']);
 			$this->email->to($this->config->item('enquiry_to'));
 			$this->email->subject($this->config->item('enquiry_subject'));
-			$this->email->message($data['message']);
+			$this->email->message($this->load->view('enquiries/email', $data, true));
 			$this->email->send();
 			/*
 			echo $this->email->print_debugger();
