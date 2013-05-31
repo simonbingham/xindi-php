@@ -4,6 +4,7 @@ Version XXXX.XX.XX
 - Removed Eclipse files from repository.
 - Implemented query caching.
 - Added email template for enquiry form.
+- Fixed RSS feed bug.
 
 Version 2013.5.14
 

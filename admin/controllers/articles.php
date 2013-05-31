@@ -14,6 +14,7 @@ class Articles extends MY_Controller
 	{
 		parent::__construct();
 		parent::redirect_to_login_form_if_not_logged_in();
+		$this->load->helper(array('file','text'));
 		$this->load->model('Article_class');
 	}
 
@@ -33,9 +34,38 @@ class Articles extends MY_Controller
 			redirect('articles/index/','refresh');
 		}
 		$this->Article_class->delete_article($id);
+		$this->generate_feed();
 		$message = array('type'=>'success', 'text'=>'The article has been deleted.');
 		$this->session->set_flashdata($message);
 		redirect('articles/index/','refresh');
+	}
+	
+	/**
+	 * I generate an article RSS feed
+	 * @access public
+	 * @return void
+	 */	
+	function generate_feed()
+	{
+		$articles = $this->Article_class->get_articles(10)->result();
+		$output = '<?xml version="1.0" encoding="ISO-8859-1" ?>' . "\n";
+		$output .= '<rss version="2.0">' . "\n";
+		$output .= '<channel>' . "\n";
+		$output .= '<title>' . $this->config->item('feed_title') . '</title>' . "\n";
+		$output .= '<link>' . $this->config->item('feed_link') . '</link>' . "\n";
+		$output .= '<description>' . $this->config->item('feed_description') . '</description>' . "\n";
+		foreach($articles as $article) {
+			$output .= '<item>' . "\n";
+			$output .= '<title>' . $article->title . '</title>' . "\n";
+			$output .= '<link>' . site_url('news/' . $article->slug) . '</link>' . "\n";
+			$output .= '<description>' . html_entity_decode(word_limiter(strip_tags($article->content),50)) . '</description>' . "\n";
+			$output .= '<pubdate>' . date('D, d M Y H:i:s O', strtotime($article->published)) . '</pubdate>' . "\n";
+			$output .= '</item>' . "\n";
+		}
+		$output .= '</channel>' . "\n";
+		$output .= '</rss>';
+		$file_path = str_replace('admin', 'feeds\\articles.rss', realpath('.'));
+		write_file($file_path, $output);
 	}	
 
 	/**
@@ -108,6 +138,7 @@ class Articles extends MY_Controller
 			$id = intval($this->input->post('id'));
 			$article = parent::populate($this->input->post(), array('title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords', 'author', 'published'), array('meta_generated'=>FALSE));
 			$id = $this->Article_class->save_article($article, $id);
+			$this->generate_feed();
 			$message = array('type'=>'success', 'text'=>'The article has been saved.');
 			$this->session->set_flashdata($message);
 			if ($this->input->post('submit') === 'Save & continue')

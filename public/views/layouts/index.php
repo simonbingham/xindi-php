@@ -16,7 +16,7 @@
 		<link href="public/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link href="public/assets/css/core.css" rel="stylesheet">
 		
-		<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo site_url('news/feed') ?>">
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo base_url('feeds/articles.rss') ?>">
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		

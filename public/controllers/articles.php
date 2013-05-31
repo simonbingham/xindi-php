@@ -13,7 +13,7 @@ class Articles extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->helper(array('date', 'text', 'xml'));		
+		$this->load->helper('text');
 		$this->load->model('Article_class');
 	}
 
@@ -55,23 +55,6 @@ class Articles extends MY_Controller
 		{
 			show_404();
 		}
-	}
-	
-	/**
-	 * I generate an article RSS feed
-	 * @access public
-	 * @return void
-	 */	
-	function feed()
-	{
-		$this->output->enable_profiler(FALSE); // suppress appending of debug information to page 
-		$data['articles'] = $this->Article_class->get_articles(10)->result();
-		$data['feed_title'] = $this->config->item('feed_title');
-		$data['feed_link'] = $this->config->item('feed_link');
-		$data['feed_description'] = $this->config->item('feed_description');
-		header("Content-Type: application/rss+xml");
-		// TODO: remove whitespace from generated xml
-		$this->load->view('articles/feed', $data);	
 	}
 
 }

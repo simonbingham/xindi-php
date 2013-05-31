@@ -374,9 +374,9 @@ $config['enquiry_to'] = '';
 $config['enquiry_subject'] = '';
 
 // rss feed settings
-$config['feed_title'] = '';
-$config['feed_link'] = '';
-$config['feed_description'] = '';
+$config['feed_title'] = 'RSS feed title';
+$config['feed_link'] = 'http://www.your-domain-name.com/';
+$config['feed_description'] = 'RSS feed description';
 
 // search result settings
 $config['search_result_exclusions'] = array('news','contact'); // slugs of pages to exclude from search results
