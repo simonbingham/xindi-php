@@ -5,6 +5,7 @@ Version XXXX.XX.XX
 - Implemented query caching.
 - Added email template for enquiry form.
 - Fixed RSS feed bug.
+- Add password recovery form.
 
 Version 2013.5.14
 

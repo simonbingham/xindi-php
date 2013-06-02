@@ -70,6 +70,61 @@ class Security extends MY_Controller
 		$data['message'] = array('type'=>'success', 'text'=>'You have been logged out.');
 		$layout_data['content_body'] = $this->load->view('security/index', $data, true);
 		$this->load->view('layouts/index', $layout_data);
+	}
+	
+	/**
+	 * I display a forgotten password form
+	 * @access public
+	 * @return void
+	 */	
+	function forgottenpassword() 
+	{
+		$layout_data['content_body'] = $this->load->view('security/forgottenpassword', array(), true);
+		$this->load->view('layouts/index', $layout_data);
+	}
+	
+	/**
+	 * I process a forgotten password form
+	 * @access public
+	 * @return void
+	 */	
+	function doforgottenpassword()
+	{
+		$email = $this->input->post('email');
+		$user = $this->User_class->get_user_by_email($email)->result_array();
+		if (empty($user))
+		{
+			$message = array('type'=>'error', 'text'=>'Sorry, no user accounts were found matching &quot;' . $email . '&quot;.');
+			$this->session->set_flashdata($message);
+			redirect('security/forgottenpassword/','refresh');			
+		}
+		else
+		{
+			// generate new password and save to database
+			$user = $user[0];
+			$password_not_hashed = $this->User_class->generate_password();
+			$password_hashed = do_hash($password_not_hashed, 'md5');
+			$user['password'] = $password_hashed;
+			$id = $user['id'];
+			$this->User_class->save_user($user, $id);
+			
+			// email new password to user
+			$this->load->library('email');
+			$this->email->from($this->config->item('forgotten_password_from_email'), $this->config->item('forgotten_password_from_name'));
+			$this->email->to($this->config->item($user['email']));
+			$this->email->subject($this->config->item('forgotten_password_subject'));
+			$this->email->message($this->load->view('security/email', array('password'=>$password_not_hashed), true));
+			$this->email->send();
+			/*
+			echo $this->email->print_debugger();
+			die();
+			*/
+			
+			// display confirmation message
+			$message = array('type'=>'success', 'text'=>'A new password has been sent to ' . $user['email'] . '.');
+			$this->session->set_flashdata($message);
+			redirect('security/index/','refresh');
+		}
 	}	
 
 }

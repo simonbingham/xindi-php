@@ -28,7 +28,17 @@ class User_class extends MY_Model
 	}	
 
 	/**
-	 * I return a user matching a username and password
+	 * I generate a password
+	 * @access public
+	 * @return string
+	 */	
+	function generate_password() {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		return substr(str_shuffle($chars), 0, 8);
+	}	
+	
+	/**
+	 * I return a user matching an email address and password
 	 * @access public
 	 * @param string $email
 	 * @param string $password
@@ -37,6 +47,17 @@ class User_class extends MY_Model
 	function get_user_by_credentials($email, $password)
 	{
 		return $this->db->get_where($this->tbl, array('email'=>$email, 'password'=>$password), 1);
+	}	
+	
+	/**
+	 * I return a user matching an email address
+	 * @access public
+	 * @param string $email
+	 * @return array
+	 */
+	function get_user_by_email($email)
+	{
+		return $this->db->get_where($this->tbl, array('email'=>$email), 1);
 	}	
 	
 	/**

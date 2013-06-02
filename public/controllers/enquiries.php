@@ -56,7 +56,6 @@ class Enquiries extends MY_Controller
 		// validation success
 		else
 		{
-			
 			$this->load->library('email');
 			$this->email->from($data['email'], $data['name']);
 			$this->email->to($this->config->item('enquiry_to'));
