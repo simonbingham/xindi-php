@@ -141,6 +141,10 @@ class Users extends MY_Controller
 		{
 			$id = intval($this->input->post('id'));
 			$user = parent::populate($this->input->post(), array('id', 'name', 'email', 'password'));
+			if(!$validate_password)
+			{
+				unset($user['password']);
+			}			
 			$id = $this->User_class->save_user($user, $id);
 			$message = array('type'=>'success', 'text'=>'The user has been saved.');
 			$this->session->set_flashdata($message);
