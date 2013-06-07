@@ -134,6 +134,7 @@ class Users extends MY_Controller
 			$data = parent::populate($this->input->post(), array('id', 'name', 'email', 'password', 'context'));
 			// flash data can only be used with redirects so we can't use it here
 			$data['message'] = array('type'=>'error', 'text'=>'Please amend the highlighted fields.');
+			$data['context'] = $context;
 			$layout_data['content_body'] = $this->load->view('users/maintain', $data, true);
 			$this->load->view('layouts/index', $layout_data);
 		}

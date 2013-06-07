@@ -7,6 +7,7 @@ Version XXXX.XX.XX
 - Fixed RSS feed bug.
 - Add password recovery form.
 - Fixed bug causing password to be deleted from database when a user account was updated and password was not changed.
+- Fixed bug to pass 'context' parameter back to forms when validation fails.
 
 Version 2013.5.14
 

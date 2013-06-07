@@ -129,6 +129,7 @@ class Articles extends MY_Controller
 			$data = parent::populate($this->input->post(), array('id', 'title', 'content', 'meta_generated', 'meta_title', 'meta_description', 'meta_keywords', 'author', 'published', 'context'), array('meta_generated'=>FALSE));
 			// flash data can only be used with redirects so we can't use it here
 			$data['message'] = array('type'=>'error', 'text'=>'Please amend the highlighted fields.');
+			$data['context'] = $context;
 			$layout_data['content_body'] = $this->load->view('articles/maintain', $data, true);
 			$this->load->view('layouts/index', $layout_data);
 		}
