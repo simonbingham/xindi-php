@@ -37,7 +37,7 @@ class Security extends MY_Controller
 	 * @access public
 	 * @return void
 	 */	
-	function dologin()
+	function do_login()
 	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
@@ -63,7 +63,7 @@ class Security extends MY_Controller
 	 * I process a user logout
 	 * @access public
 	 */
-	function dologout()
+	function do_logout()
 	{
 		$this->session->sess_destroy();
 		// flash data can only be used with redirects so we can't use it here
@@ -77,7 +77,7 @@ class Security extends MY_Controller
 	 * @access public
 	 * @return void
 	 */	
-	function forgottenpassword() 
+	function forgotten_password() 
 	{
 		$layout_data['content_body'] = $this->load->view('security/forgottenpassword', array(), true);
 		$this->load->view('layouts/index', $layout_data);
@@ -88,7 +88,7 @@ class Security extends MY_Controller
 	 * @access public
 	 * @return void
 	 */	
-	function doforgottenpassword()
+	function do_forgotten_password()
 	{
 		$email = $this->input->post('email');
 		$user = $this->User_class->get_user_by_email($email)->result_array();
@@ -96,7 +96,7 @@ class Security extends MY_Controller
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, no user accounts were found matching &quot;' . $email . '&quot;.');
 			$this->session->set_flashdata($message);
-			redirect('security/forgottenpassword/','refresh');			
+			redirect('security/forgotten_password/','refresh');			
 		}
 		else
 		{

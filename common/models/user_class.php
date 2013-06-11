@@ -24,6 +24,7 @@ class User_class extends MY_Model
 	 */
 	function delete_user($id) 
 	{
+		$id = intval($id);
 		parent::delete($this->tbl, $id);
 	}	
 
@@ -68,6 +69,7 @@ class User_class extends MY_Model
 	 */
 	function get_user_by_id($id) 
 	{
+		$id = intval($id);
 		return parent::get_by_id($this->tbl, $id);
 	}
 		
@@ -106,6 +108,7 @@ class User_class extends MY_Model
 	 */
 	function save_user($user, $id=0) 
 	{
+		$id = intval($id);
 		return parent::save($this->tbl, $user, $id);
 	}
 	

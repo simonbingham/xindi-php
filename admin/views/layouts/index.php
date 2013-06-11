@@ -52,7 +52,7 @@
 								<li><a href="<?php echo site_url('articles/index') ?>">News</a></li>
 								<li><a href="<?php echo site_url('enquiries/index') ?>">Enquiries<?php if ($this->unread_enquiry_count) { ?><span class="badge badge-info"><abbr title="Unread enquiries"><?php echo $this->unread_enquiry_count; ?></abbr></span><?php } ?></a></li>
 								<li><a href="<?php echo site_url('users/index') ?>">Users</a></li>
-								<li><a href="<?php echo site_url('security/dologout') ?>">Logout</a></li>
+								<li><a href="<?php echo site_url('security/do_logout') ?>">Logout</a></li>
 							</ul>
 						</div>
 					<?php 

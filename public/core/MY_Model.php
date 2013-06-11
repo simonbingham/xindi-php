@@ -54,6 +54,7 @@ class MY_Model extends CI_Model
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
+		$id = intval($id);
 		$current_date = date("Y-m-d H:i:s");
 		$data['updated'] = $current_date;
 		// new record 

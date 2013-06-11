@@ -13,7 +13,7 @@ class Enquiries extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		parent::redirect_to_login_form_if_not_logged_in();		
+		parent::redirect_to_login_form($this->session);
 	}
 
 	/**
@@ -78,6 +78,7 @@ class Enquiries extends MY_Controller
 	function mark_read()
 	{
 		$id = $this->input->post('id');
+		$id = intval($id);
 		$affectedrows = $this->Enquiry_class->mark_read($id);
 		if ($affectedrows == 1)
 		{

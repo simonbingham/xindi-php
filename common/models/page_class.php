@@ -24,6 +24,7 @@ class Page_class extends MY_Model
 	 */
 	function delete_page($id) 
 	{
+		$id = intval($id);
 		$this->db->trans_start();
 			$page = $this->get_page_by_id($id)->row();
 			parent::delete($this->tbl, $page->id);
@@ -103,6 +104,7 @@ class Page_class extends MY_Model
 	 */
 	function get_page_by_id($id)
 	{
+		$id = intval($id);
 		return parent::get_by_id($this->tbl, $id);
 	}
 	
@@ -172,6 +174,8 @@ class Page_class extends MY_Model
 	 */
 	function save_page($page, $id=0, $ancestor_id=0) 
 	{
+		$id = intval($id);
+		$ancestor_id = intval($ancestor_id);
 		$page['meta_generated'] = ($page['meta_generated'] === 'TRUE'); // ensure meta_generated is a boolean
 		$this->db->trans_start();
 			// generate meta tags

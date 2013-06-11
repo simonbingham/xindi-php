@@ -6,7 +6,7 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<form method="post" action="<?php echo site_url('security/doforgottenpassword') ?>" id="forgotten-password-form" class="clear">
+<form method="post" action="<?php echo site_url('security/do_forgotten_password') ?>" id="forgotten-password-form" class="clear">
 	<fieldset>
 		<div class="control-group">
 			<label class="control-label" for="email">Email Address *</label>

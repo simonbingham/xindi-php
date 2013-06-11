@@ -63,13 +63,18 @@ class MY_Controller extends CI_Controller
 	/**
 	 * I redirect the user to the login form if they are not logged in
 	 * @access protected
+	 * @param object $session
 	 * @return void
 	 */	
-	protected function redirect_to_login_form_if_not_logged_in()
+	protected function redirect_to_login_form($session)
 	{	
-		if (! $this->session->userdata('is_logged_in'))
+		$session = (array)$session; // convert session object to an array
+		$user_data = $session['userdata'];
+		
+		// user is not logged in
+		if (! $user_data['is_logged_in'])
 		{
-			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to maintain your site.');
+			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to access the requested resource.');
 			$this->session->set_flashdata($message);
 			redirect('security/index/','refresh');
 		}

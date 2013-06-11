@@ -6,7 +6,7 @@ $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
 ?>
 
-<form method="post" action="<?php echo site_url('security/dologin') ?>" id="login-form" class="clear">
+<form method="post" action="<?php echo site_url('security/do_login') ?>" id="login-form" class="clear">
 	<fieldset>
 		<div class="control-group">
 			<label class="control-label" for="email">Email Address *</label>
@@ -19,7 +19,7 @@ echo render_message($userdata, $message);
 			<label class="control-label" for="password">Password *</label>
 			<div class="controls">
 				<input class="input-xlarge" type="password" name="password" id="password" value="" maxlength="50" placeholder="Password">
-				<br><a href="<?php echo site_url('security/forgottenpassword') ?>">Forgotten Password?</a>
+				<br><a href="<?php echo site_url('security/forgotten_password') ?>">Forgotten Password?</a>
 			</div>
 		</div>			
 	</fieldset>

@@ -24,6 +24,7 @@ class Enquiry_class extends MY_Model
 	 */
 	function delete_enquiry($id) 
 	{
+		$id = intval($id);
 		parent::delete($this->tbl, $id);
 	}	
 
@@ -35,6 +36,7 @@ class Enquiry_class extends MY_Model
 	 */
 	function get_enquiry_by_id($id)
 	{
+		$id = intval($id);
 		return parent::get_by_id($this->tbl, $id);
 	}
 		
@@ -67,6 +69,7 @@ class Enquiry_class extends MY_Model
 	 */
 	function mark_read($id) 
 	{
+		$id = intval($id);
 		$data = array('is_read' => TRUE);
 		$this->db->where('id', $id);
 		$this->db->update($this->tbl, $data);

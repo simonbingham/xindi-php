@@ -13,7 +13,7 @@ class Articles extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		parent::redirect_to_login_form_if_not_logged_in();
+		parent::redirect_to_login_form($this->session);
 		$this->load->helper(array('file','text'));
 		$this->load->model('Article_class');
 	}

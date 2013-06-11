@@ -27,6 +27,7 @@ class MY_Model extends CI_Model
 	 */
 	protected function delete($tbl, $id) 
 	{
+		$id = intval($id);
 		$this->db->where('id', $id);
 		$this->db->delete($tbl);
 		$this->clear_cache();
@@ -150,6 +151,7 @@ class MY_Model extends CI_Model
 	 */
 	protected function get_by_id($tbl, $id) 
 	{
+		$id = intval($id);
 		$this->db->where('id', $id);
 		return $this->db->get($tbl);
 	}
@@ -164,6 +166,7 @@ class MY_Model extends CI_Model
 	 */
 	protected function save($tbl, $data, $id=0) 
 	{
+		$id = intval($id);
 		$current_date = date("Y-m-d H:i:s");
 		$data['updated'] = $current_date;
 		// new record 

@@ -24,6 +24,7 @@ class Article_class extends MY_Model
 	 */
 	function delete_article($id) 
 	{
+		$id = intval($id);
 		parent::delete($this->tbl, $id);
 	}	
 
@@ -35,6 +36,7 @@ class Article_class extends MY_Model
 	 */
 	function get_article_by_id($id)
 	{
+		$id = intval($id);
 		return parent::get_by_id($this->tbl, $id);
 	}
 	
@@ -90,6 +92,7 @@ class Article_class extends MY_Model
 	 */
 	function save_article($article, $id=0) 
 	{
+		$id = intval($id);
 		$article['meta_generated'] = ($article['meta_generated'] === 'TRUE'); // ensure meta_generated is a boolean
 		$article['published'] = parent::string_to_timestamp($article['published']);
 		// new article so generate slug
