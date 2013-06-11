@@ -54,7 +54,8 @@ class Articles extends MY_Controller
 		$output .= '<title>' . $this->config->item('feed_title') . '</title>' . "\n";
 		$output .= '<link>' . $this->config->item('feed_link') . '</link>' . "\n";
 		$output .= '<description>' . $this->config->item('feed_description') . '</description>' . "\n";
-		foreach($articles as $article) {
+		foreach($articles as $article) 
+		{
 			$output .= '<item>' . "\n";
 			$output .= '<title>' . $article->title . '</title>' . "\n";
 			$output .= '<link>' . site_url('news/' . $article->slug) . '</link>' . "\n";

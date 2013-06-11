@@ -17,7 +17,7 @@ class User_class extends MY_Model
 	}
 
 	/**
-	 * I deletes a user matching an id
+	 * I delete a user matching an id
 	 * @access public
 	 * @param integer $id
 	 * @return void

@@ -21,7 +21,8 @@ class Pages extends MY_Controller {
 	public function view($url_part_1='', $url_part_2='')
 	{
 		$slug = $url_part_1;
-		if (strlen($url_part_2)) {
+		if (strlen($url_part_2)) 
+		{
 			$slug .= '/' . $url_part_2;
 		}
 		$page = $this->Page_class->get_page_by_slug($slug)->row();
