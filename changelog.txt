@@ -1,6 +1,7 @@
 Version XXXX.X.X
 
 - Implemented consistent function names.
+- Implement ability to sort pages.
 
 Version 2013.6.9
 

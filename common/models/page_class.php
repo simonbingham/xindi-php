@@ -36,6 +36,21 @@ class Page_class extends MY_Model
 	}
 
 	/**
+	 * I return an array of child pages
+	 * @access public
+	 * @param integer $id
+	 * @return array
+	 */
+	function get_children($id) 
+	{
+		$this->db->select('*');
+		$this->db->from($this->tbl);
+		$this->db->where('ancestor_id', $id);
+		$this->db->order_by('left_value', 'asc');
+		return $this->db->get();
+	}
+	
+	/**
 	 * I return the site navigation
 	 * @access public
 	 * @param boolean $apply_classes (optional)

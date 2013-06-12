@@ -94,8 +94,10 @@ echo render_message($userdata, $message);
 	<input type="hidden" name="context" id="context" value="<?php echo $context; ?>">
 </form>
 
-<script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="assets/js/jquery.validate.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>window.jQuery.ui || document.write('<script src="assets/js/jquery-ui.min.js"><\/script>')</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+<script>$.fn.validate || document.write('<script src="assets/js/jquery.validate.min.js"><\/script>')</script>
 <script>
 jQuery(function($) {
 	$(".datepicker").datepicker({ dateFormat:"dd/mm/yy" });

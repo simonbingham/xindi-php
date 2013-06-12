@@ -18,7 +18,8 @@
 		
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo base_url('feeds/articles.rss') ?>">
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="assets/js/jquery-1.9.1.js"><\/script>')</script>
 		
 		<?php if(strlen($this->config->item('google_analytics_tracking_id')) && ENVIRONMENT == 'production') { ?>
 			<script type="text/javascript">

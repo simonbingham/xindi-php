@@ -134,6 +134,19 @@ class Pages extends MY_Controller
 			}
 		}
 	}
+	
+	/**
+	 * I display a list of pages that can be sorted
+	 * @access public
+	 * @param integer $id ancestor id
+	 * @return void
+	 */	
+	function sort($id)
+	{
+		$data['pages'] = $this->Page_class->get_children($id)->result();
+		$layout_data['content_body'] = $this->load->view('pages/sort', $data, true);
+		$this->load->view('layouts/index', $layout_data);
+	}	
 		
 	// ------------------------ PRIVATE METHODS ------------------------ //
 	

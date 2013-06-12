@@ -14,6 +14,7 @@ echo render_message($userdata, $message);
 				<th>Last Updated</th>
 				<th class="center">View</th>
 				<th class="center"><abbr title="Add a page below this page in the site hierarchy">Add</abbr></th>
+				<th class="center">Sort</th>
 				<th class="center">Edit</th>
 				<th class="center">Delete</th>
 			</tr>
@@ -32,6 +33,12 @@ echo render_message($userdata, $message);
 							<a href="<?php echo site_url($createlnk) ?>" title="Add page"><i class="icon-plus"></i></a>
 						<?php } ?>
 					</td>
+					<td class="center">
+						<?php if($page->right_value - $page->left_value > 1) { ?>
+							<?php $sortlnk = array('pages/sort', $page->id); ?>
+							<a href="<?php echo site_url($sortlnk) ?>" title="Sort"><i class="icon-retweet"></i></a>
+						<?php } ?>
+					</td>						
 					<td class="center">
 						<?php $updatelnk = array('pages/maintain', $page->id); ?>
 						<a href="<?php echo site_url($updatelnk) ?>" title="Edit"><i class="icon-pencil"></i></a>
