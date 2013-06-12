@@ -72,7 +72,7 @@ class MY_Controller extends CI_Controller
 		$user_data = $session['userdata'];
 		
 		// user is not logged in
-		if (isset($user_data['is_logged_in']) && ! $user_data['is_logged_in'])
+		if (!isset($user_data['is_logged_in']))
 		{
 			$message = array('type'=>'error', 'text'=>'Sorry, you must be logged in to access the requested resource.');
 			$this->session->set_flashdata($message);
