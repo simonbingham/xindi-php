@@ -29,7 +29,8 @@ echo render_message($userdata, $message);
 	</div>
 </form>
 
-<script src="assets/js/jquery.validate.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
+<script>$.fn.validate || document.write('<script src="assets/js/jquery.validate.min.js"><\/script>')</script>
 <script>
 jQuery(function($) {
 	// form validation (http://docs.jquery.com/Plugins/Validation)

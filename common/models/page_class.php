@@ -36,6 +36,21 @@ class Page_class extends MY_Model
 	}
 
 	/**
+	 * I return an array of child pages
+	 * @access public
+	 * @param integer $id
+	 * @return array
+	 */
+	function get_children($id) 
+	{
+		$this->db->select('*');
+		$this->db->from($this->tbl);
+		$this->db->where('ancestor_id', $id);
+		$this->db->order_by('left_value', 'asc');
+		return $this->db->get();
+	}
+	
+	/**
 	 * I return the site navigation
 	 * @access public
 	 * @param boolean $apply_classes (optional)
@@ -202,6 +217,23 @@ class Page_class extends MY_Model
 			$page = parent::save($this->tbl, $page, $id);
 		$this->db->trans_complete();
 		return $page;
+	}
+	
+	/**
+	 * I save the sort order of pages
+	 * @access public
+	 * @param object $pages
+	 * @return boolean
+	 */	
+	function save_sort_order($pages) {
+		$this->db->trans_start();
+			foreach($pages as $page) {
+				$sql = 'UPDATE ' . $this->tbl . ' SET left_value = ' . intval($page->left_value) . ', right_value = ' . intval($page->right_value) . ' WHERE id = ' . intval($page->id) . ';';
+				$this->db->query($sql);
+			}
+		$this->db->trans_complete();
+		parent::clear_cache();
+		return true;
 	}
 	
 }

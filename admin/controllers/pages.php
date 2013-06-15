@@ -134,6 +134,35 @@ class Pages extends MY_Controller
 			}
 		}
 	}
+	
+	/**
+	 *  I save the sort order of pages
+	 * @access public
+	 * @return void
+	 */	
+	function save_sort(){
+		$this->output->enable_profiler(FALSE);
+		$saved = FALSE;
+		if (!is_null($this->input->post('payload'))){
+			$pages = json_decode($this->input->post('payload'));
+			$saved = $this->Page_class->save_sort_order($pages);
+		}
+		// convert result to JavaScript boolean
+		echo $saved ? 'true' : 'false';
+	}	
+	
+	/**
+	 * I display a list of pages that can be sorted
+	 * @access public
+	 * @param integer $id ancestor id
+	 * @return void
+	 */	
+	function sort($id)
+	{
+		$data['pages'] = $this->Page_class->get_children($id)->result();
+		$layout_data['content_body'] = $this->load->view('pages/sort', $data, true);
+		$this->load->view('layouts/index', $layout_data);
+	}	
 		
 	// ------------------------ PRIVATE METHODS ------------------------ //
 	

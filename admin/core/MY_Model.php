@@ -19,6 +19,17 @@ class MY_Model extends CI_Model
 	// ------------------------ PROTECTED METHODS ------------------------ //
 	
 	/**
+	 * I clear the cache
+	 *
+	 * @access protected
+	 * @return boolean
+	 */	
+	protected function clear_cache()
+	{
+		return delete_files('../cache/', TRUE);
+	}		
+	
+	/**
 	 * I delete a record matching an id
 	 * @access protected
 	 * @param string $tbl
@@ -200,17 +211,6 @@ class MY_Model extends CI_Model
 	
 	// ------------------------ PRIVATE METHODS ------------------------ //
 
-	/**
-	 * I clear the cache
-	 *
-	 * @access private
-	 * @return boolean
-	 */	
-	private function clear_cache()
-	{
-		return delete_files('../cache/', TRUE);
-	}	
-	
 	/**
 	 * I return true if a slug is unique
 	 * @access private

@@ -11,10 +11,11 @@
 
 		<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link href="assets/css/dark-hive/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+		<link href="assets/css/dark-hive/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
 		<link href="assets/css/core.css" rel="stylesheet">
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="assets/js/jquery-1.9.1.js"><\/script>')</script>
 		
 		<link rel="shortcut icon" href="assets/ico/favicon.ico">
 		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144x144-precomposed.png">
