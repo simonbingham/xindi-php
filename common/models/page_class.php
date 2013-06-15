@@ -219,4 +219,21 @@ class Page_class extends MY_Model
 		return $page;
 	}
 	
+	/**
+	 * I save the sort order of pages
+	 * @access public
+	 * @param object $pages
+	 * @return boolean
+	 */	
+	function save_sort_order($pages) {
+		$this->db->trans_start();
+			foreach($pages as $page) {
+				$sql = 'UPDATE ' . $this->tbl . ' SET left_value = ' . intval($page->left_value) . ', right_value = ' . intval($page->right_value) . ' WHERE id = ' . intval($page->id) . ';';
+				$this->db->query($sql);
+			}
+		$this->db->trans_complete();
+		parent::clear_cache();
+		return true;
+	}
+	
 }

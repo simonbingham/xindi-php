@@ -1,6 +1,10 @@
 <h1>Pages</h1>
 
 <?php 
+$uri_string = explode('/', uri_string());
+if (array_pop($uri_string) === 'sortordersaved') {
+	$message = array('type'=>'success', 'text'=>'The sort order has been updated.');
+}
 $userdata = $this->session->all_userdata();
 $message = isset($message) ? $message : '';
 echo render_message($userdata, $message);
