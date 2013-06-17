@@ -15,7 +15,6 @@ class Articles extends MY_Controller
 		parent::__construct();
 		parent::redirect_to_login_form($this->session);
 		$this->load->helper(array('file','text'));
-		$this->load->model('Article_class');
 	}
 
 	/**

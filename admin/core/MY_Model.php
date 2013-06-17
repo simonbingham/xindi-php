@@ -2,6 +2,9 @@
 class MY_Model extends CI_Model 
 {
 	
+	public $tbl_articles = 'articles';
+	public $tbl_pages = 'pages';
+	
 	// ------------------------ PUBLIC METHODS ------------------------ //
 	
 	/**
@@ -42,6 +45,7 @@ class MY_Model extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->delete($tbl);
 		$this->clear_cache();
+		$this->generate_sitemap_xml();
 	}
 	
 	/**
@@ -137,7 +141,7 @@ class MY_Model extends CI_Model
 			$slug .= "-";
 		}
 		return $slug;
-	}	
+	}
 		
 	/**
 	 * I return an array of records
@@ -194,6 +198,7 @@ class MY_Model extends CI_Model
 			$this->db->update($tbl, $data);
 		}
 		$this->clear_cache();
+		$this->generate_sitemap_xml();
 		return $id;
 	}
 
@@ -211,6 +216,36 @@ class MY_Model extends CI_Model
 	
 	// ------------------------ PRIVATE METHODS ------------------------ //
 
+	/**
+	 * I generate a sitemap xml file
+	 * @access private
+	 * @return void
+	 */	
+	private function generate_sitemap_xml()
+	{
+		$results = $this->db->query('
+			SELECT CONCAT(\'news/\', slug) AS slug, title, DATE_FORMAT(published, \'%Y-%m-%dT%H:%i:%s+00:00\') AS last_updated
+			FROM ' . $this->tbl_articles . '
+			UNION
+			SELECT slug, title, DATE_FORMAT(updated, \'%Y-%m-%dT%H:%i:%s+00:00\') AS last_updated
+			FROM ' . $this->tbl_pages . '
+			ORDER BY last_updated DESC;			
+		');
+		$output = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+		$output .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
+		foreach($results->result() as $result) 
+		{
+			$output .= '<url>' . "\n";
+			$output .= '<loc>' . str_replace('admin/', '', site_url($result->slug)) . '</loc>' . "\n";
+			$output .= '<lastmod>' . $result->last_updated . '</lastmod>' . "\n";
+			$output .= '<changefreq>weekly</changefreq>' . "\n";
+			$output .= '</url>' . "\n";
+		}
+		$output .= '</urlset>' . "\n";
+		$file_path = str_replace('admin', 'sitemap.xml', realpath('.'));
+		write_file($file_path, trim($output));
+	}	
+	
 	/**
 	 * I return true if a slug is unique
 	 * @access private

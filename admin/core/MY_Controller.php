@@ -19,8 +19,11 @@ class MY_Controller extends CI_Controller
 		$this->load->library(array('session','form_validation'));
 		$this->form_validation->set_error_delimiters('<span class="error">','</span>');
 		
-		// load enquiry count on every page request
+		$this->load->model('Article_class');
 		$this->load->model('Enquiry_class');
+		$this->load->model('Page_class');
+		
+		// load enquiry count on every page request
 		$this->unread_enquiry_count = $this->Enquiry_class->get_unread_count();		
 		
 		// append debug information to page
