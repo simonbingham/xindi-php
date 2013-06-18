@@ -26,8 +26,39 @@ class Article_class extends MY_Model
 	{
 		$id = intval($id);
 		parent::delete($this->tbl, $id);
-	}	
-
+	}
+	
+	/**
+	 * I generate an article RSS feed
+	 * @access public
+	 * @param string $feed_title
+	 * @param string $feed_link
+	 * @param string $feed_description
+	 * @return string
+	 */	
+	function generate_feed($feed_title, $feed_link, $feed_description)
+	{
+		$articles = $this->get_articles(10)->result();
+		$output = '<?xml version="1.0" encoding="ISO-8859-1" ?>' . "\n";
+		$output .= '<rss version="2.0">' . "\n";
+		$output .= '<channel>' . "\n";
+		$output .= '<title>' . $feed_title . '</title>' . "\n";
+		$output .= '<link>' . $feed_link . '</link>' . "\n";
+		$output .= '<description>' . $feed_description . '</description>' . "\n";
+		foreach($articles as $article) 
+		{
+			$output .= '<item>' . "\n";
+			$output .= '<title>' . $article->title . '</title>' . "\n";
+			$output .= '<link>' . site_url('news/' . $article->slug) . '</link>' . "\n";
+			$output .= '<description>' . html_entity_decode(word_limiter(strip_tags($article->content),50)) . '</description>' . "\n";
+			$output .= '<pubdate>' . date('D, d M Y H:i:s O', strtotime($article->published)) . '</pubdate>' . "\n";
+			$output .= '</item>' . "\n";
+		}
+		$output .= '</channel>' . "\n";
+		$output .= '</rss>';
+		return $output;
+	}
+		
 	/**
 	 * I return an article matching an id
 	 * @access public
