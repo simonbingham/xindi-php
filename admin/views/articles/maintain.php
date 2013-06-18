@@ -58,7 +58,7 @@ echo render_message($userdata, $message);
 		<div class="control-group">
 			<label class="control-label" for="article-content">Content *</label>
 			<div class="controls">
-				<textarea class="input-xlarge tinymce" name="content" id="article-content"><?php echo set_value('content', $content); ?></textarea>
+				<textarea class="input-xlarge" name="content" id="article-content"><?php echo set_value('content', $content); ?></textarea>
 				<?php echo form_error('content'); ?>
 			</div>
 		</div>		
