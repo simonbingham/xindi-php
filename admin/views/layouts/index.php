@@ -51,6 +51,7 @@
 								<li><a href="<?php echo site_url('main/index') ?>">Dashboard</a></li>
 								<li><a href="<?php echo site_url('pages/index') ?>">Pages</a></li>
 								<li><a href="<?php echo site_url('articles/index') ?>">News</a></li>
+								<li><a href="<?php echo site_url('filemanager/index') ?>">File Manager</a></li>
 								<li><a href="<?php echo site_url('enquiries/index') ?>">Enquiries<?php if ($this->unread_enquiry_count) { ?><span class="badge badge-info"><abbr title="Unread enquiries"><?php echo $this->unread_enquiry_count; ?></abbr></span><?php } ?></a></li>
 								<li><a href="<?php echo site_url('users/index') ?>">Users</a></li>
 								<li><a href="<?php echo site_url('security/do_logout') ?>">Logout</a></li>
@@ -97,6 +98,9 @@
 			body_id:'content',
 			browser_spellcheck:true,
 			content_css:'<?php echo str_replace('/admin/', '/public/', base_url()); ?>assets/css/editor.css',
+			//file_browser_callback: function(field_name, url, type, win) { 
+			//	win.document.getElementById(field_name).value = 'my browser value'; 
+			//},
 			height:600,
 			menubar:false,
 			plugins:['lists link image preview anchor code fullscreen media table paste'],
