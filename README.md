@@ -37,7 +37,7 @@ Clone the git repo - `git clone git@github.com:simonbingham/xindi-php.git`.
 
 ## License
 
-Xindi is licensed under the [MIT License (MIT)] (http://www.opensource.org/licenses/mit-license.php). 
+Xindi is licensed under the [MIT License (MIT)] (http://www.opensource.org/licenses/mit-license.php).
 
 However, the frameworks listed above have their own licenses which you should review before using Xindi.
 
@@ -55,6 +55,6 @@ If you experience any problems with Xindi please:
 
 ## Social Media
 
-You'll find us on [Twitter] (https://twitter.com/#!/getxindi), [Facebook] (http://www.facebook.com/getxindi) and [Google+] (https://plus.google.com/112798469896267857099).
+You'll find us on [Twitter] (https://twitter.com/#!/getxindi).
 
 Finally, you can find a collection of [blog posts about Xindi on Simon Bingham's website] (http://www.simonbingham.me.uk/index.cfm/main/default/uuid/xindi-19).
