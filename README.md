@@ -49,12 +49,5 @@ Xindi is authored by [Simon Bingham] (https://twitter.com/#!/simonbingham), but 
 
 If you experience any problems with Xindi please:
 
-* [visit our Google Group for help and advice] (https://groups.google.com/forum/?hl=en&fromgroups#!forum/xindi-cms-php)
 * [submit a ticket to our issue tracker] (https://github.com/simonbingham/xindi-php/issues)
 * fix the error yourself and send us a pull request
-
-## Social Media
-
-You'll find us on [Twitter] (https://twitter.com/#!/getxindi).
-
-Finally, you can find a collection of [blog posts about Xindi on Simon Bingham's website] (http://www.simonbingham.me.uk/index.cfm/main/default/uuid/xindi-19).
